@@ -1,0 +1,636 @@
+/*----------------------------------------*/
+/* 1. Theme Default CSS
+/*----------------------------------------*/
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: #232323;
+    font-size: 16px;
+    line-height: 1.25em;
+}
+
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0
+}
+
+.clear {
+    clear: both
+}
+
+.fix {
+    overflow: hidden;
+}
+
+
+
+/*---------------------------------------*/
+/* Related product
+/*----------------------------------------*/
+.hot-deal-active .owl-nav div,
+.second-hot-deal-active .owl-nav div {
+    right: 55px;
+    top: -71px;
+}
+
+/* .hot-deal-active .owl-nav div.owl-next{*/
+/*    left: auto;*/
+/*    right: 10px;*/
+/*}*/
+/* .second-hot-deal .post-title h2,*/
+/*.new-pro-two .post-title h2 {*/
+/*    background: transparent none repeat scroll 0 0;*/
+/*    color: #2c2c2c;*/
+/*    font-size: 24px;*/
+/*    padding: 15px 0;*/
+/*}*/
+.single-product {
+    background: #fff none repeat scroll 0 0;
+    position: relative;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+    margin: 10px 0;
+}
+.single-product:hover {
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.pro-img {
+    position: relative;
+}
+
+.pro-img img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+    width: 100%;
+}
+.pro-img .secondary-img {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    z-index: 3;
+}
+.single-product:hover .pro-img .primary-img {
+    opacity: 0;
+}
+
+.single-product:hover .pro-img .secondary-img {
+    opacity: 1;
+}
+
+
+
+
+.pro-content {
+  min-height: 115px;
+  overflow: hidden;
+  padding: 20px 15px;
+  position: relative;
+}
+
+.pro-content h4 a {
+    color: #363636;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 9px;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.pro-content h4 a:hover {
+    color: #E62E04;
+}
+
+.pro-content .product-rating {
+    margin-bottom: 13px;
+}
+
+
+.price {
+  color: #363636;
+  font-family: "Lato",sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 20px;
+}
+.prev-price {
+  color: #666;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration: line-through;
+}
+
+
+.pro-actions {
+    display: block;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 15px;
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    -webkit-transition: all 300ms ease-in 0s;
+    transition: all 300ms ease-in 0s;
+    width: 100%;
+    z-index: 10;
+    padding:0 10px;
+}
+
+.single-product:hover .pro-actions,
+.single-product:hover .actions-secondary a {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+.single-product .pro-info {
+    -webkit-transition: all 300ms ease-in 0s;
+    transition: all 300ms ease-in 0s;
+}
+
+.single-product:hover .pro-info {
+    opacity: 0;
+}
+
+.actions-secondary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-around;
+  padding-right: 6px;
+}
+.actions-primary a,
+.product-description{
+  background: #ee316b none repeat scroll 0 0;
+  border: 1px solid #cbcbcb;
+  border-radius: 3px;
+  color: #fff;
+    height: 40px;
+    line-height: 39px;
+    position: relative;
+    text-align: center;
+    -webkit-transition: all 400ms ease-in 0s;
+    -ms-transition: all 400ms ease-in 0s;
+    -transition: all 400ms ease-in 0s;
+    transition: all 400ms ease-in 0s;
+    width: 100%;
+    margin: 0 0 10px;
+    font-weight: 700;
+    display: block;
+    font-family: "Lato",sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+}
+.actions-primary a:hover,
+.product-description {
+    background-color: transparent;
+    color: #ee316b;
+    border: 1px solid #ee316b;
+}
+.actions-secondary a {
+  background: transparent none repeat scroll 0 0;
+  color: #ee316b;
+  margin-left: 5px;
+  transform: scale(0.6);
+}
+.l_sale {
+  /* background: rgba(0, 0, 0, 0) udorl("img/icon/bg-l-sale.png") no-repeat scroll right center; */
+  bottom: 20px;
+  color: #ee316b;
+  font-size: 20px;
+  font-weight: 900;
+  height: 22px;
+  line-height: 1;
+  padding-right: 17px;
+  position: absolute;
+  right: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 1;
+}
+.actions-secondary a span {
+  color: #363636;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 15px;
+  padding-left: 7px;
+  vertical-align: -4px;
+  white-space: normal;
+  width: calc(100% - 28px);
+}
+.actions-secondary a i {
+  color: #363636;
+  float: left;
+  font-size: 28px;
+  width: 28px;
+}
+.actions-secondary a:hover i,.actions-secondary a:hover span{
+    color: #ee316b;
+}
+.quick_view {
+  color: #dedede;
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 9;
+  opacity: 0;
+}
+.quick_view:hover{
+    color: #ee316b;
+}
+.single-product:hover .quick_view{
+    opacity: 1;
+}
+
+/*----------------------------------------*/
+/* Home-3 CSS
+/*----------------------------------------*/
+
+.hot-product2 {
+  display: flex;
+}
+.hot-product2 .tab-content {
+  width: 100%;
+}
+.hot-product2 .product-thumbnail {
+  padding-left: 10px;
+  width: 137px;
+}
+
+.hot-product2 .pro-actions {
+  align-items: center;
+  display: flex;
+  opacity: 1;
+  padding-left: 0;
+  position: static;
+  transform: scale(1);
+}
+.hot-product2 .actions-primary a {
+  transform: scale(1);
+  width: 163px;
+  margin-right: 10px;
+
+}
+
+.hot-product2 .actions-secondary a {
+  margin-right: 10px;
+  transform: scale(1);
+}
+.hot-product2 .pro-price {
+  display: flex;
+  position: relative;
+}
+.hot-product2 .pro-price .price {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 18px;
+}
+.hot-product2 .thubnail-desc h3 a {
+    color: #363636;
+  font-family: "Open Sans",sans-serif;
+  font-size: 34px;
+}
+.hot-product2 .thubnail-desc h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price-countdown .product-name {
+  color: #363636;
+  font-family: "Open Sans",sans-serif;
+  font-size: 34px;
+  line-height: 1;
+  margin-bottom: 22px;
+}
+
+/*----------------------------------------*/
+/* Product Details CSS
+/*----------------------------------------*/
+.main-product-thumbnail .tab-content img,
+.product-thumbnail .thumb-menu div img {
+    width: 100%;
+}
+
+.thumb-menu.owl-carousel .owl-item a {
+    border: 1px solid #ededed;
+    display: block;
+}
+
+.thumb-menu.owl-carousel .owl-item a.active {
+    border-color: #e62e04;
+}
+
+.product-thumbnail .thumb-menu .nav-link {
+    padding: 0;
+}
+
+.thumb-bg {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ededed;
+}
+
+.thumb-bg .tabs-area {
+    border-bottom: none;
+}
+
+.thumb-menu .owl-stage-outer {
+    margin: 0 -1px;
+}
+
+
+.thumb-menu .owl-nav div {
+  height: 20px;
+  left: 0;
+  line-height: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+}
+
+.thumb-menu .owl-nav div.owl-next {
+    right: 0;
+    left: auto;
+}
+
+
+
+.box-quantity.hot-product2 .actions-primary a {
+  background: #ee316b none repeat scroll 0 0;
+  border-color: #ee316b;
+  color: #fff;
+  height: 43px;
+  margin-bottom: 0;
+  margin-right: 10px;
+  width: 150px;
+}
+.box-quantity.hot-product2 .actions-primary a:hover{
+    background-color: transparent;
+    color: #ee316b;
+    border: 1px solid #ee316b;
+}
+/*---------------------------------
+    thumb product css start
+-----------------------------------*/
+.product-header {
+    color: #363636;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 0 0 15px;
+    text-transform: capitalize;
+}
+
+.rating i,
+.review-list i {
+    color: #F39C11;
+    font-size: 14px;
+}
+
+.pro-desc-details {
+    color: #666666;
+    font-size: 14px;
+    line-height: 25px;
+}
+.pro-price span:not(:last-child) {
+    margin-right: 15px;
+}
+
+.pro-price .price {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+
+
+.saving-price {
+    background: #ee316b none repeat scroll 0 0;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+.quantity {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+    color: #7a7a7a;
+    width: 70px;
+    padding: 11px;
+}
+
+
+.add-cart {
+    background-color: #E62E04;
+    border-radius: 2px;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 15px;
+    text-transform: capitalize;
+}
+
+.add-cart:hover {
+    background: #e62e04;
+    color: #fff;
+}
+
+.color-list li {
+    display: inline-block;
+}
+
+.color-list li a {
+    border: 2px solid transparent;
+    height: 22px;
+    margin: 0 8px 10px 0;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    width: 22px;
+    display: block;
+}
+
+.color-list li a.active,
+.color-list li a:hover {
+    border-color: #333333;
+}
+
+.color-list li a.orange {
+    background: #F39C11;
+}
+
+.color-list li a.paste {
+    background: #5D9CEC;
+}
+
+.in-stock {
+    color: #666666;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.in-stock i {
+    font-size: 16px;
+    margin-right: 5px;
+    color: #4CBB76;
+}
+
+.socila-sharing li {
+    color: #666;
+    line-height: 1;
+    margin-right: 20px;
+    white-space: normal;
+}
+
+.socila-sharing li a {
+    color: #999999;
+}
+
+.socila-sharing li a:hover {
+    color: #e62e04;
+}
+
+.product-policy p {
+    padding: 15px 0;
+    color: #999;
+}
+
+.product-policy p i {
+    color: #333333;
+    font-size: 20px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+/*---------------------------------
+    product description start
+-----------------------------------*/
+.thumnail-desc .tabs-area {
+    border-bottom: none;
+}
+
+.main-thumb-desc.tabs-area > li {
+    margin-left: 0;
+}
+
+.main-thumb-desc.tabs-area > li > a {
+    color: #666666;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    padding: 15px;
+    text-transform: uppercase;
+    -webkit-transition: all 300ms ease-in 0s;
+    transition: all 300ms ease-in 0s;
+}
+
+.main-thumb-desc li a.active {
+    background: #ee316b none repeat scroll 0 0;
+    color: #ffffff;
+}
+
+.thumnail-desc .tab-content {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #ededed;
+    overflow: hidden;
+    padding: 30px 20px;
+}
+
+.thumnail-desc .tab-content p {
+    line-height: 25px;
+}
+
+.border-default {
+    border: 1px solid #ededed;
+    border-radius: 3px;
+    padding-bottom: 30px;
+}
+
+.universal-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.group-title {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid #ebebeb;
+    color: #363f4d;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    position: relative;
+}
+
+.group-title h2 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.review-field input,
+.review-field textarea {
+    border: 1px solid #ebebeb;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    width: 60%;
+}
+
+.review-field label {
+    color: #333333;
+    font-size: 13px;
+    font-weight: 500;
+}
+/* Customer submit button */
+.review-field .customer-btn{
+    background: #ee316b none repeat scroll 0 0;
+    border-color: #ee316b;
+    color: #fff;
+    height: 43px;
+    margin-bottom: 0;
+    margin-right: 10px;
+    width: 150px;
+    border: 1px solid #cbcbcb;
+    border-radius: 3px;
+}
+.review-field .customer-btn:hover{
+    background-color: transparent;
+    color: #ee316b;
+    border: 1px solid #ee316b; opacity: 0.7;
+}
