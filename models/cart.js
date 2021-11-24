@@ -7,7 +7,7 @@ const cartSchema = mongoose.Schema({
     },
     customerID: {
         type: "string",
-        require: true
+        default: null
     },
     products: { // list of products
         type: "array",

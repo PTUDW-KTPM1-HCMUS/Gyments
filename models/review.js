@@ -29,13 +29,13 @@ const reviewSchema = mongoose.Schema({
         type: "object",
         properties: {
             quality: {
-                type: "integer"
+                type: "number"
             },
             price: {
-                type: "integer"
+                type: "number"
             },
             value: {
-                type: "integer"
+                type: "number"
             }
         }
     }

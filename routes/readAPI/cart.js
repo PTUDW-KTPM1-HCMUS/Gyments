@@ -54,8 +54,12 @@ router.patch('/:cartID', async (req, res) =>{
     try{
         const updatedCart = await Cart.updateOne(
             {"cartID": req.params.cartID},
-            {$set: {"products": req.body.products},
-                $set: {"totalPrice": req.body.totalPrice} }
+            {
+                $set: {
+                    "products": req.body.products,
+                    "totalPrice": req.body.totalPrice
+                }
+            }
         );
         res.json(updatedCart);
     } catch (err){
