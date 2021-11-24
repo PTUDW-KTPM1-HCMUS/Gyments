@@ -52,8 +52,9 @@ router.patch('/:username', async (req, res) =>{
    try{
        const updatedAccount = await Account.updateOne(
            {"username": req.params.username},
-           {$set: {"password": req.body.password},
-               $set: {"status": req.body.status} }
+           {
+               $set: {"password": req.body.password, "status": req.body.status}
+           }
        );
        res.json(updatedAccount);
    } catch (err){

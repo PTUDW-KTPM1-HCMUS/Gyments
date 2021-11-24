@@ -57,12 +57,18 @@ router.patch('/:reviewID', async (req, res) =>{
     try{
         const updatedReview = await Review.updateOne(
             {"reviewID": req.params.reviewID},
-            {$set: {"customerID": req.body.customerID},
-                $set: {"productID": req.body.productID},
-                $set: {"summary": req.body.summary},
-                $set: {"reviewDetail": req.body.reviewDetail},
-                $set: {"status": req.body.status},
-                $set: {"rate": req.body.rate},}
+            {
+                $set: {
+                    "customerID": req.body.customerID,
+                    "productID": req.body.productID,
+                    "summary": req.body.summary,
+                    "reviewDetail": req.body.reviewDetail,
+                    "status": req.body.status,
+                    "rate.quality": req.body.rate.quality,
+                    "rate.price": req.body.rate.price,
+                    "rate.value": req.body.rate.value
+                }
+            }
         );
         res.json(updatedReview);
     } catch (err){

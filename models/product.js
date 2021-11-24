@@ -18,7 +18,7 @@ const productSchema = mongoose.Schema({
         require: true
     },
     rate: {
-        type: "integer",
+        type: "number",
         default: 5
     },
     sale: {
@@ -36,12 +36,8 @@ const productSchema = mongoose.Schema({
             default: "/images/p1.png"
         }
     },
-    description: {
-        type: "string",
-        require: true
-    },
     quantity: {
-        type: "integer",
+        type: "number",
         require: true
     },
     category:{

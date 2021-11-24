@@ -12,7 +12,7 @@ const orderDetailSchema = mongoose.Schema({
                 type: "string"
             },
             { // quantity of this product
-                type: "integer"
+                type: "number"
             }
         ]
     }
