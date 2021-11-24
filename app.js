@@ -18,6 +18,7 @@ const testimonialRouter = require('./routes/testimonial');
 const cartRouter = require('./routes/cart');
 const accountAPIRouter = require('./routes/readAPI/account');
 const cartAPIRouter = require('./routes/readAPI/cart');
+const reviewAPIRouter = require('./routes/readAPI/review');
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use('/users', usersRouter);
 app.use('/cart/',cartRouter);
 app.use('/readAPI/account', accountAPIRouter);
 app.use('/readAPI/cart', cartAPIRouter);
+app.use('/readAPI/review', reviewAPIRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
