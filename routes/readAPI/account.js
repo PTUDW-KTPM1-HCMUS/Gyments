@@ -42,7 +42,7 @@ router.delete('/:username', async (req, res) => {
    try{
        const removedAccount = await Account.remove({"username": req.params.username});
        res.json(removedAccount);
-   }catch{
+   }catch (err) {
        res.json({message: err});
    }
 });
@@ -52,7 +52,8 @@ router.patch('/:username', async (req, res) =>{
    try{
        const updatedAccount = await Account.updateOne(
            {"username": req.params.username},
-           {$set: {"password": req.body.password}}
+           {$set: {"password": req.body.password},
+               $set: {"status": req.body.status} }
        );
        res.json(updatedAccount);
    } catch (err){
