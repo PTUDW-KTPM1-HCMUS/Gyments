@@ -39,7 +39,7 @@ router.get('/:cartID',async(req, res) => {
         res.json({message: err});
     }
 });
-// delete an account by username
+// delete an cart by cartID
 router.delete('/:cartID', async (req, res) => {
     try{
         const removedCart = await Cart.remove({"cartID": req.params.cartID});
