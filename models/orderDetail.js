@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const orderDetailSchema = mongoose.Schema({
+    orderDetailID: {
+        type: "string",
+        require: true
+    },
     orderID: {
         type: "string",
         require: true

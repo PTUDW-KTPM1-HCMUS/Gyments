@@ -20,6 +20,11 @@ const accountAPIRouter = require('./routes/readAPI/account');
 const cartAPIRouter = require('./routes/readAPI/cart');
 const reviewAPIRouter = require('./routes/readAPI/review');
 const productAPIRouter = require('./routes/readAPI/product');
+const orderAPIRouter = require('./routes/readAPI/order');
+const orderDetailAPIRouter = require('./routes/readAPI/orderDetail');
+const customerAPIRouter = require('./routes/readAPI/customer');
+const couponAPIRouter = require('./routes/readAPI/coupon');
+const categoryAPIRouter = require('./routes/readAPI/category');
 
 const app = express();
 
@@ -48,6 +53,13 @@ app.use('/readAPI/account', accountAPIRouter);
 app.use('/readAPI/cart', cartAPIRouter);
 app.use('/readAPI/review', reviewAPIRouter);
 app.use('/readAPI/product', productAPIRouter);
+app.use('/readAPI/order', orderAPIRouter);
+app.use('/readAPI/orderDetail', orderDetailAPIRouter);
+app.use('/readAPI/customer', customerAPIRouter);
+app.use('/readAPI/coupon', couponAPIRouter);
+app.use('/readAPI/category', categoryAPIRouter);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

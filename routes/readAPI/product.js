@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
         description: req.body.description,
         images: req.body.images,
         quantity: req.body.quantity,
-        category: req.body.category
+        categoryID: req.body.categoryID
     });
     try{
         const savedProduct = await product.save();
@@ -68,7 +68,7 @@ router.patch('/:productID', async (req, res) =>{
                     description: req.body.description,
                     images: req.body.images,
                     quantity: req.body.quantity,
-                    category: req.body.category
+                    categoryID: req.body.categoryID
                 }
             }
         );
