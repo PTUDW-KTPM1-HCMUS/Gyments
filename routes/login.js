@@ -5,12 +5,12 @@ const Account = require('../models/account');
 router.get('/', function(req, res, next) {
     res.render('account/login');
 });
-
-
 router.post('/', async (req, res) => {
     const account = new Account({
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        status: req.body.status,
+        userType: req.body.userType
     });
     try{
         const savedAccount = await account.save();
@@ -19,5 +19,7 @@ router.post('/', async (req, res) => {
         res.json({message: err});
     }
 });
+
+
 
 module.exports = router;
