@@ -40,7 +40,7 @@ const productSchema = mongoose.Schema({
         type: "number",
         require: true
     },
-    category:{
+    categoryID:{
         type: "string",
         require: true
     }

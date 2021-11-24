@@ -22,7 +22,7 @@ const orderSchema = mongoose.Schema({
         default: 0
     },
     status: {
-        type: "string",
+        type: "string", // Delivered or not
         require: true
     },
     couponID: {
