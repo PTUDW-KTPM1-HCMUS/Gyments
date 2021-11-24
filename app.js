@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const bodyParser = require('body-parser');
 
 
 const indexRouter = require('./routes/index');
@@ -15,6 +16,7 @@ const productDetailRouter = require('./routes/productDetail');
 const whyUsRouter = require('./routes/whyUs');
 const testimonialRouter = require('./routes/testimonial');
 const cartRouter = require('./routes/cart');
+const accountAPIRouter = require('./routes/readAPI/account');
 
 const app = express();
 
@@ -22,7 +24,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-
+app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -39,6 +41,7 @@ app.use('/whyUs', whyUsRouter);
 app.use('/testimonial', testimonialRouter);
 app.use('/users', usersRouter);
 app.use('/cart/',cartRouter);
+app.use('/readAPI/account', accountAPIRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
