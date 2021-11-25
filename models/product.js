@@ -14,7 +14,7 @@ const productSchema = mongoose.Schema({
         require: true
     },
     overview: {
-        type: String,
+        type: "string",
         require: true
     },
     rate: {
