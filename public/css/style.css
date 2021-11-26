@@ -1103,3 +1103,20 @@ slider_section .img_slider img {
   display: flex;
   justify-content: flex-end;
 }
+
+/* home button */
+.scroll-up-btn{
+  position: fixed;
+  height: 43px;
+  width: 42px;
+  background-color: rgba(128, 128, 128,0.3);
+  right: 30px;
+  bottom: 30px;
+  text-align: center;
+  line-height: 43px;
+  z-index: 9999;
+  font-size: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  
+}
