@@ -63,4 +63,3 @@ function showSlides(n) {
     })
 })(jQuery);
 
-
