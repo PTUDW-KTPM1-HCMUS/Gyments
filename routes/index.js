@@ -10,8 +10,8 @@ function route(app)
   //user page
   app.use('/users', userRouter);
 
-    //site page
-    app.use('/', siteRouter);
+  //site page
+  app.use('/', siteRouter);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {
