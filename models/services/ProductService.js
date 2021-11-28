@@ -1,4 +1,5 @@
 const { localsAsTemplateData } = require('hbs');
+const ProductController = require('../../Controller/ProductController');
 const product = require('../data/product');
 const Product = require ('../data/product');
 
@@ -22,7 +23,6 @@ const add_list = async(reqPage)=>{
         }
 
         products = products.slice(pro_start,pro_end);
-        
         return [products,pages];
     }catch(err){
         console.log(err);
