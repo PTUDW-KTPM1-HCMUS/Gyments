@@ -528,9 +528,7 @@ slider_section .img_slider img {
   margin-right: 5px;
 }
 
-.product_section .product_container .box .detail-box .p_price .old_price {
-  text-decoration: line-through;
-}
+
 
 .product_section .product_container .box .detail_bottom {
   display: -webkit-box;
