@@ -11,16 +11,15 @@
               {{#each products}}
               <div class="col-sm-6 col-lg-4">
                     <div class="box">
-                        <a href="#" class="p_cart">
+                        <a href="/users/cart" class="p_cart">
                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
                         </a>
                         <div class="img-box">
-                            
-                            <a href="/product_1"><img src={{this.images.[0]}} alt=""></a>
+                            <a href="{{this.productID}}"><img src={{this.images.[0]}} alt="{{this.name}}"></a>
                         </div>
                         <div class="detail-box">
                 <span class="p_rating">
-                    <a href="#">
+                    <a href="{{this.productID}}">
                         <i class="fa fa-star" aria-hidden="true"></i>
                     </a>
 <!--                  <a href="#">-->
@@ -39,7 +38,7 @@
 <!--                    <i class="fa fa-star" aria-hidden="true"></i>-->
 <!--                  </a>-->
                 </span>
-                            <a href="/product_1" class="p_name">
+                            <a href="{{this.productID}}" class="p_name">
                                 {{this.name}}
                             </a>
                             <h6 class="p_price">
