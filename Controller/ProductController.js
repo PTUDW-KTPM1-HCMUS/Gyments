@@ -12,7 +12,7 @@ class ProductController{
     async getProductDetail(req, res){
         try{
             const [productDetails, relatedProducts] = await service.add_detail(req.params.productID);
-            res.render('product/productDetails', {productDetails, relatedProducts});
+            res.render('product/productDetail', {productDetails, relatedProducts});
         }catch (err) {
             console.log({message: err});
         }
