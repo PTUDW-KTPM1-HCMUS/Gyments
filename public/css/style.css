@@ -526,10 +526,22 @@ slider_section .img_slider img {
 
 .product_section .product_container .box .detail-box .p_price .new_price {
   margin-right: 5px;
+  line-height: 30px;
+  font-size: 20px;
 }
 
-.product_section .product_container .box .detail-box .p_price .old_price {
-  text-decoration: line-through;
+.product_section .product_container .box .detail-box .p_price .sale_off {
+  background: #ee316b none repeat scroll 0 0;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 400;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 15px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: top;
 }
 
 .product_section .product_container .box .detail_bottom {
