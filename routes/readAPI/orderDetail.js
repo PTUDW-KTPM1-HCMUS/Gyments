@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const OrderDetail = require('../../models/orderDetail');
+const OrderDetail = require('../../models/data/orderDetail');
 
 // get all orders detail from db
 router.get('/', async (req, res) =>{
