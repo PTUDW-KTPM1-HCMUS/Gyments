@@ -8,13 +8,14 @@
         </div>
         <div class="product_container">
             <div class="row">
-                <div class="col-sm-6 col-lg-4">
+              {{#each products}}
+              <div class="col-sm-6 col-lg-4">
                     <div class="box">
                         <a href="#" class="p_cart">
                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
                         </a>
                         <div class="img-box">
-                            <a href="/product_1"><img src="/images/p1.png" alt=""></a>
+                            <a href="/product_1"><img src="{{this.images.[0]}}}" alt=""></a>
                         </div>
                         <div class="detail-box">
                 <span class="p_rating">
@@ -35,20 +36,21 @@
                   </a>
                 </span>
                             <a href="/product_1" class="p_name">
-                                Gym Equipment
+                                {{this.name}}
                             </a>
                             <h6 class="p_price">
                   <span class="new_price">
-                    $140
+                    {{this.price}}
                   </span>
-                                <span class="old_price">
+                                {{!-- <span class="old_price">
                     $165
-                  </span>
-                            </h6>
+                  </span> --}}
+                            </h6> --}}
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-4 ">
+              {{/each}}
+                {{!-- <div class="col-sm-6 col-lg-4 ">
                     <div class="box">
                         <a href="#" class="p_cart">
                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
@@ -511,7 +513,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- See more button -->
 <!--        <div class="btn-box">-->
 <!--            <a href="#">-->

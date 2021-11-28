@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Coupon = require('../../models/coupon');
+const Coupon = require('../../models/data/coupon');
 
 
 
