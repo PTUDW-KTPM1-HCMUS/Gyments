@@ -5,11 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-const route =require('./routes/index');
+const route = require('./routes/index');
 
 
-const productRouter = require('./routes/products');
-const productDetailRouter = require('./routes/productDetail');
+// const productRouter = require('./routes/products');
+// const productDetailRouter = require('./routes/productDetail');
 
 const accountAPIRouter = require('./routes/readAPI/account');
 const cartAPIRouter = require('./routes/readAPI/cart');

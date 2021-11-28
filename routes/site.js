@@ -1,5 +1,5 @@
 const express = require('express');
-const router =express.Router();
+const router = express.Router();
 const SiteController = require('../Controller/SiteController');
 
 router.use('/login',SiteController.login);
