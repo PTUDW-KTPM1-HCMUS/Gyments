@@ -530,7 +530,6 @@ slider_section .img_slider img {
   font-size: 20px;
 }
 
-<<<<<<< HEAD
 .product_section .product_container .box .detail-box .p_price .sale_off {
   background: #ee316b none repeat scroll 0 0;
   color: #ffffff;
@@ -544,9 +543,6 @@ slider_section .img_slider img {
   text-transform: uppercase;
   vertical-align: top;
 }
-=======
-
->>>>>>> f12b695a60de27c4e69376c65637ffe897d3dfd7
 
 .product_section .product_container .box .detail_bottom {
   display: -webkit-box;
