@@ -38,15 +38,13 @@
                         <h3 class="product-header">{{productDetails.name}}</h3>
                         <div class="rating-summary fix mtb-10">
                             <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                {{#each productDetails.rate}}
+                                    <i class="fa fa-star"></i>
+                                {{/each}}
                             </div>
                         </div>
                         <div class="pro-price mtb-30">
-                            <p class="d-flex align-items-center"><span class="prev-price">{{productDetails.price}}$</span><span class="price">{{productDetails.price}}$</span><span class="saving-price">Save {{productDetails.sale}}</span></p>
+                            <p class="d-flex align-items-center"><span class="prev-price">{{productDetails.price}}$</span><span class="price">{{productDetails.price}}$</span><span class="saving-price">Save {{productDetails.sale}}%</span></p>
                         </div>
                         <p class="mb-20 pro-desc-details">{{productDetails.overview}}</p>
                         <div class="box-quantity d-flex hot-product2">

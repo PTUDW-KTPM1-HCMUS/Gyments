@@ -45,6 +45,7 @@ const add_detail = async (productID) =>{
         // we use $ne (not equal) here to skip the current product from related product
         relatedProducts = await Product.find({categoryID: productDetails.categoryID, productID: { $ne: productID}}).lean();
 
+        productDetails.rate = new Array(productDetails.rate).fill(0);
         relatedProducts = relatedProducts.map(item => {
             let productID = "/product/" + item.productID;
             return { ...item, productID: productID }
