@@ -1,12 +1,11 @@
 const Product = require('../data/product');
-const Account = require("../../models/data/account");
 
-const add_list = async(reqPage)=>{
+const add_list = async(reqPage) => {
     let products = [];
     let pages = [];
     try{
         products = await Product.find().lean();
-        const perPage = 3;
+        const perPage = 1;
         const page = parseInt(reqPage);
 
         const pro_start = (page - 1) * perPage;
@@ -36,7 +35,7 @@ const add_list = async(reqPage)=>{
     return [products, pages]
 }
 
-const add_detail = async (productID) =>{
+const add_detail = async (productID) => {
     let productDetails = null;
     let relatedProducts = [];
     try{
