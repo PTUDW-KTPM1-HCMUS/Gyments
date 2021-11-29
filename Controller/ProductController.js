@@ -4,8 +4,11 @@ class ProductController{
     async getAllProduct(req,res){
         try{
             let currentPage = req.query.page || 1;
+            
             const [products, pages] = await service.add_list(currentPage);
-            res.render('product/product',{products, pages, currentPage});
+            let previous = Math.ceil(parseInt(currentPage)-1)<1? 1:Math.ceil(parseInt(currentPage)-1);
+            let next = Math.ceil(parseInt(currentPage)+1) > pages.length?pages.length: Math.ceil(parseInt(currentPage)+1);
+            res.render('product/product',{products, pages, currentPage,previous,next});
         }catch(err){
             console.log({message: err});
         }
