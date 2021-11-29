@@ -13,7 +13,8 @@ class ProductController{
     async getProductDetail(req, res){
         try{
             const [productDetails, relatedProducts] = await service.add_detail(req.params.productID);
-            res.render('product/productDetail', {productDetails, relatedProducts});
+            let newPrice = productDetails.price - productDetails.price * productDetails.sale / 100;
+            res.render('product/productDetail', {productDetails, relatedProducts, newPrice});
         }catch (err) {
             console.log({message: err});
         }
