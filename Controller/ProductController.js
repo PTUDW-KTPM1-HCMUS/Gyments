@@ -3,8 +3,9 @@ const service = require('../models/services/ProductService');
 class ProductController{
     async getAllProduct(req,res){
         try{
-            const [products, pages] = await service.add_list(req.query.pages || 1);
-            res.render('product/product',{products, pages});
+            let currentPage = req.query.page || 1;
+            const [products, pages] = await service.add_list(currentPage);
+            res.render('product/product',{products, pages, currentPage});
         }catch(err){
             console.log({message: err});
         }

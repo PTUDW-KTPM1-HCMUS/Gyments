@@ -4,6 +4,6 @@ const userController = require('../Controller/UserController');
 
 
 
-router.use('/cart/', userController.cart);
+router.use('/cart', userController.cart);
 
 module.exports = router;

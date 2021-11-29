@@ -16,25 +16,9 @@
                         <!-- Full-width images with number and caption text -->
                         {{#each productDetails.images}}
                             <div class="mySlides fade_1">
-                                <img src="{{this}}" style="width:100%">
+                                <img src="/{{this}}" style="width:100%">
                             </div>
                         {{/each}}
-
-<!--                        <div class="mySlides fade_1">-->
-<!--                            <img src="images/p2.png" style="width:100%">-->
-<!--                        </div>-->
-<!--                        <div class="mySlides fade_1">-->
-<!--                            <img src="images/p3.png" style="width:100%">-->
-<!--                        </div>-->
-<!--                        <div class="mySlides fade_1">-->
-<!--                            <img src="images/p4.png" style="width:100%">-->
-<!--                        </div>-->
-<!--                        <div class="mySlides fade_1">-->
-<!--                            <img src="images/p5.png" style="width:100%">-->
-<!--                        </div>-->
-<!--                        <div class="mySlides fade_1">-->
-<!--                            <img src="images/p6.png" style="width:100%">-->
-<!--                        </div>-->
                         <!-- Next and previous buttons -->
                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                         <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -42,12 +26,9 @@
                     <br>
                     <!-- The dots/circles -->
                     <div style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                        <span class="dot" onclick="currentSlide(4)"></span>
-                        <span class="dot" onclick="currentSlide(5)"></span>
-                        <span class="dot" onclick="currentSlide(6)"></span>
+                        {{#each productDetails.images}}
+                            <span class="dot" onclick="currentSlide(1)"></span>
+                        {{/each}}
                     </div>
                 </div>
                 <!-- Main Thumbnail Image End -->
@@ -118,12 +99,6 @@
                     <div id="dtail" class="tab-pane fade show active">
                         <ul style="  list-style-type: circle;">
                             <li>{{productDetails.description}}</li>
-<!--                            <li>Console: 7.5" bright blue backlit LCD screen.</li>-->
-<!--                            <li>Stride Length: Smooth 20" stride is the optimal length for user comfort.</li>-->
-<!--                            <li>Track System: Durable track system with concave roller wheels and aluminum rails for added stability and durability.</li>-->
-<!--                            <li>Pedals: Narrow 2" pedal spacing with 2-degree inversion angle provides a comfortable foot placement for users of any size.</li>-->
-<!--                            <li>Comfort: Adjustable console angle, tablet friendly reading rack, and cooling fan for added comfort.</li>-->
-<!--                            <li>Heart Rate Monitoring: Contact and wireless heart rate monitoring options make your workouts more effective (chest strap transmitter not included).</li>-->
                         </ul>
                     </div>
                     <div id="review" class="tab-pane fade">
@@ -238,7 +213,6 @@
 
 <!-- Related Products Start Here -->
 <div class="hot-deal-products off-white-bg pt-100 pb-90 pt-sm-60 pb-sm-50">
-
     <div class="container">
         <!-- Product Title Start -->
         <div class="post-title pb-30">
@@ -253,233 +227,36 @@
                     <!-- Product Image Start -->
                     <div class="pro-img">
                         <a href="{{this.productID}}">
-                            <img class="primary-img" src="{{this.images.[0]}}" alt="single-product">
-                            <img class="secondary-img" src="{{this.images.[1]}}" alt="single-product">
+                            <img class="primary-img" src="/{{this.images.[0]}}" alt="single-product">
+                            <img class="secondary-img" src="/{{this.images.[1]}}" alt="single-product">
                         </a>
                     </div>
                     <!-- Product Image End -->
                     <!-- Product Content Start -->
                     <div class="pro-content">
                         <div class="pro-info">
-                            <h4><a href="products/{{this.productID}}">{{this.name}}</a></h4>
-                            <p><span class="price">{{this.price}}</span></p>
+                            <h4><a href="{{this.productID}}">{{this.name}}</a></h4>
+                            <p>
+                                <span class="price">{{this.price}}$</span>
+                                <span class="prev-price">{{this.price}}$</span>
+                            </p>
+                            <div class="label-product l_sale">
+                                {{this.sale}}
+                                <span class="symbol-percent">%</span>
+                            </div>
                         </div>
                         <div class="pro-actions">
                             <div class="actions-primary">
-                                <a href="#" title="Add to Cart"> + Add To Cart</a>
+                                <a href="/user/cart" title="Add to Cart"> + Add To Cart</a>
                             </div>
                             <div class="actions-secondary">
-                                <a href="#" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>
+                                <a href="/user/cart" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>
                             </div>
                         </div>
                     </div>
                     <!-- Product Content End -->
                 </div>
             {{/each}}
-
-            <!-- Single Product End -->
-            <!-- Single Product Start -->
-<!--            <div class="single-product">-->
-<!--                &lt;!&ndash; Product Image Start &ndash;&gt;-->
-<!--                <div class="pro-img">-->
-<!--                    <a href="/product_1">-->
-<!--                        <img class="primary-img" src="images/p3.png" alt="single-product">-->
-<!--                        <img class="secondary-img" src="images/p2.png" alt="single-product">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Image End &ndash;&gt;-->
-<!--                &lt;!&ndash; Product Content Start &ndash;&gt;-->
-<!--                <div class="pro-content">-->
-<!--                    <div class="pro-info">-->
-<!--                        <h4><a href="/product_1">Gym product</a></h4>-->
-<!--                        <p><span class="price">$320.45</span> <del class="prev-price">$330.50</del></p>-->
-<!--                        <div class="label-product l_sale">15<span class="symbol-percent">%</span></div>-->
-<!--                    </div>-->
-<!--                    <div class="pro-actions">-->
-<!--                        <div class="actions-primary">-->
-<!--                            <a href="#" title="Add to Cart"> + Add To Cart</a>-->
-<!--                        </div>-->
-<!--                        <div class="actions-secondary">-->
-<!--                            <a href="#" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Content End &ndash;&gt;-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Single Product End &ndash;&gt;-->
-<!--            &lt;!&ndash; Single Product Start &ndash;&gt;-->
-<!--            <div class="single-product">-->
-<!--                &lt;!&ndash; Product Image Start &ndash;&gt;-->
-<!--                <div class="pro-img">-->
-<!--                    <a href="/product_1">-->
-<!--                        <img class="primary-img" src="images/p3.png" alt="single-product">-->
-<!--                        <img class="secondary-img" src="images/p2.png" alt="single-product">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Image End &ndash;&gt;-->
-<!--                &lt;!&ndash; Product Content Start &ndash;&gt;-->
-<!--                <div class="pro-content">-->
-<!--                    <div class="pro-info">-->
-<!--                        <h4><a href="/product_1">Gym product</a></h4>-->
-<!--                        <p><span class="price">$150.30</span> <del class="prev-price">$105.50</del></p>-->
-<!--                        <div class="label-product l_sale">22<span class="symbol-percent">%</span></div>-->
-<!--                    </div>-->
-<!--                    <div class="pro-actions">-->
-<!--                        <div class="actions-primary">-->
-<!--                            <a href="#" title="Add to Cart"> + Add To Cart</a>-->
-<!--                        </div>-->
-<!--                        <div class="actions-secondary">-->
-
-<!--                            <a href="#" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Content End &ndash;&gt;-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Single Product End &ndash;&gt;-->
-<!--            &lt;!&ndash; Single Product Start &ndash;&gt;-->
-<!--            <div class="single-product">-->
-<!--                &lt;!&ndash; Product Image Start &ndash;&gt;-->
-<!--                <div class="pro-img">-->
-<!--                    <a href="/product_1">-->
-<!--                        <img class="primary-img" src="images/p3.png" alt="single-product">-->
-<!--                        <img class="secondary-img" src="images/p2.png" alt="single-product">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Image End &ndash;&gt;-->
-<!--                &lt;!&ndash; Product Content Start &ndash;&gt;-->
-<!--                <div class="pro-content">-->
-<!--                    <div class="pro-info">-->
-<!--                        <h4><a href="/product_1">Gym product</a></h4>-->
-<!--                        <p><span class="price">$90.45</span></p>-->
-<!--                    </div>-->
-<!--                    <div class="pro-actions">-->
-<!--                        <div class="actions-primary">-->
-<!--                            <a href="#" title="Add to Cart"> + Add To Cart</a>-->
-<!--                        </div>-->
-<!--                        <div class="actions-secondary">-->
-
-<!--                            <a href="#" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Content End &ndash;&gt;-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Single Product End &ndash;&gt;-->
-<!--            &lt;!&ndash; Single Product Start &ndash;&gt;-->
-<!--            <div class="single-product">-->
-<!--                &lt;!&ndash; Product Image Start &ndash;&gt;-->
-<!--                <div class="pro-img">-->
-<!--                    <a href="/product_1">-->
-<!--                        <img class="primary-img" src="images/p3.png" alt="single-product">-->
-<!--                        <img class="secondary-img" src="images/p2.png" alt="single-product">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Image End &ndash;&gt;-->
-<!--                &lt;!&ndash; Product Content Start &ndash;&gt;-->
-<!--                <div class="pro-content">-->
-<!--                    <div class="pro-info">-->
-<!--                        <h4><a href="/product_1">Gym product</a></h4>-->
-<!--                        <p><span class="price">$90.45</span><del class="prev-price">$100.50</del></p>-->
-<!--                        <div class="label-product l_sale">20<span class="symbol-percent">%</span></div>-->
-<!--                    </div>-->
-<!--                    <div class="pro-actions">-->
-<!--                        <div class="actions-primary">-->
-<!--                            <a href="#" title="Add to Cart"> + Add To Cart</a>-->
-<!--                        </div>-->
-<!--                        <div class="actions-secondary">-->
-
-<!--                            <a href="#" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Content End &ndash;&gt;-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Single Product End &ndash;&gt;-->
-<!--            &lt;!&ndash; Single Product Start &ndash;&gt;-->
-<!--            <div class="single-product">-->
-<!--                &lt;!&ndash; Product Image Start &ndash;&gt;-->
-<!--                <div class="pro-img">-->
-<!--                    <a href="/product_1">-->
-<!--                        <img class="primary-img" src="images/p3.png" alt="single-product">-->
-<!--                        <img class="secondary-img" src="images/p2.png" alt="single-product">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Image End &ndash;&gt;-->
-<!--                &lt;!&ndash; Product Content Start &ndash;&gt;-->
-<!--                <div class="pro-content">-->
-<!--                    <div class="pro-info">-->
-<!--                        <h4><a href="/product_1">Gym product</a></h4>-->
-<!--                        <p><span class="price">$84.45</span></p>-->
-<!--                    </div>-->
-<!--                    <div class="pro-actions">-->
-<!--                        <div class="actions-primary">-->
-<!--                            <a href="#" title="Add to Cart"> + Add To Cart</a>-->
-<!--                        </div>-->
-<!--                        <div class="actions-secondary">-->
-
-<!--                            <a href="#" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Content End &ndash;&gt;-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Single Product End &ndash;&gt;-->
-<!--            &lt;!&ndash; Single Product Start &ndash;&gt;-->
-<!--            <div class="single-product">-->
-<!--                &lt;!&ndash; Product Image Start &ndash;&gt;-->
-<!--                <div class="pro-img">-->
-<!--                    <a href="/product_1">-->
-<!--                        <img class="primary-img" src="images/p3.png" alt="single-product">-->
-<!--                        <img class="secondary-img" src="images/p2.png" alt="single-product">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Image End &ndash;&gt;-->
-<!--                &lt;!&ndash; Product Content Start &ndash;&gt;-->
-<!--                <div class="pro-content">-->
-<!--                    <div class="pro-info">-->
-<!--                        <h4><a href="/product_1">Gym product</a></h4>-->
-<!--                        <p><span class="price">$95.45</span></p>-->
-<!--                    </div>-->
-<!--                    <div class="pro-actions">-->
-<!--                        <div class="actions-primary">-->
-<!--                            <a href="#" title="Add to Cart"> + Add To Cart</a>-->
-<!--                        </div>-->
-<!--                        <div class="actions-secondary">-->
-
-<!--                            <a href="#" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Content End &ndash;&gt;-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Single Product End &ndash;&gt;-->
-<!--            &lt;!&ndash; Single Product Start &ndash;&gt;-->
-<!--            <div class="single-product">-->
-<!--                &lt;!&ndash; Product Image Start &ndash;&gt;-->
-<!--                <div class="pro-img">-->
-<!--                    <a href="/product_1">-->
-<!--                        <img class="primary-img" src="images/p3.png" alt="single-product">-->
-<!--                        <img class="secondary-img" src="images/p2.png" alt="single-product">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Product Image End &ndash;&gt;-->
-<!--                &lt;!&ndash; Product Content Start &ndash;&gt;-->
-<!--                <div class="pro-content">-->
-<!--                    <div class="pro-info">-->
-<!--                        <h4><a href="/product_1">Gym product</a></h4>-->
-<!--                        <p><span class="price">$84.45</span></p>-->
-<!--                    </div>-->
-<!--                    <div class="pro-actions">-->
-<!--                        <div class="actions-primary">-->
-<!--                            <a href="#" title="Add to Cart"> + Add To Cart</a>-->
-<!--                        </div>-->
-<!--                        <div class="actions-secondary">-->
-<!--                            <a href="#" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-                <!-- Product Content End -->
             </div>
             <!-- Single Product End -->
         </div>

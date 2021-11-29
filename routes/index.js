@@ -1,6 +1,7 @@
-const siteRouter = require('./site');
-const productRouter = require('./product');
-const userRouter = require('./user');
+const siteRouter = require('../routes/site');
+const productRouter = require('../routes/product');
+const userRouter = require('../routes/user');
+const createError = require("http-errors");
 function route(app)
 {
 
@@ -27,10 +28,7 @@ function route(app)
     // render the error page
     res.status(err.status || 500);
     res.render('error');
-});
-
+  });
 }
-
-
 
 module.exports = route;

@@ -1,3 +1,4 @@
+<script src="/js/productPagination.js"></script>
 <!-- products section -->
 <section class="product_section layout_padding">
     <div class="container">
@@ -54,26 +55,44 @@
                 </div>
               {{/each}}
             </div>
+
             <div class="col pt-5">
-                <ul class="pagination pagination-md justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
+                <div id="test1"></div>
+                <!-- (C) JAVASCRIPT -->
+                <script>
+                    // (C1) JAVASCRIPT FUNCTION TO HANDLE PAGINATION
+                    function go (pg) {
+                        paginate.draw({
+                            target : test1,
+                            total : 5,
+                            current : pg,
+                            click : go,
+                        });
+                    }
 
-                    <li class="page-item cur_pos"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    // (C2) INIT PAGINATION
+                    go(1);
+                </script>
+<!--                <ul class="pagination pagination-md justify-content-center">-->
 
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
+<!--                    <li class="page-item">-->
+<!--                        <a class="page-link" href="#" aria-label="Previous">-->
+<!--                            <span aria-hidden="true">&laquo;</span>-->
+<!--                            <span class="sr-only">Previous</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    {{#each pages}}-->
+<!--                        <li class="page-item"><a id="cur_pos" class="page-link" href="{{this.pageLink}}">{{this.currentPage}}</a></li>-->
+<!--                    {{/each}}-->
+
+<!--                    <li class="page-item">-->
+<!--                        <a class="page-link" href="#" aria-label="Next">-->
+<!--                            <span aria-hidden="true">&raquo;</span>-->
+<!--                            <span class="sr-only">Next</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+
+<!--                </ul>-->
             </div>
         </div>
     </div>
