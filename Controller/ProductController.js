@@ -1,10 +1,9 @@
 const service = require('../models/services/ProductService');
 
 class ProductController{
-    async getAllProduct(req,res){
+    async getAllProduct(req, res){
         try{
             let currentPage = req.query.page || 1;
-            
             const [products, pages] = await service.add_list(currentPage);
             let previous = Math.ceil(parseInt(currentPage)-1)<1? 1:Math.ceil(parseInt(currentPage)-1);
             let next = Math.ceil(parseInt(currentPage)+1) > pages.length?pages.length: Math.ceil(parseInt(currentPage)+1);

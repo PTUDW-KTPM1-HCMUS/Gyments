@@ -1,7 +1,14 @@
+const service = require('../models/services/SiteService');
+
 class SiteController{
     //[GET] Home Page
-    homePage(req,res){
-        res.render('site/index');
+    async homePage (req, res){
+        try{
+            const [products] = await service.getSpecificProduct(6);
+            res.render('site/index',{products});
+        }catch(err){
+            console.log({message: err});
+        }
     }
 
     //[GET] About Page
