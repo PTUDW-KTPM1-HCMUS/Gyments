@@ -1,3 +1,4 @@
+
 <!-- products section -->
 <section class="product_section layout_padding">
     <div class="container">
@@ -11,35 +12,21 @@
               {{#each products}}
               <div class="col-sm-6 col-lg-4">
                     <div class="box">
-                        <a href="#" class="p_cart">
+                        <a href="/users/cart" class="p_cart">
                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
                         </a>
                         <div class="img-box">
-                            
-                            <a href="/product_1"><img src={{this.images.[0]}} alt=""></a>
+                            <a href="{{this.productID}}"><img src={{this.images.[0]}} alt="{{this.name}}"></a>
                         </div>
                         <div class="detail-box">
                 <span class="p_rating">
-                    <a href="#">
-                        <i class="fa fa-star" aria-hidden="true"></i>
+                    <a href="{{this.productID}}">
+                        {{#each this.rate}}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {{/each}}
                     </a>
-<!--                  <a href="#">-->
-<!--                    <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                  </a>-->
-<!--                  <a href="#">-->
-<!--                    <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                  </a>-->
-<!--                  <a href="#">-->
-<!--                    <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                  </a>-->
-<!--                  <a href="#">-->
-<!--                    <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                  </a>-->
-<!--                  <a href="#">-->
-<!--                    <i class="fa fa-star" aria-hidden="true"></i>-->
-<!--                  </a>-->
                 </span>
-                            <a href="/product_1" class="p_name">
+                            <a href="{{this.productID}}" class="p_name">
                                 {{this.name}}
                             </a>
                             <h6 class="p_price">
@@ -55,19 +42,19 @@
                 </div>
               {{/each}}
             </div>
+
             <div class="col pt-5">
                 <ul class="pagination pagination-md justify-content-center">
+
                     <li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </a>
                     </li>
-
-                    <li class="page-item cur_pos"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-
+                    {{#each pages}}
+                        <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="{{this.pageLink}}">{{this.currentPage}}</a></li>
+                    {{/each}}
                     <li class="page-item">
                         <a class="page-link" href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
@@ -75,8 +62,10 @@
                         </a>
                     </li>
                 </ul>
+                <div id="getCurPage" name = {{currentPage}}></div>
             </div>
         </div>
     </div>
 </section>
+<script src="/js/productPagination.js"></script>
 <!-- end product section -->

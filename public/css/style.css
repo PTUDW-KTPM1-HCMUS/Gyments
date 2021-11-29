@@ -1138,3 +1138,19 @@ slider_section .img_slider img {
   background-color: #ee316b;
   border-color: #ee316b;
 }
+.paginate {
+  display: flex;
+}
+.paginate a {
+  background: #f2f2f2;
+  padding: 8px;
+  margin: 2px;
+  text-decoration: none;
+}
+.paginate a.current {
+  background: #d5e6ff;
+}
+.paginate a:hover {
+  background: #6194e0;
+  color: #fff;
+}

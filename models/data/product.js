@@ -33,7 +33,7 @@ const productSchema = mongoose.Schema({
         type: "Array",
         // items: {
         //     type: "string",
-        //     default: "/images/p1.png"
+        //     default: "images/p1.png"
         // }
     },
     quantity: {

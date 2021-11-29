@@ -1,14 +1,15 @@
-const siteRouter = require('./site');
-const productRouter = require('./products');
-const userRouter = require('./users');
+const siteRouter = require('../routes/site');
+const productRouter = require('../routes/product');
+const userRouter = require('../routes/user');
+const createError = require("http-errors");
 function route(app)
 {
 
-  //site page
-  app.use('/products', productRouter);
+  //product page
+  app.use('/product', productRouter);
 
   //user page
-  app.use('/users', userRouter);
+  app.use('/user', userRouter);
 
   //site page
   app.use('/', siteRouter);
@@ -27,10 +28,7 @@ function route(app)
     // render the error page
     res.status(err.status || 500);
     res.render('error');
-});
-
+  });
 }
-
-
 
 module.exports = route;
