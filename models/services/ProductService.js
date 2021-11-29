@@ -4,7 +4,6 @@ const Account = require("../../models/data/account");
 const add_list = async(reqPage)=>{
     let products = [];
     let pages = [];
-
     try{
         products = await Product.find().lean();
         const perPage = 3;
@@ -23,10 +22,11 @@ const add_list = async(reqPage)=>{
 
         products = products.map(item => {
             let name = item.name;
+            let rate = new Array(item.rate).fill(0);
             if (item.name.length >= 30)
                 name = item.name.slice(0, 28) + "...";
             let productID = "/product/" + item.productID;
-            return { ...item, name: name, productID: productID }
+            return { ...item, name: name, productID: productID, rate: rate }
         });
 
         return [products, pages];

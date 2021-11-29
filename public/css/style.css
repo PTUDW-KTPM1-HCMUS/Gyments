@@ -1132,12 +1132,12 @@ slider_section .img_slider img {
   cursor: pointer;
 }
 /* Color current page */
-/*.page-item.cur_pos .page-link {*/
-/*  z-index: 1;*/
-/*  color: #fff;*/
-/*  background-color: #ee316b;*/
-/*  border-color: #ee316b;*/
-/*}*/
+.page-item.cur_pos .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #ee316b;
+  border-color: #ee316b;
+}
 .paginate {
   display: flex;
 }
