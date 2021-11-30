@@ -5,7 +5,7 @@ const add_list = async(reqPage) => {
     let pages = [];
     try{
         products = await Product.find().lean();
-        const perPage = 3;
+        const perPage = 6;
         const page = parseInt(reqPage);
 
         const pro_start = (page - 1) * perPage;
