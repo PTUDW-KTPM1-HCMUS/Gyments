@@ -5,7 +5,7 @@ const add_list = async(reqPage) => {
     let pages = [];
     try{
         products = await Product.find().lean();
-        const perPage = 1;
+        const perPage = 3;
         const page = parseInt(reqPage);
 
         const pro_start = (page - 1) * perPage;
@@ -45,6 +45,13 @@ const add_detail = async (productID) => {
         relatedProducts = await Product.find({categoryID: productDetails.categoryID, productID: { $ne: productID}}).lean();
 
         productDetails.rate = new Array(productDetails.rate).fill(0);
+        // split the description to array
+        const words = productDetails.description.split('.');
+        // remove the last element because it's just space
+        if (words[words.length - 1] === ""){
+            words.splice(-1);
+        }
+        productDetails.description = words;
         relatedProducts = relatedProducts.map(item => {
             let productID = "/product/" + item.productID;
             return { ...item, productID: productID }
