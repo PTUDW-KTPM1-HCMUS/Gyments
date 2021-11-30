@@ -3,12 +3,12 @@ const router = express.Router();
 const SiteController = require('../Controller/SiteController');
 
 
-router.use('/login',SiteController.login);
-router.use('/register',SiteController.register);
-router.use('/about',SiteController.about);
-router.use('/testimonial',SiteController.testimonial);
-router.use('/whyUs',SiteController.why);
+router.get('/login',SiteController.login);
+router.get('/register',SiteController.register);
+router.get('/about',SiteController.about);
+router.get('/testimonial',SiteController.testimonial);
+router.get('/whyUs',SiteController.why);
 
-router.use('/',SiteController.homePage);
+router.get('/',SiteController.homePage);
 
 module.exports = router;

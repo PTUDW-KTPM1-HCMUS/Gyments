@@ -96,7 +96,9 @@
                 <div class="tab-content thumb-content border-default">
                     <div id="dtail" class="tab-pane fade show active">
                         <ul style="  list-style-type: circle;">
-                            <li>{{productDetails.description}}</li>
+                            {{#each productDetails.description}}
+                                <li>{{this}}</li>
+                            {{/each}}
                         </ul>
                     </div>
                     <div id="review" class="tab-pane fade">
