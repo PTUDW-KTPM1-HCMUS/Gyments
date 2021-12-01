@@ -1,5 +1,5 @@
 const Product = require('../data/product');
-
+// get all products in database
 const add_list = async(reqPage) => {
     let products = [];
     let pages = [];
@@ -34,7 +34,7 @@ const add_list = async(reqPage) => {
     }
     return [products, pages]
 }
-
+// get all information of product by productID
 const add_detail = async (productID) => {
     let productDetails = null;
     let relatedProducts = [];
