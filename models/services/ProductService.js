@@ -1,6 +1,6 @@
 const Product = require('../data/product');
 // get all products in database
-const add_list = async(reqPage) => {
+const getAllProduct = async(reqPage) => {
     let products = [];
     let pages = [];
     try{
@@ -24,7 +24,7 @@ const add_list = async(reqPage) => {
             let rate = new Array(item.rate).fill(0);
             if (item.name.length >= 30)
                 name = item.name.slice(0, 28) + "...";
-            let productID = "/product/" + item.productID;
+            let productID = "/product/" + item._id;
             return { ...item, name: name, productID: productID, rate: rate }
         });
 
@@ -34,15 +34,15 @@ const add_list = async(reqPage) => {
     }
     return [products, pages]
 }
-// get all information of product by productID
-const add_detail = async (productID) => {
+// get all information of product by id
+const getProduct = async (productID) => {
     let productDetails = null;
     let relatedProducts = [];
     try{
-        productDetails = await Product.findOne({productID: productID}).lean();
+        productDetails = await Product.findById(productID).lean();
         // let indexOfProduct = parseInt(productID.slice(-2));
         // we use $ne (not equal) here to skip the current product from related product
-        relatedProducts = await Product.find({categoryID: productDetails.categoryID, productID: { $ne: productID}}).lean();
+        relatedProducts = await Product.find({categoryID: productDetails.categoryID, _id: { $ne: productID}}).lean();
 
         productDetails.rate = new Array(productDetails.rate).fill(0);
         // split the description to array
@@ -53,7 +53,7 @@ const add_detail = async (productID) => {
         }
         productDetails.description = words;
         relatedProducts = relatedProducts.map(item => {
-            let productID = "/product/" + item.productID;
+            let productID = "/product/" + item._id;
             return { ...item, productID: productID }
         });
 
@@ -63,4 +63,4 @@ const add_detail = async (productID) => {
     }
     return [productDetails, relatedProducts];
 }
-module.exports = {add_list , add_detail};
+module.exports = {getAllProduct , getProduct};

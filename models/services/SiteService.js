@@ -14,7 +14,7 @@ const getSpecificProduct = async(numberOfProduct) => {
             let rate = new Array(item.rate).fill(0);
             if (item.name.length >= 30)
                 name = item.name.slice(0, 28) + "...";
-            let productID = "/product/" + item.productID;
+            let productID = "/product/" + item._id;
             return { ...item, name: name, productID: productID, rate: rate }
         });
         return [products];
