@@ -81,10 +81,25 @@
                         </ul>
                     </div>
                     <div class="quote_btn-container">
-                        <a href="/login">
+                        {{#if user}}
+                        <ul class="navbar-nav  ">
+                            <li class="nav-item" id="product-id">
+                               <a class="nav-link" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{user.username}}</a>
+                                <ul class="sub-nav">
+                                    <li class="sub-item"><a class="sub-link" href="/user">Profile</a></li>
+                                    <li class="sub-item"><a class="sub-link" href="#">Change pass</a></li>
+                                    <li class="sub-item"><a class="sub-link" href="/logout">Log out</a></li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                        {{else}}
+                            <a href="/login">
                             <i class="fa fa-user" aria-hidden="true"></i>
                             Login/Register
                         </a>
+                        {{/if}}
+                        
                         <a href="/user/cart">
                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
                             Cart

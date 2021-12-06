@@ -18,6 +18,10 @@ const accountSchema = mongoose.Schema({
         type: "boolean",
         require: true,
         default: 0 // false is normal user, true is admin
+    },
+    createAt: {
+        type: Date,
+        default: Date.now()
     }
 });
 

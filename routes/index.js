@@ -2,14 +2,18 @@ const siteRouter = require('../routes/site');
 const productRouter = require('../routes/product');
 const userRouter = require('../routes/user');
 const createError = require("http-errors");
+const loginRouter = require('../routes/login');
+const loginGuard= require('../Models/services/LoginService');
 function route(app)
 {
+  app.use('/login',loginRouter);
+
 
   //product page
   app.use('/product', productRouter);
 
   //user page
-  app.use('/user', userRouter);
+  app.use('/user',loginGuard.LoginGuard, userRouter);
 
   //site page
   app.use('/', siteRouter);
