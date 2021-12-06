@@ -106,6 +106,7 @@ a:focus {
   color: white;
   text-align: center;
   text-transform: uppercase;
+  width: 100%;
 }
 
 .custom_nav-container .navbar-nav .nav-item:hover> a{

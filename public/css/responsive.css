@@ -2,14 +2,16 @@
 
 @media (max-width: 1120px) {}
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .hero_area {
     min-height: auto;
   }
   #product-id:hover{
     padding-bottom: 27rem;
   }
-  
+  #account-menu:hover{
+    padding-bottom: 14rem;
+  }
 
   .quote_btn-container {
     flex-direction: column;
