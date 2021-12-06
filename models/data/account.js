@@ -14,15 +14,30 @@ const accountSchema = mongoose.Schema({
         require: true,
         default: 1 // true is active, false is banned
     },
-    userType: {
-        type: "boolean",
-        require: true,
-        default: 0 // false is normal user, true is admin
-    },
     createAt: {
         type: Date,
         default: Date.now()
-    }
+    },
+    f_name: {
+        type: "string",
+        require: true
+    },
+    l_name: {
+        type: "string",
+        require: true
+    },
+    address: {
+        type: "string",
+        require: true
+    },
+    phone: {
+        type: "string",
+        require: true
+    },
+    gender: {
+        type: "string",
+        require: true
+    },
 });
 
 module.exports = mongoose.model('Account', accountSchema);

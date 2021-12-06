@@ -5,7 +5,6 @@ class SiteController{
     async homePage (req, res){
         try{
             const [products] = await service.getSpecificProduct(6);
-            console.log(req.user);
             res.render('site/index',{products});
         }catch(err){
             console.log({message: err});
