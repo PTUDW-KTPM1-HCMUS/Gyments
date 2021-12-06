@@ -5,7 +5,8 @@ class LoginController{
     login(req,res){
         const wronguser = req.query['invalid']!==undefined;
         const banneduser = req.query['banned']!==undefined;
-        res.render('authen/login',{wronguser,banneduser});
+        const adminuser =req.query['secret']!==undefined;
+        res.render('authen/login',{wronguser,banneduser,adminuser});
     }
     //[GET] register Page
     registerPage(req,res){

@@ -15,6 +15,9 @@ router.post('/',function(req,res,next) {
         if(user.status==false){
             return res.redirect('/login?banned');
         }
+        if(user.userType==true){
+            return res.redirect('/login?secret');
+        }     
         if(!user)
         {
             return res.redirect('/login?invalid');

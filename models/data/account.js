@@ -14,6 +14,11 @@ const accountSchema = mongoose.Schema({
         require: true,
         default: 1 // true is active, false is banned
     },
+    userType: {
+        type: "boolean",
+        require: true,
+        default: 0 // true is admin, false is user
+    },
     createAt: {
         type: Date,
         default: Date.now()

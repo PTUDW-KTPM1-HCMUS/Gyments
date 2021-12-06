@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <span style="color: #cc0000;">*</span>
                     <label for="inputPassword">Password</label>
-                    <input type="text" class="form-control"  placeholder="Input your password" name="password">
+                    <input type="password" class="form-control"  placeholder="Input your password" name="password">
                 </div>   
                 <div style="padding-left: 80%;">
                     <div>
@@ -43,6 +43,9 @@
                 {{/if}}
                 {{#if banneduser}}
                     <h4 style="color:red">Account is being banned</h4>
+                {{/if}}
+                {{#if adminuser}}
+                    <h4 style="color:red">This account is unavailable</h4>
                 {{/if}}
             </form>
         </div>
