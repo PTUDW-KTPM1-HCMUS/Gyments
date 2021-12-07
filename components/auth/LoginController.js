@@ -22,26 +22,26 @@ class LoginController{
         const {fname,lname,email,phone,gender,address,city,dis,zip,username,password,confirmpass} = req.body;
         const check=await service.findOneAccount(username);
         if(check){
-            res.redirect('login/register?username_existed');
+            res.redirect('/login/register?username_existed');
         }
         else{
             if(password.length<8)
             {
-                res.redirect('login/register?short');
+                res.redirect('/login/register?short');
             }
             else{
                 const check_email = await service.findByEmail(email);
                 const check_phone = await service.findByPhone(phone);
                 if(check_email){
-                    res.redirect('login/register?email_existed');
+                    res.redirect('/login/register?email_existed');
                 }
                 else{
                     if(check_phone){
-                        res.redirect('login/register?phone_existed');
+                        res.redirect('/login/register?phone_existed');
                     }
                     else{
                         if(confirmpass !==password){
-                            res.redirect('login/register?wrong-confirm');
+                            res.redirect('/login/register?wrong-confirm');
                         }
                         else{
                             const user = await service.register(fname,lname,email,phone,gender,address,city,dis,zip,username,password);
