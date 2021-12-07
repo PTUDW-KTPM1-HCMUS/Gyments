@@ -1,20 +1,20 @@
 <div class="container clearfix">
     <div class="custom-title">Registration Form</div>
-        <form action ="/login/register" method="POST"></form>
+        <form action ="/login/register" method="POST">
             <p style="padding-bottom: 20px">If you already have an account with us, please login at the login page.</p>
             <div class="custom-small-title">Your personal detail</div>
-            <form style="padding-top: 20px">
+            <div style="padding-top: 20px">
                 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <span style="color: #cc0000;">*</span>
                         <label for="firstname">First Name</label>
-                        <input type="text" class="form-control" placeholder="Input your first name" required>
+                        <input type="text" class="form-control" placeholder="Input your first name" required name="fname">
                     </div>
                     <div class="form-group col-md-6">
                         <span style="color: #cc0000;">*</span>
                         <label for="lastname">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Input your last name" required>
+                        <input type="text" class="form-control" placeholder="Input your last name" required name="lname">
                     </div>
                 </div>
                 <div class="form-row">
@@ -25,18 +25,18 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">@</div>
                             </div>
-                            <input type="text" class="form-control"  placeholder="Input your email">
+                            <input type="text" class="form-control"  placeholder="Input your email"name="email">
                         </div>
                     </div>
                     <div class="form-group col-md-4">
                         <span style="color: #cc0000;">*</span>
                         <label for="telephone">Phone Number</label>
-                        <input type="text" class="form-control" placeholder="Input your phone number" required>
+                        <input type="text" class="form-control" placeholder="Input your phone number" required name="phone">
                     </div>
                     <div class="form-group col-md-2">
                         <span style="color: #cc0000;">*</span>
                         <label for="inputGender">Gender</label>
-                        <select class="form-control">
+                        <select class="form-control" name="gender">
                             <option selected>Choose...</option>
                             <option>Male</option>
                             <option>Female</option>
@@ -48,46 +48,46 @@
                 <div class="form-group">
                     <span style="color: #cc0000;">*</span>
                     <label for="inputAddress">Address</label>
-                    <input type="text" class="form-control"  placeholder="227 Nguyen Van Cu">
+                    <input type="text" class="form-control"  placeholder="227 Nguyen Van Cu" name="address">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <span style="color: #cc0000;">*</span>
                         <label for="inputCity">City</label>
-                        <input type="text" class="form-control" placeholder="Ho Chi Minh">
+                        <input type="text" class="form-control" placeholder="Ho Chi Minh"name="city">
                     </div>
                     <div class="form-group col-md-4">
                         <span style="color: #cc0000;">*</span>
                         <label for="inputDistrict">District</label>
-                        <input type="text" class="form-control" placeholder="District 5" required>
+                        <input type="text" class="form-control" placeholder="District 5" required name="dis">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" placeholder="70000">
+                        <input type="text" class="form-control" placeholder="70000" name="zip">
                     </div>
                 </div>
             </form>
         <!--    field 2-->
             <div class="custom-small-title">Your account information</div>
-            <form style="padding-top: 20px">
+            <div style="padding-top: 20px">
                 <div class="form-group">
                     <span style="color: #cc0000;">*</span>
                     <label for="inputUsername">Username</label>
-                    <input type="text" class="form-control"  placeholder="Input your username">
+                    <input type="text" class="form-control"  placeholder="Input your username" name="username">
                 </div>
                 <div class="form-group">
                     <span style="color: #cc0000;">*</span>
                     <label for="inputPassword">Password</label>
-                    <input type="text" class="form-control"  placeholder="Input your password">
+                    <input type="text" class="form-control"  placeholder="Input your password" name="password">
                 </div>
                 <div class="form-group">
                     <span style="color: #cc0000;">*</span>
                     <label for="inputPassword">Confirm Password</label>
-                    <input type="text" class="form-control"  placeholder="Input your password again">
+                    <input type="text" class="form-control"  placeholder="Input your password again" name="confirmpass">
                 </div>
             </form>
 
-            <div class="form-group float-right">
+            <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox">
                     <label class="form-check-label" for="gridCheck">
@@ -95,7 +95,7 @@
                     </label>
                 </div>
                 <div class="pt-4">
-                    <button type="submit" class="custom-btn btn btn-primary float-right">Submit</button>
+                    <button type="submit" class="custom-btn btn btn-primary">Submit</button>
                 </div>
             </div>
         </form>

@@ -14,6 +14,10 @@ const accountSchema = new mongoose.Schema({
         require: true,
         default: 1 // true is active, false is banned
     },
+    email: { //email is email of user
+        type: "string",
+        require: true
+    },
     userType: {
         type: "boolean",
         require: true,
@@ -23,11 +27,11 @@ const accountSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    f_name: {
+    fname: {
         type: "string",
         require: true
     },
-    l_name: {
+    lname: {
         type: "string",
         require: true
     },

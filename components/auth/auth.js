@@ -5,7 +5,7 @@ const passport = require('../../passport');
 
 
 router.get('/register',LoginController.registerPage);
-// router.post('/register',LoginController.register);
+router.post('/register',LoginController.register);
 router.get('/',LoginController.login);  
 router.post('/',function(req,res,next) {
     passport.authenticate('local',function(err,user){
