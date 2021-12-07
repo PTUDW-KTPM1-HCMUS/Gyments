@@ -1,4 +1,4 @@
-<div class="container clearfix">
+<div class="container">
     <div class="custom-title">Registration Form</div>
         <form action ="/login/register" method="POST">
             <p style="padding-bottom: 20px">If you already have an account with us, please login at the login page.</p>
@@ -72,7 +72,8 @@
                         <input type="text" class="form-control" placeholder="70000" name="zip">
                     </div>
                 </div>
-            </form>
+            </div>
+
         <!--    field 2-->
             <div class="custom-small-title">Your account information</div>
             <div style="padding-top: 20px">
@@ -97,17 +98,18 @@
                 {{#if wrongconfirm}}
                     <h4 style="color:red"> Wrong confirm password</h4>
                 {{/if}}
-            </form>
 
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label" for="gridCheck">
-                        I have read and agree to the <a href="#">Privacy Policy</a>
-                    </label>
-                </div>
-                <div class="pt-4">
-                    <button type="submit" class="custom-btn btn btn-primary">Submit</button>
+
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                        <label class="form-check-label" for="gridCheck">
+                            I have read and agree to the <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <div class="pt-4">
+                        <button type="submit" class="custom-btn btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </div>
         </form>
