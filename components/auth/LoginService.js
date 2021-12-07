@@ -40,3 +40,9 @@ exports.register = async (fname,lname,email,phone,gender,address,city,dis,zip,us
         password: hashpass,
     });
 }
+
+exports.changepass = async(user,password)=>{
+    const salt = bcrypt.genSaltSync(10);
+    const hashpass = await bcrypt.hashSync(password,salt);
+    return User.findOneAndUpdate({username:user.username},{password:hashpass});
+}

@@ -1,0 +1,43 @@
+<div class="container clearfix pt-5">
+    <div class ="row">
+        <div class="col">
+            <form action="/user/changepass" method="POST">
+            <div class="form-group">
+                <label for="exampleInputPassword">Old Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name ="oldpassword" required="true">
+                
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name ="password" required="true">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Confirm Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password" name="confirmpass" require="true">
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#model-save">Submit</button>
+            <!--modal-->
+            <div class="modal" tabindex="-1" role="dialog" id="model-save">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Notifications</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure to change password</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</div>
