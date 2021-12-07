@@ -15,9 +15,8 @@ exports.findByPhone = (phone)=>{
     return  User.findOne({phone:phone}).lean();
 }
 
-exports.validPassword =(password,user)=>{
-    return bcrypt.compare(password,user.password);
-    // return password===user.password;
+exports.validPassword = (password,user)=>{
+    return bcrypt.compareSync(password,user.password);
 }
 exports.LoginGuard=(req, res, next)=>{
     if (req.user) {
@@ -27,7 +26,8 @@ exports.LoginGuard=(req, res, next)=>{
     }
 }
 exports.register = async (fname,lname,email,phone,gender,address,city,dis,zip,username,password)=>{
-    const hashpass = await bcrypt.hash(password,10);
+    const salt = bcrypt.genSaltSync(10);
+    const hashpass = await bcrypt.hashSync(password,salt);
     const full_addr = address+String(" ")+dis+String(" ")+city;
     return User.create({
         fname:fname,
