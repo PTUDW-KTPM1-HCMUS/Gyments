@@ -1,4 +1,4 @@
-const User = require('../data/account');
+const User = require('./AccountModel');
 //const bycrypt = require('bcrypt');
 
 

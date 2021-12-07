@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const accountSchema = mongoose.Schema({
+const accountSchema = new mongoose.Schema({
     username: { //username is email of user
         type: "string",
         require: true
@@ -42,7 +42,7 @@ const accountSchema = mongoose.Schema({
     gender: {
         type: "string",
         require: true
-    },
+    }
 });
 
 module.exports = mongoose.model('Account', accountSchema);

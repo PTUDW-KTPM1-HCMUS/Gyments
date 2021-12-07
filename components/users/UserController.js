@@ -1,10 +1,10 @@
-const UserService = require('../Models/services/LoginService');
+const UserService = require('../auth/LoginService');
 
 class UserController{
     
     //[GET] shopping cart
     cart(req,res){
-        res.render('user/cart');
+        res.render('users/views/cart');
     }
 
     //[GET] logout

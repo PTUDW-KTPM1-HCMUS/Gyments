@@ -5,12 +5,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const route = require('./routes');
-const passport = require('./Models/services/utils/passport');
+const passport = require('./passport');
 const app = express();
 const session = require("express-session");
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'components')]);
 app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(logger('dev'));

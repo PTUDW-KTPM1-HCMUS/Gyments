@@ -1,4 +1,4 @@
-const service = require('../Models/services/ProductService');
+const service = require('./ProductService');
 
 class ProductController{
     async getAllProduct(req, res){
@@ -7,7 +7,7 @@ class ProductController{
             const [products, pages] = await service.getAllProduct(currentPage);
             let previous = Math.ceil(parseInt(currentPage)-1)<1? 1:Math.ceil(parseInt(currentPage)-1);
             let next = Math.ceil(parseInt(currentPage)+1) > pages.length?pages.length: Math.ceil(parseInt(currentPage)+1);
-            res.render('product/product',{products, pages, currentPage,previous,next});
+            res.render('products/views/product',{products, pages, currentPage,previous,next});
         }catch(err){
             console.log({message: err});
         }
@@ -16,7 +16,7 @@ class ProductController{
         try{
             const [productDetails, relatedProducts] = await service.getProduct(req.params.productID);
             let newPrice = productDetails.price - productDetails.price * productDetails.sale / 100;
-            res.render('product/productDetail', {productDetails, relatedProducts, newPrice});
+            res.render('products/views/productDetail', {productDetails, relatedProducts, newPrice});
         }catch (err) {
             console.log({message: err});
         }

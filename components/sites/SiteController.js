@@ -1,11 +1,11 @@
-const service = require('../Models/services/SiteService');
+const service = require('./SiteService');
 
 class SiteController{
     //[GET] Home Page
     async homePage (req, res){
         try{
             const [products] = await service.getSpecificProduct(6);
-            res.render('site/index',{products});
+            res.render('sites/views/index',{products});
         }catch(err){
             console.log({message: err});
         }
@@ -13,17 +13,17 @@ class SiteController{
 
     //[GET] About Page
     about(req,res){
-        res.render('site/about');
+        res.render('sites/views/about');
     }
 
     //[GET] testimonial
     testimonial(req,res){
-        res.render('site/testimonial');
+        res.render('sites/views/testimonial');
     }
 
     //[GET] whyUs
     why(req,res){
-        res.render('site/whyUs');
+        res.render('sites/views/whyUs');
     }
     
 }

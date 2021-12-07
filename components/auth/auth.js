@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const LoginController = require('../Controller/LoginController');
-const passport = require('../Models/services/utils/passport');
+const LoginController = require('./LoginController');
+const passport = require('../../passport');
 
 
 router.get('/register',LoginController.registerPage);

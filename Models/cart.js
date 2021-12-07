@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const orderDetailSchema = mongoose.Schema({
-    orderDetailID: {
+const cartSchema = new mongoose.Schema({
+    cartID: {
         type: "string",
         require: true
     },
-    orderID: {
+    customerID: {
         type: "string",
-        require: true
+        default: null
     },
     products: { // list of products
         type: "array",
@@ -16,10 +16,14 @@ const orderDetailSchema = mongoose.Schema({
                 type: "string"
             },
             { // quantity of this product
-                type: "number"
+                type: "integer"
             }
         ]
+    },
+    totalPrice: {
+        type: "number",
+        default: 0
     }
 });
 
-module.exports = mongoose.model('OrderDetail', orderDetailSchema);
+module.exports = mongoose.model('Cart', cartSchema);

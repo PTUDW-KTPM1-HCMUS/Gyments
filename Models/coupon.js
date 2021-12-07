@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const couponSchema = mongoose.Schema({
+const couponSchema = new mongoose.Schema({
     couponID: {
         type: "string",
         require: true
