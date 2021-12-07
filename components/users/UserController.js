@@ -12,5 +12,10 @@ class UserController{
         req.logout();
         res.redirect('/');
     }
+
+    //[GET] account page
+    account(req,res){
+        res.render('users/views/account');
+    }
 }
 module.exports = new UserController;

@@ -1,7 +1,7 @@
 const { exists } = require('./AccountModel');
 const User = require('./AccountModel');
 const bcrypt = require('bcrypt');
-//const bycrypt = require('bcrypt');
+
 
 
 exports.findOneAccount = (username)=>{
