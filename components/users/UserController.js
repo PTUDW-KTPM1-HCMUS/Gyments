@@ -1,5 +1,5 @@
 const passport = require('passport');
-const UserService = require('../auth/LoginService');
+const UserService = require('../auth/AuthService');
 
 class UserController{
     

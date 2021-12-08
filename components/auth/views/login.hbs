@@ -1,4 +1,28 @@
 <div class="container clearfix pt-5">
+    {{#if wronguser}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Wrong password or email!!!</strong>
+            <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if}}
+    {{#if banneduser}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>This account is being banned!!!</strong>
+            <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if}}
+    {{#if adminuser}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>This account isn't available!!!</strong>
+            <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if}}
     <div class="row">
         <div class="col-md-4 border-custom">
             <div class="custom-title">New Customer ?</div>
@@ -38,15 +62,6 @@
                         <button type="submit" class="custom-btn btn btn-primary" value="Login">Sign In</button></a>
                     </div>
                 </div>
-                {{#if wronguser}}
-                    <h4 style="color:red">Wrong password or email</h4>
-                {{/if}}
-                {{#if banneduser}}
-                    <h4 style="color:red">Account is being banned</h4>
-                {{/if}}
-                {{#if adminuser}}
-                    <h4 style="color:red">This account is unavailable</h4>
-                {{/if}}
             </form>
         </div>
     </div>

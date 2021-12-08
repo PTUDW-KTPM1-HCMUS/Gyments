@@ -2,7 +2,7 @@
 const passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
 
-const LoginService = require('../components/auth/LoginService');
+const LoginService = require('../components/auth/AuthService');
 
 passport.use(new LocalStrategy({
     usernameField: 'username',

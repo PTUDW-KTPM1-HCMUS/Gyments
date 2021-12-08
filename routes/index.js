@@ -3,7 +3,7 @@ const productRouter = require('../components/products/product');
 const userRouter = require('../components/users/user');
 const createError = require("http-errors");
 const loginRouter = require('../components/auth/auth');
-const loginGuard = require('../components/auth/LoginService');
+const loginGuard = require('../components/auth/AuthService');
 function route(app)
 {
   app.use('/login',loginRouter);

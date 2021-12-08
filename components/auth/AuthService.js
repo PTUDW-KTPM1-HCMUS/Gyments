@@ -1,7 +1,7 @@
 const { exists } = require('./AccountModel');
 const User = require('./AccountModel');
 const bcrypt = require('bcrypt');
-
+const cloudinary = require('../../utils/cloudinary');
 
 
 exports.findOneAccount = (username)=>{
@@ -25,10 +25,15 @@ exports.LoginGuard=(req, res, next)=>{
         res.redirect('/');
     }
 }
-exports.register = async (fname,lname,email,phone,gender,address,city,dis,zip,username,password)=>{
+exports.register = async (fname,lname,email,phone,gender,address,city,dis,zip,username,password, avatarDetail)=>{
     const salt = bcrypt.genSaltSync(10);
     const hashpass = await bcrypt.hashSync(password,salt);
     const full_addr = address+String(" ")+dis+String(" ")+city;
+    let avatar = null;
+    let avatarID= null;
+    let imgResult = await cloudinary.uploader.upload(avatarDetail.path);
+    avatar = imgResult.secure_url;
+    avatarID = imgResult.public_id;
     return User.create({
         fname:fname,
         lname:lname,    
@@ -38,6 +43,8 @@ exports.register = async (fname,lname,email,phone,gender,address,city,dis,zip,us
         address: full_addr,
         username: username,
         password: hashpass,
+        avatar: avatar,
+        avatarID: avatarID
     });
 }
 

@@ -1,6 +1,6 @@
-const service = require('./LoginService');
+const service = require('./AuthService');
 
-class LoginController{
+class AuthController {
     //[GET] login Page
     login(req,res){
         const wronguser = req.query['invalid'] !== undefined;
@@ -44,7 +44,7 @@ class LoginController{
                             res.redirect('/login/register?wrong-confirm');
                         }
                         else{
-                            const user = await service.register(fname,lname,email,phone,gender,address,city,dis,zip,username,password);
+                            const user = await service.register(fname,lname,email,phone,gender,address,city,dis,zip,username,password, req.file);
                             res.redirect('/login');
                         }
                         
@@ -59,4 +59,4 @@ class LoginController{
     
 }
 
-module.exports = new LoginController;
+module.exports = new AuthController;

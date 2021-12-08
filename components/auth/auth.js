@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const LoginController = require('./LoginController');
-const passport = require('../../passport');
-
+const LoginController = require('./AuthController');
+const passport = require('../../utils/passport');
+const upload = require('../../utils/multer');
 
 router.get('/register',LoginController.registerPage);
-router.post('/register',LoginController.register);
+router.post('/register', upload.single("avatar"), LoginController.register);
 router.get('/',LoginController.login);  
 router.post('/',function(req,res,next) {
     passport.authenticate('local',function(err,user){

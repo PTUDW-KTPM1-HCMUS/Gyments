@@ -1,7 +1,43 @@
 <div class="container">
     <div class="custom-title">Registration Form</div>
-        <form action ="/login/register" method="POST">
+        <form action ="/login/register" method="POST" enctype="multipart/form-data">
             <p style="padding-bottom: 20px">If you already have an account with us, please login at the login page.</p>
+            {{#if username_existed}}
+                <!--                    <h4 style="color:red">Username has existed</h4>-->
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Username has existed!!!</strong>
+                    <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {{/if}}
+            {{#if email_existed}}
+<!--                <h4 style="color:red">Email has existed</h4>-->
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Email has existed!!!</strong>
+                    <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {{/if}}
+            {{#if phone_existed}}
+<!--                <h4 style="color:red">Phone has existed</h4>-->
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Phone has existed!!!</strong>
+                    <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {{/if}}
+            {{#if wrongconfirm}}
+<!--                <h4 style="color:red"> Wrong confirm password</h4>-->
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Two passwords don't match!!!</strong>
+                    <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {{/if}}
             <div class="custom-small-title">Your personal detail</div>
             <div style="padding-top: 20px">
                 
@@ -27,18 +63,14 @@
                             </div>
                             <input type="text" class="form-control"  placeholder="Input your email"name="email">
                         </div>
-                        {{#if email_existed}}
-                            <h4 style="color:red">Email has existed</h4>
-                        {{/if}}
+
                     </div>
                     <div class="form-group col-md-4">
                         <span style="color: #cc0000;">*</span>
                         <label for="telephone">Phone Number</label>
                         <input type="text" class="form-control" placeholder="Input your phone number" required name="phone">
                     </div>
-                    {{#if phone_existed}}
-                        <h4 style="color:red">Phone has existed</h4>
-                    {{/if}}
+
                     <div class="form-group col-md-2">
                         <span style="color: #cc0000;">*</span>
                         <label for="inputGender">Gender</label>
@@ -79,12 +111,15 @@
             <div style="padding-top: 20px">
                 <div class="form-group">
                     <span style="color: #cc0000;">*</span>
+                    <label for="exampleFormControlFile1">Avatar:</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="avatar" required>
+                </div>
+                <div class="form-group">
+                    <span style="color: #cc0000;">*</span>
                     <label for="inputUsername">Username</label>
                     <input type="text" class="form-control"  placeholder="Input your username" name="username">
                 </div>
-                {{#if username_existed}}
-                    <h4 style="color:red">Username has existed</h4>
-                {{/if}}
+
                 <div class="form-group">
                     <span style="color: #cc0000;">*</span>
                     <label for="inputPassword">Password</label>
@@ -95,10 +130,6 @@
                     <label for="inputPassword">Confirm Password</label>
                     <input type="password" class="form-control"  placeholder="Input your password again" name="confirmpass">
                 </div>
-                {{#if wrongconfirm}}
-                    <h4 style="color:red"> Wrong confirm password</h4>
-                {{/if}}
-
 
                 <div class="form-group">
                     <div class="form-check">

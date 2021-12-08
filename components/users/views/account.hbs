@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/account/portal.css">
-<div class="app-wrapper">
+<div>
     <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
             <h1 class="app-page-title">My Account</h1>
@@ -26,7 +26,7 @@
                                 <div class="row justify-content-between align-items-center">
                                     <div class="col-auto">
                                         <div class="item-label mb-2"><strong>Avatar</strong></div>
-                                        <div class="item-data"><img class="profile-image" src="/images/client.jpg" alt=""></div>
+                                        <div class="item-data"><img class="profile-image" src="{{user.avatar}}" alt="user avatar"></div>
                                     </div><!--//col-->
                                     <div class="col text-end">
                                         <a class="btn-sm app-btn-secondary" href="#">Change</a>
@@ -38,9 +38,7 @@
                                     <div class="col-auto">
                                         <div class="item-label"><strong>Username</strong></div>
                                         <div class="item-data">{{user.username}}</div>
-                                    </div><!--//col-->
-                                    <div class="col text-end">
-                                        <a class="btn-sm app-btn-secondary" href="#">Change</a>
+                                        <div class="item-data">Create at: {{user.createAt}}</div>
                                     </div><!--//col-->
                                 </div><!--//row-->
                             </div><!--//item-->
@@ -206,7 +204,7 @@
                                         <div class="item-data">••••••••</div>
                                     </div><!--//col-->
                                     <div class="col text-end">
-                                        <a class="btn-sm app-btn-secondary" href="#">Change</a>
+                                        <a class="btn-sm app-btn-secondary" href="/user/changepass">Change</a>
                                     </div><!--//col-->
                                 </div><!--//row-->
                             </div><!--//item-->
