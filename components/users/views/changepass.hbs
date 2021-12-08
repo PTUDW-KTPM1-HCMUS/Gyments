@@ -4,20 +4,29 @@
             <form action="/user/changepass" method="POST">
             <div class="form-group">
                 <label for="exampleInputPassword">Old Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name ="oldpassword" required="true">
+                <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name ="oldpassword">
                 
             </div>
+            {{#if wrongpass}}
+                <h4 style="color:red">Your current password is incorrect</h4>
+            {{/if}}
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name ="password" required="true">
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name ="password" >
             </div>
+            {{#if short}}
+                <h4 style="color:red">Password must have at least 8 characters</h4>
+            {{/if}}
             <div class="form-group">
                 <label for="exampleInputPassword2">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password" name="confirmpass" require="true">
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password" name="confirmpass" >
             </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#model-save">Submit</button>
+            {{#if wrongconfirm}}
+                <h4 style="color:red">Confirm your password again</h4>
+            {{/if}}
+            <button class="btn btn-primary" data-toggle="modal" data-target="#model-save" data-backdrop="static" data-keyboard="false">Submit</button>
             <!--modal-->
-            <div class="modal" tabindex="-1" role="dialog" id="model-save">
+            <div class="modal" tabindex="-1" role="dialog" id="model-save" >
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                     <div class="modal-header">

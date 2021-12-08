@@ -22,24 +22,30 @@ class UserController{
     changepassPage(req,res){
         const wrongpass = req.query['wrong-pass']!==undefined;
         const wrongconfirm  =req.query['wrong-confirm']!==undefined;
-        console.log(req.user);
-        res.render('users/views/changepass',{wrongpass,wrongconfirm});
+        const short = req.query['short']!==undefined;
+        res.render('users/views/changepass',{wrongpass,wrongconfirm,short});
     }
 
     //[POST] change password
     async changepass(req,res){
-        const {oldpassword, password,confirm} =req.body;
-        if(!UserService.validPassword(oldpassword,user)){
+        const {oldpassword, password,confirmpass} =req.body;
+        
+        if(!UserService.validPassword(oldpassword,req.user)){
             return res.redirect('/user/changepass?wrong-pass');
         }
         else{
-            if(password!==confirm){
-                return res.redirect('/user/changepass?wrong-confirm');
+            if(password<8){
+                return res.redirect('/user/changepass?short');
             }
             else{
-                console.log(req.user);
-                req.user = await UserService.changepass(req.user,passport);
-                res.redirect('/');
+                if(password!==confirmpass){
+                    return res.redirect('/user/changepass?wrong-confirm');
+                }
+                else{
+
+                    req.user = await UserService.changepass(req.user,password);
+                    res.redirect('/');
+                }
             }
         }
     }
