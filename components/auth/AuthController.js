@@ -1,6 +1,35 @@
 const service = require('./AuthService');
+const passport = require('../../utils/passport');
 
 class AuthController {
+    loginGuard(req, res, next){
+        if (req.user) {
+            next();
+        } else {
+            res.redirect('/');
+        }
+    }
+    verifyAuthenticate(req, res, next){
+        passport.authenticate('local',function(err,user){
+            if(err){
+                return next(err);
+            }
+            if(user.status==false){
+                return res.redirect('/login?banned');
+            }
+            if(user.userType==true){
+                return res.redirect('/login?secret');
+            }
+            if(!user)
+            {
+                return res.redirect('/login?invalid');
+            }
+            req.logIn(user, function(err){
+                if(err)return next(err);
+                return res.redirect('/');
+            })
+        })(req,res,next);
+    }
     //[GET] login Page
     login(req,res){
         const wronguser = req.query['invalid'] !== undefined;
@@ -55,8 +84,6 @@ class AuthController {
         }
     }
 
-    
-    
 }
 
 module.exports = new AuthController;

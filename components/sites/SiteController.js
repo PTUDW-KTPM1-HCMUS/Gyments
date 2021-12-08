@@ -1,5 +1,6 @@
 const service = require('./SiteService');
 
+
 class SiteController{
     //[GET] Home Page
     async homePage (req, res){
