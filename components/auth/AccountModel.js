@@ -46,6 +46,12 @@ const accountSchema = new mongoose.Schema({
     gender: {
         type: "string",
         require: true
+    },
+    avatar: {
+        type: "string"
+    },
+    avatarID: {
+        type: "string"
     }
 });
 
