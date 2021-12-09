@@ -47,3 +47,4 @@ exports.changepass = async(user,password)=>{
     const hashpass = await bcrypt.hashSync(password,salt);
     return User.findOneAndUpdate({username:user.username},{password:hashpass});
 }
+

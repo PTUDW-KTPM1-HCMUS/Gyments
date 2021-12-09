@@ -1,5 +1,6 @@
 const service = require('./AuthService');
 const passport = require('../../utils/passport');
+const nodemailer = require('../../utils/email');
 
 class AuthController {
     loginGuard(req, res, next){
@@ -80,6 +81,33 @@ class AuthController {
                     }
                     
                 }      
+            }
+        }
+    }
+
+    forgotPage(req,res){
+        const wrongusername = req.query['wrong-user']!==undefined;
+        const wrongemail =req.query['wrong-email']!==undefined;
+        res.render('auth/views/forgot',{wrongusername,wrongemail});
+    }
+
+
+    async forgotPass(req,res){
+        const {username,email}=req.body;
+        const user = await service.findOneAccount(username);
+        if(!user){
+            res.redirect('/login/forgot?wrong-user');
+        }
+        else{
+            const check_email =  await service.findByEmail(email);
+            if(!check_email){
+                res.redirect('/login/forgot?wrong-email');
+            }
+            else{
+                const newpass= String("")+Math.floor(Math.random()*(99999999-10000000)+10000000);
+                await service.changepass(user,newpass);
+                await nodemailer.sendPass(newpass,email);
+                res.redirect('/login');
             }
         }
     }

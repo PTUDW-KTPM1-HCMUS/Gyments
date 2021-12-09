@@ -1,0 +1,60 @@
+<div class="container clearfix pt-5">
+    <div class ="row">
+        <div class="col">
+            <form action="/login/forgot" method="POST">
+            {{#if wrongusername}}
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Your input username is incorrect!!!</strong>
+                    <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {{/if}}
+            {{#if wrongemail}}
+<!--                <h4 style="color:red">Confirm your password again</h4>-->
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Email is incorrect!!!</strong>
+                    <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {{/if}}
+            <div class="form-group">
+                <label for="exampleInputUsername">Your username</label>
+                <input type="text" class="form-control" id="exampleInputUsername" placeholder="Username" name ="username">
+            </div>
+            
+            <div class="form-group">
+                <label for="exampleInputEmail">Password</label>
+                <input type="email" class="form-control" id="exampleInputEmail" placeholder="Email" name ="email" >
+            </div>
+            
+            <div class="button-group" style="text-align:center">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#model-save" data-backdrop="static" data-keyboard="false">Submit</button>
+            </div>
+            
+            <!--modal-->
+            <div class="modal" tabindex="-1" role="dialog" id="model-save" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Notifications</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your new password will be sent to your email after you click button send.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
