@@ -26,7 +26,7 @@ app.use(passport.session());
 app.use(async function (req, res, next) {
     res.locals.user = req.user;
     let categories = await Category.getAllCategories();
-    res.locals.category = categories;
+    res.locals.categories = categories;
     next();
   })
 

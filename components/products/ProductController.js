@@ -7,8 +7,7 @@ class ProductController{
             const [products, pages] = await service.getAllProduct(currentPage);
             let previous = Math.ceil(parseInt(currentPage)-1)<1? 1:Math.ceil(parseInt(currentPage)-1);
             let next = Math.ceil(parseInt(currentPage)+1) > pages.length?pages.length: Math.ceil(parseInt(currentPage)+1);
-            let categories = await categoryService.getAllCategories();
-            res.render('products/views/product',{products, pages, currentPage,previous,next, categories});
+            res.render('products/views/product',{products, pages, currentPage,previous,next});
 
         }catch(err){
             console.log({message: err});
@@ -27,15 +26,15 @@ class ProductController{
         try{
             const categoryID = await categoryService.getCategoryIDByID(req.params.ID);
             if (!categoryID){
-                let categories = await categoryService.getAllCategories();
-                res.render('products/views/product',{categories});
+                let category = await categoryService.getCategoryByID(req.params.ID);
+                res.render('products/views/product',{category});
             }
             let currentPage = req.query.page || 1;
             const [products, pages] = await service.getByCategoryID(categoryID, currentPage);
             let previous = Math.ceil(parseInt(currentPage)-1)<1? 1:Math.ceil(parseInt(currentPage)-1);
             let next = Math.ceil(parseInt(currentPage)+1) > pages.length?pages.length: Math.ceil(parseInt(currentPage)+1);
-            let categories = await categoryService.getAllCategories();
-            res.render('products/views/product',{products, pages, currentPage,previous,next, categories});
+            let category = await categoryService.getCategoryByID(req.params.ID);
+            res.render('products/views/product',{products, pages, currentPage,previous,next, category});
 
         }catch(err){
             console.log({message: err});

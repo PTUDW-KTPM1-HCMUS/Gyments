@@ -23,5 +23,16 @@ const getCategoryIDByID = async (ID) =>{
     }
 }
 
-
-module.exports = {getAllCategories,getCategoryIDByID};
+const getCategoryByID = async (ID) =>{
+    try{
+        let category = await Category.findOne({'_id': ID});
+        if (category)
+            return category;
+        else
+            return null;
+    }catch (err){
+        console.log(err);
+        return null;
+    }
+}
+module.exports = {getAllCategories,getCategoryIDByID, getCategoryByID};
