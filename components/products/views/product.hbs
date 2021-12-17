@@ -12,8 +12,9 @@
               {{#each products}}
               <div class="col-sm-6 col-lg-4">
                     <div class="box">
-                        <a href="/user/cart" class="p_cart">
+                        <a href="#" class="p_cart">
                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                            <div  class ="detail-product-id" hidden name ={{this.productID}}></div>
                         </a>
                         <div class="img-box">
                             <a href="{{this.productID}}"><img src={{this.images.[0]}} alt="{{this.name}}"></a>

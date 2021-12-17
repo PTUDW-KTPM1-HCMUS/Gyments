@@ -53,7 +53,9 @@
                             </form>
                             <div class="pro-actions">
                                 <div class="actions-primary">
-                                    <a href="#" title="" data-original-title="Add to Cart"> + Add To Cart</a>
+                                    <a href="#" class="p_cart" title="" data-original-title="Add to Cart"> + Add To Cart
+                                    <div  class ="detail-product-id" hidden name ="/product/{{productDetails._id}}"></div>
+                                    </a>
                                 </div>
                                 <div class="actions-secondary">
                                     <a href="#" title="" data-original-title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>
@@ -247,10 +249,13 @@
                         </div>
                         <div class="pro-actions">
                             <div class="actions-primary">
-                                <a href="/user/cart" title="Add to Cart"> + Add To Cart</a>
+                                <a href="#" class ="p_cart" title="Add to Cart"> + Add To Cart
+                                    <div  class ="detail-product-id" hidden name ={{this.productID}}></div>
+                                </a>
+
                             </div>
                             <div class="actions-secondary">
-                                <a href="/user/cart" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>
+                                <a href="#" title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>
                             </div>
                         </div>
                     </div>

@@ -1,11 +1,21 @@
 const passport = require('passport');
-const UserService = require('../auth/AuthService');
+const AuthService = require('../auth/AuthService');
+const UserService =require('./UserService');
 
 class UserController{
     
     //[GET] shopping cart
-    cart(req,res){
-        res.render('users/views/cart');
+    async cart(req,res){
+        if(req.user!=null)
+        {
+            let username = req.user.username;
+            const cart_ =await UserService.getCartPage(username);
+            console.log("CART: "+cart_);
+            res.render('users/views/cart',{cart:cart_});
+        }
+        else{
+            res.render('users/views/cart');
+        }
     }
 
     //[GET] logout
@@ -30,7 +40,7 @@ class UserController{
     async changepass(req,res){
         const {oldpassword, password,confirmpass} =req.body;
         
-        if(!UserService.validPassword(oldpassword,req.user)){
+        if(!AuthService.validPassword(oldpassword,req.user)){
             return res.redirect('/user/changepass?wrong-pass');
         }
         else{
@@ -43,7 +53,7 @@ class UserController{
                 }
                 else{
 
-                    req.user = await UserService.changepass(req.user,password);
+                    req.user = await AuthService.changepass(req.user,password);
                     res.redirect('/');
                 }
             }

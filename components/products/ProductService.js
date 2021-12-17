@@ -1,4 +1,4 @@
-const Product = require('./ProductModel');
+const Product = require('./model/ProductModel');
 // get all products in database
 const getAllProduct = async(reqPage) => {
     let products = [];

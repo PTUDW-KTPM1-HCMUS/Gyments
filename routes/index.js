@@ -4,10 +4,11 @@ const userRouter = require('../components/users/user');
 const createError = require("http-errors");
 const loginRouter = require('../components/auth/auth');
 const loginGuard = require('../components/auth/AuthService');
+const ApiRouter = require('../components/api/api');
 function route(app)
 {
   app.use('/login',loginRouter);
-
+  app.use('/api',ApiRouter);
 
   //product page
   app.use('/product', productRouter);
