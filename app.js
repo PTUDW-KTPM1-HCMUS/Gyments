@@ -8,7 +8,7 @@ const route = require('./routes');
 const passport = require('./utils/passport');
 const app = express();
 const session = require("express-session");
-
+const Category = require("./components/categories/categoryService");
 // view engine setup
 app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'components')]);
 app.set('view engine', 'hbs');
@@ -23,8 +23,10 @@ app.use(session({secret: process.env.SESSION_SECRET,resave: true, saveUninitiali
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function (req, res, next) {
+app.use(async function (req, res, next) {
     res.locals.user = req.user;
+    let categories = await Category.getAllCategories();
+    res.locals.categories = categories;
     next();
   })
 
