@@ -79,6 +79,7 @@ function setItem(product){
     localStorage.setItem("productsInCart",JSON.stringify(CartItems));
 }
 //tong don hang
+
 function totalCost(product){
     let CartCost = localStorage.getItem("TotalCost");
     
@@ -92,14 +93,23 @@ function totalCost(product){
 
 function displayCart(){
     let CartItems = localStorage.getItem("productsInCart");
+    let CartCost = parseInt(localStorage.getItem("TotalCost"));
+    if(!CartCost){
+        CartCost = 0;
+    }
+    let SubCost=0;
+    let Shipping =0;
+    if(CartItems!=null)
+        SubCost= parseInt(CartCost)+30;
+        Shipping = 30;
     CartItems = JSON.parse(CartItems);
     if(userID=="null")
     {
         let productContainer = document.querySelector(".product-container");
-        
+        let totalContainer = document.querySelector(".total");
         if(CartItems &&  productContainer){
-            console.log(productContainer);
             productContainer.innerHTML="";
+            totalContainer.innerHTML="";
             Object.values(CartItems).map(item=>{
                 productContainer.innerHTML+=`
                 <tr>
@@ -112,6 +122,27 @@ function displayCart(){
                 </tr>
                 `
             });
+            totalContainer.innerHTML+=`
+            <div class = "cart-bottom-content">
+                <h5>CART TOTAL</h5>
+                <div id ="total-container">
+                    <div class="d-flex justify-content-between" >
+                        <h6>Subtotal</h6>
+                        <p>$${CartCost}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h6>Shipping</h6>
+                        <p>$${Shipping}</p>
+                    </div>
+                    <hr class="second-hr"> 
+                    <div class="d-flex justify-content-between">
+                        <h6>Total</h6>
+                        <p>$${SubCost}</p>
+                    </div>
+                    <button class = "cart-button checkout ml-auto">CHECK OUT</button>
+                </div>        
+            </div>
+            `
         }
     }
     else{
@@ -119,54 +150,54 @@ function displayCart(){
     }
 }
 
-function upApi(event){
+function upApi(event){  
     event.preventDefault();
     let CartItems = localStorage.getItem("productsInCart");
     CartItems = JSON.parse(CartItems);
-    if(userID!="null"){
-        if(CartItems!=null){
-            try{
-                Object.values(CartItems).map(item=>{
-                    url = window.location.origin +`/api/product/${item._id}?quantity=${item.inCart}`;
-                    fetch(url,{
-                        method: 'POST',
-                        body: JSON.stringify({userID}),
-                        headers: {
-                            'Content-type': 'application/json; charset=UTF-8'
-                        }
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        
-                    })
-                    .catch(err => console.log(err))
-                });
-                localStorage.clear(); 
+    
 
-            }catch(err){
-                console.log(err);
+        if(userID!="null"){
+            if(CartItems!=null){
+                try{
+                    Object.values(CartItems).map(item=>{
+                        url = window.location.origin +`/api/product/${item._id}?quantity=${item.inCart}`;
+                        fetch(url,{
+                            method: 'POST',
+                            body: JSON.stringify({userID}),
+                            headers: {
+                                'Content-type': 'application/json; charset=UTF-8'
+                            }
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data.error);
+                             if(data.error===0||data.error===1){
+                            //     setTimeout(()=>{
+                            //         window.location.assign(window.location.origin+`/user/cart`);
+                            //     },200);
+                                window.location.assign(window.location.origin+`/user/cart`);
+                            }
+                            
+                        })
+                    
+                    });
+                    localStorage.clear(); 
+                    
+                }catch(err){
+                    console.log(err);
 
-            };        
-            
-        }   
-       
-    }
-    window.location=window.location.origin+`/user/cart`;
-    console.log(window.location);
+                };        
+                
+            }   
+            else{
+                window.location.assign(window.location.origin+`/user/cart`);
+            }
+        }
+        else{
+            window.location.assign(window.location.origin+`/user/cart`);
+        } 
     
 }
 
 displayCart();
-function loadPage(){
-    console.log("ALOOOOOOOOOOOOO");
-    url = window.location.origin +`/user/cart`;
-    console.log("GET: "+ url);
-    fetch(url,{
-        method: 'GET',
-        body: JSON.stringify({userID}),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8'
-        }
-    })
-    .then(res=>res.json())
-}
+

@@ -50,26 +50,53 @@
                 </div>
             </div>
             <div class = "total col-lg-6 col-md-6 col-12 mb-4">
+                {{#if user}}
+                {{#if cart}}
                 <div class = "cart-bottom-content">
                     <h5>CART TOTAL</h5>
-                    <div>
-                        <div class="d-flex justify-content-between">
+                    <div id ="total-container">
+                        <div class="d-flex justify-content-between" >
                             <h6>Subtotal</h6>
-                            <p>$350</p>
+                            <p>${{cart.totalPrice}}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6>Shipping</h6>
                             <p>$30</p>
                         </div>
                         <hr class="second-hr"> 
+                        {{#if total}}
                         <div class="d-flex justify-content-between">
                             <h6>Total</h6>
-                            <p>$380</p>
+                            <p>${{total}}</p>
+                        </div>
+                        {{/if}}
+                        <button class = "cart-button checkout ml-auto">CHECK OUT</button>
+                    </div>
+                </div>
+                {{else}}
+                <div class = "cart-bottom-content">
+                    <h5>CART TOTAL</h5>
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <h6>Subtotal</h6>
+                            <p>$0</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6>Shipping</h6>
+                            <p>$0</p>
+                        </div>
+                        <hr class="second-hr"> 
+                        <div class="d-flex justify-content-between">
+                            <h6>Total</h6>
+                            <p>$0</p>
                         </div>
                         <button class = "cart-button checkout ml-auto">CHECK OUT</button>
                     </div>
-                   
                 </div>
+                {{/if}}
+                {{else}}
+                
+                {{/if}}
             </div>
         </div>
     </div>

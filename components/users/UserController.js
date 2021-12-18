@@ -6,12 +6,14 @@ class UserController{
     
     //[GET] shopping cart
     async cart(req,res){
+        console.log("USER: "+req.user)
+
         if(req.user!=null)
         {
             let username = req.user.username;
-            const cart_ =await UserService.getCartPage(username);
-            console.log("CART: "+cart_);
-            res.render('users/views/cart',{cart:cart_});
+            let cart_ =await UserService.getCartPage(username);
+            let subtotal = Math.ceil(cart_.totalPrice + 30);
+            res.render('users/views/cart',{cart:cart_,total:subtotal});
         }
         else{
             res.render('users/views/cart');

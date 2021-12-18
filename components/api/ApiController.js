@@ -26,8 +26,7 @@ class ApiController{
         const username = req.user.username;
         const productID = req.params.productID;
         const error = await apiservice.uploadCart(username,productID,quantity);
-        
-        
+        res.send({error});
     }
 }
 

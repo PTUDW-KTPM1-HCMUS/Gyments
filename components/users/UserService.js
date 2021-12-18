@@ -14,8 +14,8 @@ const getCartPage = async (username)=>{
         return cart;
     }catch(err){
         console.log(err);
+        return null;
     }
-    return cart;
 }
 
 
