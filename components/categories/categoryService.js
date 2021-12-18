@@ -25,7 +25,7 @@ const getCategoryIDByID = async (ID) =>{
 
 const getCategoryByID = async (ID) =>{
     try{
-        let category = await Category.findOne({'_id': ID});
+        let category = await Category.findById(ID).lean();
         if (category)
             return category;
         else

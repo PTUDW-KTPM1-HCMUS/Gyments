@@ -1155,3 +1155,107 @@ slider_section .img_slider img {
   background: #6194e0;
   color: #fff;
 }
+
+
+/* filter css */
+.sidebar-categories{
+  padding-top: 26px;
+}
+.sidebar-categories .head{
+  font-family:'Oswald', sans-serif;
+  line-height:50px;
+  background:#ee316b;
+  padding:0 30px;
+  font-size:18px;
+  font-weight:400;
+  color:#fff;
+}
+.sidebar-categories .main-categories{
+  padding:20px 28px;
+  background:#f1f6f7;
+}
+.sidebar-categories .main-categories .pixel-radio{
+  background:transparent !important;
+}
+.sidebar-categories .main-nav-list a{
+  font-size:14px;
+  display:block;
+  line-height:50px;
+  padding-left:10px;
+  border-bottom:1px solid #eee;
+}
+.sidebar-categories .main-nav-list a:hover{
+  color:#ee316b;
+}
+.sidebar-categories .main-nav-list a .number{
+  color:#cccccc;
+  margin-left:10px;
+}
+.sidebar-categories .main-nav-list a .lnr{
+  margin-right:10px;
+  display:none;
+}
+.sidebar-categories .main-nav-list.child a{
+  padding-left:32px;
+}
+.sidebar-categories .main-categories li,
+.sidebar-categories .main-categories .common-filter li {
+  list-style-type: none;
+}
+.sidebar-categories .main-categories .common-filter .filter-list label{
+  padding-left: 30px;
+}
+
+.price-range-slider {
+  width: 100%;
+  float: left;
+  padding: 10px 20px;
+}
+.price-range-slider .range-value {
+  margin: 0;
+}
+.price-range-slider .range-value input {
+  width: 100%;
+  background: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: initial;
+  box-shadow: none;
+  border: none;
+  margin: 20px 0 20px 0;
+}
+.price-range-slider .range-bar {
+  border: none;
+  background: #000;
+  height: 3px;
+  width: 96%;
+  margin-left: 8px;
+}
+.price-range-slider .range-bar .ui-slider-range {
+  background: #06b9c0;
+}
+.price-range-slider .range-bar .ui-slider-handle {
+  border: none;
+  border-radius: 25px;
+  background: #fff;
+  border: 2px solid #06b9c0;
+  height: 17px;
+  width: 17px;
+  top: -0.52em;
+  cursor: pointer;
+}
+.price-range-slider .range-bar .ui-slider-handle + span {
+  background: #06b9c0;
+}
+
+.filter-btn button {
+  float: right;
+  display: inline-block;
+  padding: 6px 20px;
+  background-color: #ee316b;
+  color: #ffffff;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  border: 1px solid #ee316b;
+}

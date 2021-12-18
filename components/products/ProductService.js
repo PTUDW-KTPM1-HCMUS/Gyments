@@ -1,10 +1,10 @@
 const Product = require('./model/ProductModel');
 // get all products in database
-const getAllProduct = async(reqPage) => {
+const getAllProduct = async(reqPage, categoryID, min, max) => {
     let products = [];
     let pages = [];
     try{
-        products = await Product.find().lean();
+        products = await Product.find({price: { $lte: max, $gte: min }}).lean();
         const perPage = 6;
         const page = parseInt(reqPage);
 
@@ -13,8 +13,9 @@ const getAllProduct = async(reqPage) => {
 
         for (let i = 0; i < products.length / perPage; i++){
             let tmp = {};
+            tmp.categoryID = categoryID;
             tmp.currentPage = i + 1;
-            tmp.pageLink = `?page=${i+1}`;
+            tmp.pageLink = `&page=${i+1}`;
             pages.push(tmp);
         }
         products = products.slice(pro_start, pro_end);
@@ -63,11 +64,11 @@ const getProduct = async (productID) => {
     }
     return [productDetails, relatedProducts];
 }
-const getByCategoryID = async (categoryID, reqPage)=>{
+const getByCategoryID = async (categoryID, reqPage, min, max)=>{
     let products = [];
     let pages = [];
     try{
-        products = await Product.find({'categoryID':categoryID}).lean();
+        products = await Product.find({'categoryID': categoryID, price: { $lte: max, $gte: min }}).lean();
         const perPage = 6;
         const page = parseInt(reqPage);
 
@@ -76,8 +77,9 @@ const getByCategoryID = async (categoryID, reqPage)=>{
 
         for (let i = 0; i < products.length / perPage; i++){
             let tmp = {};
+            tmp.categoryID = categoryID;
             tmp.currentPage = i + 1;
-            tmp.pageLink = `?page=${i+1}`;
+            tmp.pageLink = `&page=${i+1}`;
             pages.push(tmp);
         }
         products = products.slice(pro_start, pro_end);
@@ -97,4 +99,13 @@ const getByCategoryID = async (categoryID, reqPage)=>{
     }
     return [products, pages]
 }
-module.exports = {getAllProduct , getProduct, getByCategoryID};
+const getPriceRange = (priceRange) => {
+    priceRange = priceRange.split("-");
+    for (let i =0; i < priceRange.length; i++){
+        priceRange[i] = priceRange[i].trim();
+    }
+    let min = priceRange[0].substring(1, priceRange[0].length);
+    let max = priceRange[1].substring(1, priceRange[1].length);
+    return [min, max];
+}
+module.exports = {getAllProduct , getProduct, getByCategoryID, getPriceRange};

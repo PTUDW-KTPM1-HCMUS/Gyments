@@ -1,29 +1,63 @@
-
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <!-- products section -->
 <section class="product_section layout_padding">
-    <div class="container">
+    <div class="container-fluid">
         <div class="heading_container heading_center">
             <h2>
                 Our products
-                {{#if    category}}
-                    <p> - {{category.name}}</p>
+                {{#if categoryDetail}}
+                    <p> - {{categoryDetail.name}} - </p>
                 {{/if}}
-
             </h2>
         </div>
-        <div class="product_container">
-            <div class="row">
-              {{#each products}}
-              <div class="col-sm-6 col-lg-4">
-                    <div class="box">
-                        <a href="#" class="p_cart">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            <div  class ="detail-product-id" hidden name ={{this.productID}}></div>
-                        </a>
-                        <div class="img-box">
-                            <a href="{{this.productID}}"><img src={{this.images.[0]}} alt="{{this.name}}"></a>
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-5">
+                <div class="sidebar-categories">
+                    <form action="/product" method="get">
+                        <div class="head">Product Filter</div>
+                        <ul class="main-categories">
+                            <li class="common-filter">
+                                <ul>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Whey" name="category" value="619e28ce362190c5420b1395"><label for="Whey">Whey</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Dumbbells" name="category" value="619e28f2362190c5420b1397"><label for="Dumbbells">Dumbbells</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Nutrients" name="category" value="619e290a362190c5420b1399"><label for="Nutrients">Nutrients</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Increaseweight" name="category" value="619e291b362190c5420b139c"><label for="Increaseweight">Increase weight</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Dietpill" name="category" value="619f2f36701e4440d391d0cc"><label for="Dietpill">Diet pill</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Machines" name="category" value="619f41873e5bddb97d9af86e"><label for="Machines">Machines</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Bicycle" name="category" value="619f69c41575633a1716406d"><label for="Bicycle">Bicycle</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Kettelebells" name="category" value="619f77841575633a17164074"><label for="Kettelebells">Kettelebells</label></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="head">Price Range</div>
+                        <div class="price-range-slider">
+                            <p class="range-value">
+                                <input type="text" id="amount" readonly name="price">
+                            </p>
+                            <div id="slider-range" class="range-bar"></div>
                         </div>
-                        <div class="detail-box">
+                        <div class="filter-btn">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <div class="product_container">
+                    <div class="row">
+                        {{#each products}}
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="box">
+                                    <a href="#" class="p_cart">
+                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                        <div  class ="detail-product-id" hidden name ={{this.productID}}></div>
+                                    </a>
+                                    <div class="img-box">
+                                        <a href="{{this.productID}}"><img src={{this.images.[0]}} alt="{{this.name}}"></a>
+                                    </div>
+                                    <div class="detail-box">
                 <span class="p_rating">
                     <a href="{{this.productID}}">
                         {{#each this.rate}}
@@ -31,46 +65,55 @@
                         {{/each}}
                     </a>
                 </span>
-                            <a href="{{this.productID}}" class="p_name">
-                                {{this.name}}
-                            </a>
-                            <h6 class="p_price">
+                                        <a href="{{this.productID}}" class="p_name">
+                                            {{this.name}}
+                                        </a>
+                                        <h6 class="p_price">
                   <span class="new_price">
                     {{this.price}}$
                   </span>
-                  <span class="sale_off">
+                                            <span class="sale_off">
                     Sale off {{this.sale}}%
                   </span>
-                            </h6>
-                        </div>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
                     </div>
+
+
                 </div>
-              {{/each}}
             </div>
 
-            <div class="col pt-5">
-                <ul class="pagination pagination-md justify-content-center">
-
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{previous}}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    {{#each pages}}
-                        <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="{{this.pageLink}}">{{this.currentPage}}</a></li>
-                    {{/each}}
-                    <li class="page-item">
-                        <a class="page-link"  href="?page={{next}}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-                <div id="getCurPage" name = {{currentPage}}></div>
-            </div>
         </div>
+        <div class="col pt-5">
+            <ul class="pagination pagination-md justify-content-center">
+
+                <li class="page-item">
+                    <a class="page-link" href="/product?category={{categoryDetail._id}}&price=all&page={{previous}}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                {{#each pages}}
+                    <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="/product?category={{this.categoryID}}&price=all&{{this.pageLink}}">{{this.currentPage}}</a></li>
+                {{/each}}
+                <li class="page-item">
+                    <a class="page-link"  href="/product?category={{categoryDetail._id}}&price=all&page={{next}}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="getCurPage" name = {{currentPage}}></div>
+        </div>
+
     </div>
 </section>
 <script src="/js/productPagination.js"></script>
+<script type="text/javascript">
+    //-----JS for Price Range slider-----
+
+</script>
 <!-- end product section -->

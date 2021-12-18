@@ -59,12 +59,11 @@
                                 <a class="nav-link" href="/about"> About</a>
                             </li>
                             <li class="nav-item" id="product-id">
-                                <a class="nav-link" href="/product">Products <i class = "fa fa-caret-down"></i></a>
+                                <a class="nav-link" href="/product?category=all&price=all&page=1">Products <i class = "fa fa-caret-down"></i></a>
                                 <ul class="sub-nav">
                                         {{#each categories}}
-                                            <li class="sub-item"><a class="sub-link" href="/product/category/{{this._id}}">{{this.name}}</a></li>
+                                            <li class="sub-item"><a class="sub-link" href="/product?category={{this._id}}&price=all&page=1">{{this.name}}</a></li>
                                         {{/each}}
-
                                 </ul>
                             </li>
                             <li class="nav-item" id="why-id">
@@ -204,6 +203,7 @@
 
 <!-- jQuery -->
 <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 <!-- bootstrap js -->
 <script src="/js/bootstrap.js"></script>
 <!-- custom js -->
