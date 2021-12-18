@@ -1,4 +1,4 @@
-const Product = require('../products/ProductModel');
+const Product = require('../products/model/ProductModel');
 
 // get first numberOfProduct from database
 // example: numberOfProduct = 6 => get 0, 1, 2, 3, 4, 5 products from database

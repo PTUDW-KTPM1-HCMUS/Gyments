@@ -1,11 +1,23 @@
 const passport = require('passport');
-const UserService = require('../auth/AuthService');
+const AuthService = require('../auth/AuthService');
+const UserService =require('./UserService');
 
 class UserController{
     
     //[GET] shopping cart
-    cart(req,res){
-        res.render('users/views/cart');
+    async cart(req,res){
+        console.log("USER: "+req.user)
+
+        if(req.user!=null)
+        {
+            let username = req.user.username;
+            let cart_ =await UserService.getCartPage(username);
+            let subtotal = Math.ceil(cart_.totalPrice + 30);
+            res.render('users/views/cart',{cart:cart_,total:subtotal});
+        }
+        else{
+            res.render('users/views/cart');
+        }
     }
 
     //[GET] logout
@@ -30,7 +42,7 @@ class UserController{
     async changepass(req,res){
         const {oldpassword, password,confirmpass} =req.body;
         
-        if(!UserService.validPassword(oldpassword,req.user)){
+        if(!AuthService.validPassword(oldpassword,req.user)){
             return res.redirect('/user/changepass?wrong-pass');
         }
         else{
@@ -43,7 +55,7 @@ class UserController{
                 }
                 else{
 
-                    req.user = await UserService.changepass(req.user,password);
+                    req.user = await AuthService.changepass(req.user,password);
                     res.redirect('/');
                 }
             }

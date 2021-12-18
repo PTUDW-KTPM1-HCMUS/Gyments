@@ -17,31 +17,22 @@
                         <td>Total</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class = "product-container">
+                    {{#if user}}
+                    {{#each cart.products}}
                     <tr>
                         <td><a href ="#" ><i class = "fa fa-trash"></i></a></td>
-                        <td><img src = "https://res.cloudinary.com/gspictures/image/upload/v1638450670/l4ppdkjdvofjrkm1jb4o.jpg" alt=""></td>
-                        <td><h5>Treadmill Walking Machine</h5></td>
-                        <td><h5>$140</h5></td>
-                        <td><input type="number" class = "w-25 p1-1" value = "1"></td>
-                        <td><h5>$140</h5></td>
+                        <td><img src = {{this.images.[0]}} alt=""></td>
+                        <td><h5>{{this.name}}</h5></td>
+                        <td><h5>${{this.price}}</h5></td>
+                        <td><input type="number" class = "w-25 p1-1" value = "{{this.inCart}}"></td>
+                        <td><h5>${{this.totalPrice}}</h5></td>
                     </tr>
-                    <tr>
-                        <td><a href ="#" ><i class = "fa fa-trash"></i></a></td>
-                        <td><img src = "https://res.cloudinary.com/gspictures/image/upload/v1638450671/v3bslpqtk0kiirr9qyag.jpg" alt=""></td>
-                        <td><h5>Gym Equipment</h5></td>
-                        <td><h5>$100</h5></td>
-                        <td><input type="number" class = "w-25 p1-1" value = "1"></td>
-                        <td><h5>$100</h5></td>
-                    </tr>
-                    <tr>
-                        <td><a href ="#" ><i class = "fa fa-trash"></i></a></td>
-                        <td><img src = "https://res.cloudinary.com/gspictures/image/upload/v1638450672/xa52ewe9fe18lw56gzx5.jpg" alt=""></td>
-                        <td><h5>Bicycle Machine</h5></td>
-                        <td><h5>$110</h5></td>
-                        <td><input type="number" class = "w-25 p1-1" value = "1"></td>
-                        <td><h5>$110</h5></td>
-                    </tr>
+                    {{/each}}
+
+                    {{else}}
+                    {{/if}}
+                    
                 </tbody>
             </table>
         </div>
@@ -59,26 +50,53 @@
                 </div>
             </div>
             <div class = "total col-lg-6 col-md-6 col-12 mb-4">
+                {{#if user}}
+                {{#if cart}}
                 <div class = "cart-bottom-content">
                     <h5>CART TOTAL</h5>
-                    <div>
-                        <div class="d-flex justify-content-between">
+                    <div id ="total-container">
+                        <div class="d-flex justify-content-between" >
                             <h6>Subtotal</h6>
-                            <p>$350</p>
+                            <p>${{cart.totalPrice}}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6>Shipping</h6>
                             <p>$30</p>
                         </div>
                         <hr class="second-hr"> 
+                        {{#if total}}
                         <div class="d-flex justify-content-between">
                             <h6>Total</h6>
-                            <p>$380</p>
+                            <p>${{total}}</p>
+                        </div>
+                        {{/if}}
+                        <button class = "cart-button checkout ml-auto">CHECK OUT</button>
+                    </div>
+                </div>
+                {{else}}
+                <div class = "cart-bottom-content">
+                    <h5>CART TOTAL</h5>
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <h6>Subtotal</h6>
+                            <p>$0</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6>Shipping</h6>
+                            <p>$0</p>
+                        </div>
+                        <hr class="second-hr"> 
+                        <div class="d-flex justify-content-between">
+                            <h6>Total</h6>
+                            <p>$0</p>
                         </div>
                         <button class = "cart-button checkout ml-auto">CHECK OUT</button>
                     </div>
-                   
                 </div>
+                {{/if}}
+                {{else}}
+                
+                {{/if}}
             </div>
         </div>
     </div>

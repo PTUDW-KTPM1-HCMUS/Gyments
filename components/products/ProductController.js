@@ -4,6 +4,7 @@ class ProductController{
     async getAllProduct(req, res){
         try{
             let currentPage = req.query.page || 1;
+            console.log(currentPage);
             const [products, pages] = await service.getAllProduct(currentPage);
             let previous = Math.ceil(parseInt(currentPage)-1)<1? 1:Math.ceil(parseInt(currentPage)-1);
             let next = Math.ceil(parseInt(currentPage)+1) > pages.length?pages.length: Math.ceil(parseInt(currentPage)+1);
