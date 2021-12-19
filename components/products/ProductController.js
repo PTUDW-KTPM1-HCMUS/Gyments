@@ -37,21 +37,18 @@ class ProductController{
             console.log({message: err});
         }
     }
-    async getAllByCategory(req,res){
+    async search(req, res){
         try{
-            const categoryID = await categoryService.getCategoryIDByID(req.params.ID);
-            if (!categoryID){
-                let category = await categoryService.getCategoryByID(req.params.ID);
-                res.render('products/views/product',{category});
-            }
+            const description = req.query.description;
             let currentPage = req.query.page || 1;
-            const [products, pages] = await service.getByCategoryID(categoryID, currentPage);
+            const [products, pages] = await service.searchByDescription(description, currentPage);
             let previous = Math.ceil(parseInt(currentPage)-1)<1? 1:Math.ceil(parseInt(currentPage)-1);
             let next = Math.ceil(parseInt(currentPage)+1) > pages.length?pages.length: Math.ceil(parseInt(currentPage)+1);
-            let category = await categoryService.getCategoryByID(req.params.ID);
-            res.render('products/views/product',{products, pages, currentPage,previous,next, category});
-
-        }catch(err){
+            let found = true;
+            if (products.length === 0)
+                found = false;
+            res.render('products/views/searchPage', {products, pages, description, found, currentPage, next, previous});
+        }catch (err){
             console.log({message: err});
         }
     }

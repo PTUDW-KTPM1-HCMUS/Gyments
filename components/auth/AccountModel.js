@@ -27,11 +27,7 @@ const accountSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    fname: {
-        type: "string",
-        require: true
-    },
-    lname: {
+    name: {
         type: "string",
         require: true
     },
@@ -43,12 +39,9 @@ const accountSchema = new mongoose.Schema({
         type: "string",
         require: true
     },
-    gender: {
-        type: "string",
-        require: true
-    },
     avatar: {
-        type: "string"
+        type: "string",
+        default: "https://anhdep123.com/wp-content/uploads/2020/11/avatar-facebook-mac-dinh-nam.jpeg"
     },
     avatarID: {
         type: "string"

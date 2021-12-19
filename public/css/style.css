@@ -278,7 +278,7 @@ a:focus {
 
 .quote_btn-container a {
   color: #ffffff;
-  margin-right: 25px;
+  margin-right: 23px;
   text-transform: uppercase;
 }
 
@@ -1258,4 +1258,68 @@ slider_section .img_slider img {
   text-transform: uppercase;
   font-size: 15px;
   border: 1px solid #ee316b;
+}
+
+.search-model {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #000;
+  z-index: 99999;
+}
+
+.search-model-form {
+  padding: 0 15px;
+}
+
+.search-model-form input {
+  width: 500px;
+  font-size: 40px;
+  border: none;
+  border-bottom: 2px solid #333;
+  background: 0 0;
+  color: #999;
+  outline: none; / * remove focus input*/
+}
+
+.search-close-switch {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 28px;
+  line-height: 28px;
+  top: 30px;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.site-btn {
+  font-size: 13px;
+  color: #ffffff;
+  background: #ee316b;
+  font-weight: 700;
+  border: 1px solid #ee316b;
+  border-radius: 2px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 12px 30px;
+}
+.site-btn:hover{
+  background-color: transparent;
+  color: #ee316b;
 }

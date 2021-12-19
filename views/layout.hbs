@@ -79,7 +79,7 @@
                         <div id="user-id" hidden name={{user.username}}></div>
                         <ul class="navbar-nav">
                             <li class="nav-item" id="account-menu">
-                               <a class="nav-link" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> {{user.fname}} {{user.lname}} <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                               <a class="nav-link" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> {{user.name}} <i class="fa fa-caret-down" aria-hidden="true"></i></a>
                                 <ul class="sub-nav">
                                     <li class="sub-item"><a class="sub-link" href="/user/account"><i class="fa fa-id-card"></i> Profile</a></li>
                                     <li class="sub-item"><a class="sub-link" href="/user/changepass"><i class="fa fa-unlock"></i> Change password</a></li>
@@ -99,11 +99,17 @@
                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
                             Cart
                         </a>
-                        <form class="form-inline">
-                            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </form>
+                        <!-- Search model Begin -->
+                        <a href="#" class="search-switch"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        <div class="search-model">
+                            <div class="h-100 d-flex align-items-center justify-content-center">
+                                <div class="search-close-switch"><i class="fa fa-close" aria-hidden="true"></i></div>
+                                <form class="search-model-form" action="/product/searchPage" method="GET">
+                                    <input type="text" name="description" id="search-input" placeholder="Search here....." />
+                                    <button type="submit" class="site-btn">Search</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>

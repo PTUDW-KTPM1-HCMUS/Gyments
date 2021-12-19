@@ -1,0 +1,75 @@
+
+<!-- products section -->
+<section class="product_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2>
+                Search result for: <small style="font-style: italic">{{description}}</small>
+            </h2>
+        </div>
+        {{#if found}}
+            <div class="product_container">
+                <div class="row">
+                    {{#each products}}
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="box">
+                                <a href="#" class="p_cart">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    <div  class ="detail-product-id" hidden name ={{this.productID}}></div>
+                                </a>
+                                <div class="img-box">
+                                    <a href="{{this.productID}}"><img src={{this.images.[0]}} alt="{{this.name}}"></a>
+                                </div>
+                                <div class="detail-box">
+                <span class="p_rating">
+                    <a href="{{this.productID}}">
+                        {{#each this.rate}}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        {{/each}}
+                    </a>
+                </span>
+                                    <a href="{{this.productID}}" class="p_name">
+                                        {{this.name}}
+                                    </a>
+                                    <h6 class="p_price">
+                  <span class="new_price">
+                    {{this.price}}$
+                  </span>
+                                        <span class="sale_off">
+                    Sale off {{this.sale}}%
+                  </span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="col pt-5">
+                <ul class="pagination pagination-md justify-content-center">
+
+                    <li class="page-item">
+                        <a class="page-link" href="/product/searchPage?description={{description}}&page={{previous}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    {{#each pages}}
+                        <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="/product/searchPage?description={{this.description}}&{{this.pageLink}}">{{this.currentPage}}</a></li>
+                    {{/each}}
+                    <li class="page-item">
+                        <a class="page-link"  href="/product/searchPage?description={{description}}&page={{next}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+                <div id="getCurPage" name = {{currentPage}}></div>
+            </div>
+        {{else}}
+            <h4>Sorry we can't find anything!!!</h4>
+        {{/if}}
+    </div>
+</section>
+<script src="/js/productPagination.js"></script>
+<!-- end product section -->

@@ -53,9 +53,7 @@ const uploadCart = async(username,productID,quantity)=>{
         console.log(err);
         return 1;
     }
-    
 }
-
 
 
 module.exports = {uploadCart};

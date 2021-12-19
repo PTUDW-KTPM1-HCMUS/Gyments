@@ -5,7 +5,8 @@ const AuthController = require('./AuthController');
 const upload = require('../../utils/multer');
 
 router.get('/register',AuthController.registerPage);
-router.post('/register', upload.single("avatar"), AuthController.register);
+// router.post('/register', upload.single("avatar"), AuthController.register);
+router.post('/register',  AuthController.register);
 router.get('/forgot',AuthController.forgotPage);
 router.post('/forgot',AuthController.forgotPass);
 router.get('/', AuthController.login);
