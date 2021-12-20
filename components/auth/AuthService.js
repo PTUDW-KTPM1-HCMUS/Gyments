@@ -19,24 +19,17 @@ exports.validPassword = (password,user)=>{
     return bcrypt.compareSync(password,user.password);
 }
 
-exports.register = async (name, email,username,password)=>{
+exports.register = async (email,username,password)=>{
     const salt = bcrypt.genSaltSync(10);
     const hashpass = await bcrypt.hashSync(password,salt);
-    // const full_addr = address+String(" ")+dis+String(" ")+city;
-    // let avatar = null;
-    // let avatarID= null;
-    // let imgResult = await cloudinary.uploader.upload(avatarDetail.path);
-    // avatar = imgResult.secure_url;
-    // avatarID = imgResult.public_id;
     const user = await User.create({
-        name: name,
         email:email,
         username: username,
         password: hashpass,
     });
     // create empty cart
     await Cart.create({
-        customerID: user._id
+        customer: user.username
     });
 }
 

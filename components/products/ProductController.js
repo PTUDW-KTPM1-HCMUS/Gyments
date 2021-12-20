@@ -1,5 +1,7 @@
 const service = require('./ProductService');
 const categoryService = require("../categories/categoryService");
+
+
 class ProductController{
 
     async getAllProduct(req, res){
@@ -30,9 +32,10 @@ class ProductController{
     }
     async getProductDetail(req, res){
         try{
-            const [productDetails, relatedProducts] = await service.getProduct(req.params.productID);
-            let newPrice = productDetails.price - productDetails.price * productDetails.sale / 100;
-            res.render('products/views/productDetail', {productDetails, relatedProducts, newPrice});
+            const [product, relatedProducts] = await service.getProduct(req.params.productID);
+            let newPrice = product.price - product.price * product.sale / 100;
+            const comments = await service.getComment(req.params.productID);
+            res.render('products/views/productDetail', {product, relatedProducts, newPrice, comments});
         }catch (err) {
             console.log({message: err});
         }
@@ -51,6 +54,22 @@ class ProductController{
         }catch (err){
             console.log({message: err});
         }
+    }
+    async postComment(req, res){
+        const productID = req.params.productID;
+        let userID = "";
+        let nickname = "";
+        let avatar = "https://anhdep123.com/wp-content/uploads/2020/11/avatar-facebook-mac-dinh-nam.jpeg";
+        const content = req.body.content;
+        if(req.user){
+            userID = req.user._id;
+            nickname = req.user.name;
+            avatar = req.user.avatar;
+        }else{
+            nickname = req.body.nickname;
+        }
+        const comment = await service.postComment(nickname, productID, userID, content, avatar);
+        res.redirect(`/product/${productID}`);
     }
 }
 module.exports = new ProductController; 

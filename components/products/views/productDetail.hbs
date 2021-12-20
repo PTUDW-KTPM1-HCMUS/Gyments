@@ -14,7 +14,7 @@
                 <div class="col-lg-5 mb-all-40">
                     <div class="slideshow-container">
                         <!-- Full-width images with number and caption text -->
-                        {{#each productDetails.images}}
+                        {{#each product.images}}
                             <div class="mySlides fade_1">
                                 <img src="{{this}}" style="width:100%">
                             </div>
@@ -26,7 +26,7 @@
                     <br>
                     <!-- The dots/circles -->
                     <div style="text-align:center">
-                        {{#each productDetails.images}}
+                        {{#each product.images}}
                             <span class="dot" onclick="currentSlide(1)"></span>
                         {{/each}}
                     </div>
@@ -35,18 +35,18 @@
                 <!-- Thumbnail Description Start -->
                 <div class="col-lg-7">
                     <div class="thubnail-desc fix">
-                        <h3 class="product-header">{{productDetails.name}}</h3>
+                        <h3 class="product-header">{{product.name}}</h3>
                         <div class="rating-summary fix mtb-10">
                             <div class="rating">
-                                {{#each productDetails.rate}}
+                                {{#each product.rate}}
                                     <i class="fa fa-star"></i>
                                 {{/each}}
                             </div>
                         </div>
                         <div class="pro-price mtb-30">
-                            <p class="d-flex align-items-center"><span class="prev-price">{{productDetails.price}}$</span><span class="price">{{newPrice}}$</span><span class="saving-price">Save {{productDetails.sale}}%</span></p>
+                            <p class="d-flex align-items-center"><span class="prev-price">{{product.price}}$</span><span class="price">{{newPrice}}$</span><span class="saving-price">Save {{product.sale}}%</span></p>
                         </div>
-                        <p class="mb-20 pro-desc-details">{{productDetails.overview}}</p>
+                        <p class="mb-20 pro-desc-details">{{product.overview}}</p>
                         <div class="box-quantity d-flex hot-product2">
                             <form action="#">
                                 <input class="quantity mr-15" type="number" min="1" value="1">
@@ -54,7 +54,7 @@
                             <div class="pro-actions">
                                 <div class="actions-primary">
                                     <a href="#" class="p_cart" title="" data-original-title="Add to Cart"> + Add To Cart
-                                    <div  class ="detail-product-id" hidden name ="/product/{{productDetails._id}}"></div>
+                                    <div  class ="detail-product-id" hidden name ="/product/{{product._id}}"></div>
                                     </a>
                                 </div>
                                 <div class="actions-secondary">
@@ -98,7 +98,7 @@
                 <div class="tab-content thumb-content border-default">
                     <div id="dtail" class="tab-pane fade show active">
                         <ul style="  list-style-type: circle;">
-                            {{#each productDetails.description}}
+                            {{#each product.description}}
                                 <li>{{this}}</li>
                             {{/each}}
                         </ul>
@@ -109,91 +109,45 @@
                             <div class="group-title">
                                 <h2>customer review</h2>
                             </div>
-                            <h4 class="review-mini-title">Gyments</h4>
-                            <ul class="review-list">
-                                <!-- Single Review List Start -->
-                                <li>
-                                    <span>Quality</span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </li>
-                                <!-- Single Review List End -->
-                                <!-- Single Review List Start -->
-                                <li>
-                                    <span>price</span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </li>
-                                <!-- Single Review List End -->
-                                <!-- Single Review List Start -->
-                                <li>
-                                    <span>value</span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </li>
-                                <!-- Single Review List End -->
-                            </ul>
+                            <!-- start review item -->
+                            <div id="comment_list">
+                                {{#each comments}}
+                                    <div class="review_item">
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img class="media-img" src="{{this.userAvatar}}" alt="user_image">
+                                            </div>
+                                            <div class="media-body">
+                                                <h4>{{this.nickname}}</h4>
+                                                <h5>{{this.createAt}}</h5>
+                                            </div>
+                                        </div>
+                                        <p>{{this.content}}</p>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        <!-- review item end here-->
                         </div>
                         <!-- Reviews End -->
+
                         <!-- Reviews Start -->
                         <div class="review border-default universal-padding mt-30">
-                            <h2 class="review-title mb-30">You're reviewing: <span>Gym product</span></h2>
-                            <p class="review-mini-title">Your rating</p>
-                            <ul class="review-list">
-                                <!-- Single Review List Start -->
-                                <li>
-                                    <span>Quality</span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </li>
-                                <!-- Single Review List End -->
-                                <!-- Single Review List Start -->
-                                <li>
-                                    <span>price</span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </li>
-                                <!-- Single Review List End -->
-                                <!-- Single Review List Start -->
-                                <li>
-                                    <span>value</span>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </li>
-                                <!-- Single Review List End -->
-                            </ul>
+                            <h2 class="review-title mb-30">You're reviewing: <span>{{product.name}}</span></h2>
                             <!-- Reviews Field Start -->
                             <div class="review-field mt-40">
-                                <form autocomplete="off" action="#">
+                                <form autocomplete="off" action="{{product._id}}/comments" method="post" id="comment_form">
+                                    {{#unless user}}
+                                        <div class="form-group">
+                                            <span style="color: #cc0000;">*</span>
+                                            <label class="req" for="sure-name">Nickname</label>
+                                            <input type="text" class="form-control" id="nickname" required name="nickname">
+                                        </div>
+                                    {{/unless}}
+                                    <input type="hidden" value="{{product._id}}" id="product_id">
                                     <div class="form-group">
-                                        <label class="req" for="sure-name">Nickname</label>
-                                        <input type="text" class="form-control" id="sure-name" required="required">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="req" for="subject">Summary</label>
-                                        <input type="text" class="form-control" id="subject" required="required">
-                                    </div>
-                                    <div class="form-group">
+                                        <span style="color: #cc0000;">*</span>
                                         <label class="req" for="comments">Review</label>
-                                        <textarea class="form-control" rows="5" id="comments" required="required"></textarea>
+                                        <textarea class="form-control" rows="5" id="comment_content" required name="content"></textarea>
                                     </div>
                                     <button type="submit" class="customer-btn">Submit Review</button>
                                 </form>
@@ -271,3 +225,17 @@
 </div>
 <!-- Related Products End Here -->
 <script src="/js/product_detail/main.js"></script>
+<script id="comment_template" type="text/x-handlebars">
+    <div class="review_item">
+        <div class="media">
+            <div class="d-flex">
+                <img class="media-img" src="\{{this.userAvatar}}" alt="user_image">
+            </div>
+            <div class="media-body">
+                <h4>\{{this.nickname}}</h4>
+                <h5>\{{this.createAt}}</h5>
+            </div>
+        </div>
+        <p>\{{this.content}}</p>
+    </div>
+</script>

@@ -3,12 +3,12 @@ const AuthService = require('../auth/AuthService');
 const UserService =require('./UserService');
 
 
+
 class UserController{
     
     //[GET] shopping cart
     async cart(req,res){
         console.log("USER: "+req.user)
-
         if(req.user!=null)
         {
             let username = req.user.username;
@@ -102,5 +102,7 @@ class UserController{
         req.session.passport.user.avatar = newAvatar;
         res.redirect('/user/account');
     }
+
+
 }
 module.exports = new UserController;

@@ -28,6 +28,20 @@ class ApiController{
         const error = await apiservice.uploadCart(username,productID,quantity);
         res.send({error});
     }
+    async postComment(req, res){
+        const productID = req.params.productID;
+        let userID = "";
+        let nickname = req.body.nickname;
+        let content = req.body.content;
+        let avatar = "https://anhdep123.com/wp-content/uploads/2020/11/avatar-facebook-mac-dinh-nam.jpeg";
+        if(req.user){
+            userID = req.user._id;
+            nickname = req.user.name;
+            avatar = req.user.avatar;
+        }
+        const comment = await apiservice.postComment(nickname, productID, userID, content, avatar);
+        res.status(201).json(comment);
+    }
 }
 
 module.exports = new ApiController;

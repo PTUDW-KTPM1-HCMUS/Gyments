@@ -1,4 +1,8 @@
 const Product = require('./model/ProductModel');
+const Comment = require("../users/model/review");
+
+
+
 // get all products in database
 const getAllProduct = async(reqPage, categoryID, min, max) => {
     let products = [];
@@ -143,4 +147,17 @@ const searchByDescription = async (description, reqPage) => {
     }
     return [products, pages];
 }
-module.exports = {getAllProduct , getProduct, getByCategoryID, getPriceRange, searchByDescription};
+const getComment = async (productID) =>{
+    const comments = await Comment.find({productID: productID}).lean();
+    return comments;
+}
+const postComment = async (nickname, productID, userID, content, avatar) => {
+    const comment = await Comment.create({
+        userID: userID,
+        userAvatar: avatar,
+        nickname: nickname,
+        productID: productID,
+        content: content
+    });
+}
+module.exports = {getAllProduct , getProduct, getByCategoryID, getPriceRange, searchByDescription, postComment, getComment};

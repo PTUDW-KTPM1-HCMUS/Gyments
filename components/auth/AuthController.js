@@ -49,7 +49,7 @@ class AuthController {
     }
 
     async register(req,res){
-        const {name, email,username,password,confirmpass} = req.body;
+        const {email,username,password,confirmpass} = req.body;
         const check=await service.findOneAccount(username);
         if(check){
             res.redirect('/login/register?username_existed');
@@ -70,7 +70,7 @@ class AuthController {
                         res.redirect('/login/register?wrong-confirm');
                     }
                     else{
-                        const user = await service.register(name, email,username,password,confirmpass);
+                        const user = await service.register(email,username,password,confirmpass);
                         // auto login after register success
                         passport.authenticate('local')(req, res, function () {
                             res.redirect('/');

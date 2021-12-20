@@ -1,10 +1,11 @@
 const Cart = require('../users/model/cart');
 const Product = require('../products/model/ProductModel')
+const Comment = require("../users/model/review");
 
 const uploadCart = async(username,productID,quantity)=>{
     try{
         let tmp = []
-        let userCart = await Cart.findOne({customerID: username}).lean();
+        let userCart = await Cart.findOne({customer: username}).lean();
         let temp = await Product.findOne({_id:productID}).lean();
 
         temp.inCart = parseInt(quantity);
@@ -14,7 +15,7 @@ const uploadCart = async(username,productID,quantity)=>{
 
         if(!userCart){
             await Cart.create({
-                customerID: username,
+                customer: username,
                 products: temp,
                 totalPrice: temp.totalPrice,
             });
@@ -33,7 +34,7 @@ const uploadCart = async(username,productID,quantity)=>{
             });
 
             if(check ==false ){
-                updateCart = await Cart.findOneAndUpdate({customerID:username},{
+                updateCart = await Cart.findOneAndUpdate({customer:username},{
                     $push: {
                         products:temp,
                     }
@@ -41,7 +42,7 @@ const uploadCart = async(username,productID,quantity)=>{
                
             }
             else{
-                updateCart = await Cart.findOneAndUpdate({customerID:username},{
+                updateCart = await Cart.findOneAndUpdate({customer:username},{
                     products: userCart.products,
                 });
                 
@@ -54,6 +55,15 @@ const uploadCart = async(username,productID,quantity)=>{
         return 1;
     }
 }
+const postComment = async (nickname, productID, userID, content, avatar) => {
+    const comment = await Comment.create({
+        userID: userID,
+        userAvatar: avatar,
+        nickname: nickname,
+        productID: productID,
+        content: content
+    });
+    return comment;
+}
 
-
-module.exports = {uploadCart};
+module.exports = {uploadCart, postComment};

@@ -609,7 +609,7 @@ ul {
     border: 1px solid #ebebeb;
     -webkit-box-shadow: none;
     box-shadow: none;
-    width: 60%;
+    width: 100%;
 }
 
 .review-field label {
@@ -713,4 +713,49 @@ ul {
     from {opacity: .4}
     to {opacity: 1}
 }
+/* customer review */
+.review_item{
+    margin-bottom:10px
+}
+.review_item:last-child{
+    margin-bottom:0px
+}
+.review_item .media{
+    position:relative
+}
+.review_item .media .d-flex{
+    padding-right:15px
+}
+.media .d-flex{
+    padding-right:30px
+}
+.media .d-flex img{
+    border-radius: 50%;
+    max-width: 100px;
+    height: 80px;
+}
+.review_item .media .media-body{
+    vertical-align:middle;
+    align-self:center
+}
+.review_item .media .media-body h4{
+    font-size:16px;
+    color:#222;
+    margin-bottom:4px
+}
+.review_item .media .media-body i{
+    color:#fbd600
+}
+.review_item .media .media-body h5{
+    font-size:13px;
+    font-weight:normal;
+    color:#777
+}
 
+.review_item p{
+    padding-top:10px;
+    margin-bottom:0px
+}
+.review_item.reply{
+    padding-left:28px
+}

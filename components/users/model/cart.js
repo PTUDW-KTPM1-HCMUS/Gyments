@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const cartSchema = new mongoose.Schema({
-    customerID: {
+    customer: {
         type: "string",
         default: null
     },

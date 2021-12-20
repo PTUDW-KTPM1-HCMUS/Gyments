@@ -1,20 +1,19 @@
 const Cart = require('./model/cart');
-const Product = require('../products/model/ProductModel')
 const AuthModel = require('../auth/AccountModel');
 const cloudinary = require('../../utils/cloudinary');
-
+const Comment = require('./model/review');
 
 const getCartPage = async (username)=>{
     let cart = null;
     try{
-        cart = await Cart.findOne({customerID:username});
+        cart = await Cart.findOne({customer:username});
         if(cart!=null)
         {
             let cost = 0;
             cart.products.map(item=>{
             cost +=item.totalPrice;
         })
-        cart = await Cart.findOneAndUpdate({customerID:username},{totalPrice:cost});}
+        cart = await Cart.findOneAndUpdate({customer:username},{totalPrice:cost});}
         return cart;
     }catch(err){
         console.log(err);
@@ -40,7 +39,9 @@ const changeavatar = async (avatarDetail, userID) => {
     avatar = imgResult.secure_url;
     avatarID = imgResult.public_id;
     await AuthModel.updateOne({_id: userID}, {$set: {avatar: avatar, avatarID: avatarID}});
+    await Comment.updateMany({userID: userID}, {$set: {userAvatar: avatar}});
     return avatar;
 }
+
 
 module.exports = {getCartPage, changename, changeemail, changeaddress, changephone, changeavatar};

@@ -16,4 +16,6 @@ router.post('/account/changeaddress', guard.loginGuard, userController.changeadd
 router.post('/account/changephone', guard.loginGuard, userController.changephone);
 router.post('/account/changeavatar', guard.loginGuard, upload.single("avatar"), userController.changeavatar);
 
+
+
 module.exports = router;
