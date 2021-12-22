@@ -19,9 +19,13 @@
                 </thead>
                 <tbody class = "product-container">
                     {{#if user}}
+
                     {{#each cart.products}}
                     <tr>
-                        <td><a href ="#" ><i class = "fa fa-trash"></i></a></td>
+                        <td style="text-align: center;"><a href ="#" ><i class = "fa fa-trash" onclick="handleRemove(event)" id ={{this._id}}></i></a>
+                        <div class="loader remove-loader" id="remove-cart-loader-{{this._id}}" style="display: none;">
+                        </div>
+                        </td>
                         <td><img src = {{this.images.[0]}} alt=""></td>
                         <td><h5>{{this.name}}</h5></td>
                         <td><h5>${{this.price}}</h5></td>
@@ -31,6 +35,7 @@
                     {{/each}}
 
                     {{else}}
+                    
                     {{/if}}
                     
                 </tbody>
@@ -69,6 +74,11 @@
                             <h6>Total</h6>
                             <p>${{total}}</p>
                         </div>
+                        {{else}}
+                        <div class="d-flex justify-content-between">
+                            <h6>Total</h6>
+                            <p>$0</p>
+                        </div>
                         {{/if}}
                         <button class = "cart-button checkout ml-auto">CHECK OUT</button>
                     </div>
@@ -95,7 +105,25 @@
                 </div>
                 {{/if}}
                 {{else}}
-                
+                <div class = "cart-bottom-content">
+                    <h5>CART TOTAL</h5>
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <h6>Subtotal</h6>
+                            <p>$0</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6>Shipping</h6>
+                            <p>$0</p>
+                        </div>
+                        <hr class="second-hr"> 
+                        <div class="d-flex justify-content-between">
+                            <h6>Total</h6>
+                            <p>$0</p>
+                        </div>
+                        <button class = "cart-button checkout ml-auto">CHECK OUT</button>
+                    </div>
+                </div>
                 {{/if}}
             </div>
         </div>

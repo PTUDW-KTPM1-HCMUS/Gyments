@@ -113,7 +113,8 @@ function displayCart(){
             Object.values(CartItems).map(item=>{
                 productContainer.innerHTML+=`
                 <tr>
-                    <td><a href ="#" ><i class = "fa fa-trash"></i></a></td>
+                    <td style="text-align: center;"><a href ="#" ><i class = "fa fa-trash" onclick="handleRemove(event)" id =${item._id}></i></a>
+                        <div class="loader remove-loader" id="remove-cart-loader-${item._id}" style="display: none;"></div>
                     <td><img src = "${item.images[0]}" alt=""></td>
                     <td><h5>${item.name}</h5></td>
                     <td><h5>$${item.price}</h5></td>
@@ -177,6 +178,7 @@ function upApi(event){
                     let check =0;
                     Object.values(CartItems).map(item=>{
                         url = window.location.origin +`/api/product/${item._id}?quantity=${item.inCart}`;
+                        
                         fetch(url,{
                             method: 'POST',
                             body: JSON.stringify({userID}),
@@ -188,12 +190,12 @@ function upApi(event){
                         .then(data => {
                             console.log(data.error);
                              if(data.error===0){
-                            //     setTimeout(()=>{
-                            //         window.location.assign(window.location.origin+`/user/cart`);
-                            //     },200);
+                                
                                 check+=1;
                                 if(check==count)
-                                    window.location.assign(window.location.origin+`/user/cart`);
+                                {
+                                    setTimeout(()=>{window.location.assign(window.location.origin+`/user/cart`);},200);
+                            }
                             }
                             
                         })
@@ -219,3 +221,60 @@ function upApi(event){
 
 displayCart();
 
+function handleRemove(e){
+    e.preventDefault();
+    if(userID!="null"){
+        if (e.target.id) {
+            const loader = document.getElementById(`remove-cart-loader-${e.target.id}`);
+            const url = window.location.origin + `/api/product/${e.target.id}`;
+    
+            //display loader
+            e.target.style.display = 'none';
+            loader.style.display = 'block';
+            console.log(url);
+            fetch(url, {
+                method: 'DELETE',
+                body: JSON.stringify({ userID }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error === 0) {
+                        console.log(data.error);
+                        e.target.parentElement.parentElement.parentElement.remove();
+                    }
+                })
+        } else {
+            //deal with local storage
+            e.target.parentElement.parentElement.parentElement.remove();
+        }
+    
+    } 
+    else{   
+        e.target.parentElement.parentElement.parentElement.remove();
+        let CartItems = localStorage.getItem("productsInCart");
+        let Total = localStorage.getItem("TotalCost");
+        CartItems = JSON.parse(CartItems);
+        let count=0;
+        let products =[];
+        Object.values(CartItems).map(item=>{
+
+            if(item._id==e.target.id){
+                Total-=parseInt(item.total);
+                localStorage.setItem("TotalCost",Total);
+            }
+            else{
+                count+=parseInt(item.inCart);
+                products.push(item);
+            }
+        });
+        localStorage.removeItem("productsInCart");
+        localStorage.setItem("productsInCart",JSON.stringify(products));
+        localStorage.setItem("cartNumbers",count);
+    }
+}
+function reloadTotal(){
+
+}
