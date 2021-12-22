@@ -42,6 +42,12 @@ class ApiController{
         const comment = await apiservice.postComment(nickname, productID, userID, content, avatar);
         res.status(201).json(comment);
     }
+    async delete_product(req,res){
+        const username = req.user.username;
+        const productID = req.params.productID;
+        const error= await apiservice.deleteFromCart(username,productID);
+        res.send({error});
+    }
 }
 
 module.exports = new ApiController;

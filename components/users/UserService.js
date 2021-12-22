@@ -13,6 +13,7 @@ const getCartPage = async (username)=>{
             cart.products.map(item=>{
             cost +=item.totalPrice;
         })
+        
         cart = await Cart.findOneAndUpdate({customer:username},{totalPrice:cost});}
         return cart;
     }catch(err){

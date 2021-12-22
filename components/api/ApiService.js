@@ -65,5 +65,21 @@ const postComment = async (nickname, productID, userID, content, avatar) => {
     });
     return comment;
 }
-
-module.exports = {uploadCart, postComment};
+const deleteFromCart = async ( username,productID)=>{
+    try{
+        updateCart = await Cart.findOne({customer:username});
+        for (let i = 0; i < updateCart.products.length; i++) {
+            if (updateCart.products[i]._id == productID) {
+                updateCart.totalPrice -= parseInt(updateCart.products[i].totalPrice);
+                updateCart.products.splice(i, 1);
+            }
+        }
+        await updateCart.save();
+        console.log(JSON.stringify(updateCart));
+        return 0;
+    }catch(err){
+        console.log(err);
+        return 1;
+    }
+}
+module.exports = {uploadCart, postComment,deleteFromCart};
