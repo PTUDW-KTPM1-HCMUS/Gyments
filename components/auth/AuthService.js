@@ -39,3 +39,6 @@ exports.changepass = async(user,password)=>{
     return User.findOneAndUpdate({username:user.username},{password:hashpass});
 }
 
+exports.activeAccount =async(email_)=>{
+    return user= await User.findOneAndUpdate({email:email_},{status:1});
+}
