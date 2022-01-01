@@ -12,7 +12,7 @@ const accountSchema = new mongoose.Schema({
     status: {
         type: "boolean",
         require: true,
-        default: 1 // true is active, false is banned
+        default: 0 // true is active, false is banned
     },
     email: { //email is email of user
         type: "string",

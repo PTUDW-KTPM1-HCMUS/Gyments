@@ -71,10 +71,10 @@ class AuthController {
                     }
                     else{
                         const user = await service.register(email,username,password,confirmpass);
-                        // auto login after register success
-                        passport.authenticate('local')(req, res, function () {
-                            res.redirect('/');
-                        })
+                        const verify = await nodemailer.verify(req.headers.host,email);
+                        
+                        res.redirect('/login');
+                        
                     }
                 }
             }
@@ -106,7 +106,11 @@ class AuthController {
             }
         }
     }
-
+    async verifyAccount(req,res){
+        const email = req.params.email;
+        await service.activeAccount(email);
+        res.redirect('/login');
+    }
 }
 
 module.exports = new AuthController;
