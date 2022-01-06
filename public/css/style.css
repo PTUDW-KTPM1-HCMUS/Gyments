@@ -1323,3 +1323,8 @@ slider_section .img_slider img {
   background-color: transparent;
   color: #ee316b;
 }
+
+/* check out */
+.order {
+  border-right: solid rgb(204, 204, 204) 2px; 
+}
