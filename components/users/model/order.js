@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    orderID: {
-        type: "string",
-        require: true
-    },
     date: {
         type: "string",
         require: true
@@ -19,14 +15,19 @@ const orderSchema = new mongoose.Schema({
     },
     shipCost: {
         type: "number",
-        default: 0
+        default: 30
     },
     status: {
         type: "string", // Delivered or not
         require: true
     },
-    couponID: {
-        type: "string"
+    products: { // list of products
+        type: "array",
+        default: []
+    },
+    address:{
+        type: "string",
+        default: ""
     }
 });
 

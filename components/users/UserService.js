@@ -1,4 +1,5 @@
 const Cart = require('./model/cart');
+const Order = require('./model/order');
 const AuthModel = require('../auth/AccountModel');
 const cloudinary = require('../../utils/cloudinary');
 const Comment = require('./model/review');
@@ -43,6 +44,31 @@ const changeavatar = async (avatarDetail, userID) => {
     await Comment.updateMany({userID: userID}, {$set: {userAvatar: avatar}});
     return avatar;
 }
+const getCart = async (username)=>{
+    let cart = null;
+    cart = await Cart.findOne({customer:username});
+    return cart;
+}
+const createOrder = async (username)=>{
+
+    let cart = await Cart.findOne({customer:username});
+    if(cart!= null)
+    {
+        let order = null;
+        order = await Order.create({
+            customerID:cart.customer,
+            totalCost: Math.ceil(parseInt(cart.totalPrice)+30),
+            products: cart.products,
+            date: Date.now(),
+            
+        });
+        cart.products = [];
+        cart.totalPric= 0;
+        await cart.save();
+        return order;
+    }
+    return null;
+}
 
 
-module.exports = {getCartPage, changename, changeemail, changeaddress, changephone, changeavatar};
+module.exports = {getCartPage, changename, changeemail, changeaddress, changephone, changeavatar,createOrder,getCart};

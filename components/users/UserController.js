@@ -28,13 +28,13 @@ class UserController{
     }
 
     //[GET] account page
-    account(req,res){
+    async account(req,res){
         const phone_existed =req.query['phone_existed']!== undefined;
         const email_existed =req.query['email_existed']!== undefined;
         res.render('users/views/account', {phone_existed, email_existed});
     }
 
-    changepassPage(req,res){
+    async changepassPage(req,res){
         const wrongpass = req.query['wrong-pass']!==undefined;
         const wrongconfirm  =req.query['wrong-confirm']!==undefined;
         const short = req.query['short']!==undefined;
@@ -103,6 +103,15 @@ class UserController{
         res.redirect('/user/account');
     }
 
+    async checkoutPage(req,res){
+        const cart = await UserService.getCartPage(req.user.username);
+        let total = Math.ceil(parseInt(cart.totalPrice) + 30);
+        res.render('users/views/checkout',{cart:cart, total:total});
+    }
 
+    async checkout(req,res){
+        const order = await UserService.createOrder(req.user.username);
+        res.redirect('/');
+    }
 }
 module.exports = new UserController;

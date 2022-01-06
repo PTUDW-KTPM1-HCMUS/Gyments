@@ -5,6 +5,9 @@ const { route } = require('../auth/auth');
 const guard = require('../auth/AuthController');
 const upload = require('../../utils/multer');
 
+router.post('/checkout',userController.checkout);
+router.get('/checkout',userController.checkoutPage);
+
 router.get('/cart', userController.cart);
 router.get('/account', guard.loginGuard, userController.account);
 router.get('/logout',guard.loginGuard, userController.logOut);
