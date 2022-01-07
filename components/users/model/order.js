@@ -28,6 +28,9 @@ const orderSchema = new mongoose.Schema({
     address:{
         type: "string",
         default: ""
+    },
+    receiver:{
+        type:"string",
     }
 });
 

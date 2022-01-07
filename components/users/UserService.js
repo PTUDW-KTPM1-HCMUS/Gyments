@@ -49,7 +49,7 @@ const getCart = async (username)=>{
     cart = await Cart.findOne({customer:username});
     return cart;
 }
-const createOrder = async (username)=>{
+const createOrder = async (username,name,address,phone)=>{
 
     let cart = await Cart.findOne({customer:username});
     if(cart!= null)
@@ -60,7 +60,9 @@ const createOrder = async (username)=>{
             totalCost: Math.ceil(parseInt(cart.totalPrice)+30),
             products: cart.products,
             date: Date.now(),
-            
+            address: address,
+            phone: phone,
+            receiver: name
         });
         cart.products = [];
         cart.totalPrice= 0;

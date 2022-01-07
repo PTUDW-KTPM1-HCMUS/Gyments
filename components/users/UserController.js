@@ -11,8 +11,8 @@ class UserController{
         if(req.user!=null)
         {
             const username = req.user.username;
+            
             const cart_ =await UserService.getCartPage(username);
-
             if(parseInt(cart_.totalPrice)!=0){
                 res.render('users/views/cart',{cart:cart_,check:true});
             }
@@ -115,7 +115,9 @@ class UserController{
     }
 
     async checkout(req,res){
-        const order = await UserService.createOrder(req.user.username);
+        const {name,address,phone}=req.body;
+        console.log(name + address+ phone);
+        const order = await UserService.createOrder(req.user.username,name,address,phone);
         
         res.redirect('/');
     }
