@@ -109,12 +109,10 @@ function displayCart(){
         let productContainer = document.querySelector(".product-container");
         let totalContainer = document.querySelector(".cart-bottom-content");
         console.log(totalContainer);
-        totalContainer.innerHTML+=`
-            <button class="custom-btn btn btn-primary">CHECK OUT</button>
-            `
+        
         if(CartItems &&  productContainer){
             productContainer.innerHTML="";
-            totalContainer.innerHTML="";
+            
             
             Object.values(CartItems).map(item=>{
                 productContainer.innerHTML+=`
@@ -129,9 +127,14 @@ function displayCart(){
                 </tr>
                 `
             });
-            console.log("TEST");
             
-            console.log(totalContainer);
+        }
+        if(totalContainer)
+        {
+            totalContainer.innerHTML="";
+            totalContainer.innerHTML+=`
+                <button onclick="checkOut(event)" class="custom-btn btn btn-primary">CHECK OUT</button> 
+            `
         }
     }
     else{
@@ -263,6 +266,18 @@ function handleRemove(e){
         localStorage.setItem("cartNumbers",count);
     }
 }
-function reloadTotal(){
+function checkOut(e){
+    e.preventDefault();
+    if(userID!="null"){
+        
+        let temp=document.querySelector('.product-item');
+        //temp = JSON.stringify(temp);
+        console.log(temp);
+        if(temp){
+            window.location.assign(window.location.origin+`/user/checkout`);
+        }
+    }
+    else{
 
+    }
 }

@@ -75,7 +75,7 @@ const deleteFromCart = async ( username,productID)=>{
             }
         }
         await updateCart.save();
-        console.log(JSON.stringify(updateCart));
+        
         return 0;
     }catch(err){
         console.log(err);
