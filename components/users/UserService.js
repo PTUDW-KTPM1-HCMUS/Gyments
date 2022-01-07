@@ -63,7 +63,7 @@ const createOrder = async (username)=>{
             
         });
         cart.products = [];
-        cart.totalPric= 0;
+        cart.totalPrice= 0;
         await cart.save();
         return order;
     }

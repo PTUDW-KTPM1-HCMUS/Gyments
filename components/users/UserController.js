@@ -10,11 +10,16 @@ class UserController{
     async cart(req,res){
         if(req.user!=null)
         {
-            let username = req.user.username;
-            let cart_ =await UserService.getCartPage(username);
-            let subtotal = Math.ceil(cart_.totalPrice + 30);
+            const username = req.user.username;
+            const cart_ =await UserService.getCartPage(username);
+
+            if(parseInt(cart_.totalPrice)!=0){
+                res.render('users/views/cart',{cart:cart_,check:true});
+            }
+            else{
+                res.render('users/views/cart',{cart:cart_,check:null});
+            }
             
-            res.render('users/views/cart',{cart:cart_,total:subtotal});
         }
         else{
             res.render('users/views/cart');
@@ -111,6 +116,7 @@ class UserController{
 
     async checkout(req,res){
         const order = await UserService.createOrder(req.user.username);
+        
         res.redirect('/');
     }
 }

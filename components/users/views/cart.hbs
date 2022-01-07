@@ -21,7 +21,7 @@
                     {{#if user}}
 
                     {{#each cart.products}}
-                    <tr>
+                    <tr class ="product-item">
                         <td style="text-align: center;"><a href ="#" ><i class = "fa fa-trash" onclick="handleRemove(event)" id ={{this._id}}></i></a>
                         <div class="loader remove-loader" id="remove-cart-loader-{{this._id}}" style="display: none;">
                         </div>
@@ -48,8 +48,8 @@
             <div class = "coupon col-lg-6 col-md-6 col-12 mb-4" style="padding-right: 0;">
                 
                 <div class = "cart-bottom-content">
-                    {{#if user}}
-                    <a href = "/user/checkout" class ="ml-auto"><button class="custom-btn btn btn-primary">CHECK OUT</button></a>
+                    {{#if user}}                 
+                        <button onclick="checkOut(event)" class="custom-btn btn btn-primary">CHECK OUT</button>      
                     {{else}}
                     {{/if}}
                 </div>     
