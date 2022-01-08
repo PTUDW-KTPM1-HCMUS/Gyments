@@ -278,6 +278,6 @@ function checkOut(e){
         }
     }
     else{
-
+        window.location.assign(window.location.origin+`/login`);
     }
 }
