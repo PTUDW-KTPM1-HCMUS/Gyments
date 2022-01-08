@@ -4,7 +4,7 @@
             <form action="/user/changepass" method="POST">
             <div class="form-group">
                 <label for="exampleInputPassword">Old Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name ="oldpassword">
+                <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name ="oldpassword" required>
                 
             </div>
             {{#if wrongpass}}
@@ -18,7 +18,7 @@
             {{/if}}
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name ="password" >
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name ="password" required>
             </div>
             {{#if short}}
 <!--                <h4 style="color:red">Password must have at least 8 characters</h4>-->
@@ -31,7 +31,7 @@
             {{/if}}
             <div class="form-group">
                 <label for="exampleInputPassword2">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password" name="confirmpass" >
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password" name="confirmpass" required>
             </div>
             {{#if wrongconfirm}}
 <!--                <h4 style="color:red">Confirm your password again</h4>-->
