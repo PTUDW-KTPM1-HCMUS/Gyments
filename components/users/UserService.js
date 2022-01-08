@@ -88,4 +88,9 @@ const findHistoryOrder = async (username) => {
     return products.slice(0, 6);
 }
 
-module.exports = {getCartPage, changename, changeemail, changeaddress, changephone, changeavatar, createOrder, getCart, findHistoryOrder};
+const findOrder = async (username) => {
+    return Order.find({customerID: username}).lean();
+
+}
+
+module.exports = {getCartPage, changename, changeemail, changeaddress, changephone, changeavatar, createOrder, getCart, findHistoryOrder, findOrder};

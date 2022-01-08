@@ -122,5 +122,13 @@ class UserController{
 
         res.redirect('/');
     }
+
+    async showOrder(req,res){
+        let orders = null;
+        orders = await UserService.findOrder(req.user.username);
+
+        res.render('users/views/order',{orders});
+    }
+
 }
 module.exports = new UserController;

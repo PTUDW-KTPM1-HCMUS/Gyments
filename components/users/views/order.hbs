@@ -1,0 +1,136 @@
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/fonts/icomoon/style.css">
+
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+<!-- Style -->
+<link rel="stylesheet" href="/css/style2.css">
+<!-- products section -->
+<section class="product_section layout_padding">
+    <div class="container-fluid">
+        <div class="heading_container heading_center">
+            <h2>
+                Orders
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-5">
+                <div class="sidebar-categories">
+                    <form action="#" method="get">
+                        <div class="head">Order Filter</div>
+                        <ul class="main-categories">
+                            <li class="common-filter">
+                                <ul>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Delivery" name="Delivery"><label for="Whey">Delivery</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Success" name="Success"><label for="Dumbbells">Success</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Fail" name="Fail"><label for="Nutrients">Fail</label></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="head">Cost Range</div>
+                        <div class="price-range-slider">
+                            <p class="range-value">
+                                <input type="text" id="amount" readonly name="cost">
+                            </p>
+                            <div id="slider-range" class="range-bar"></div>
+                        </div>
+                        <div class="filter-btn">
+                            <button type="submit">Filter</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <div class="product_container">
+                    <div class="content">
+                        <div class="container">
+                            <div class="table-responsive">
+                                <table class="table custom-table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Products</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Cost</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{#each orders}}
+                                        <tr>
+                                            <td>{{this.date.day}}</td>
+                                            <td>
+                                                {{this.address}}
+                                                <small class="d-block"> Receiver: {{this.receiver}}</small>
+                                            </td>
+                                            <td>
+                                                {{#each this.products}}
+                                                    <img src={{this.images.[0]}} alt="{{this.name}}" class="img-fluid" style="height: 30px; width: 30px; border-radius: 50%">
+                                                    {{this.name}}<br>
+                                                {{/each}}
+                                            </td>
+                                            <td>{{this.status}}</td>
+                                            <td>
+                                                {{this.totalCost}}
+                                                (ship: {{this.shipCost}})
+                                            </td>
+                                        </tr>
+
+                                    {{/each}}
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col pt-5">
+            <ul class="pagination pagination-md justify-content-center">
+
+                <li class="page-item">
+                    <a class="page-link" href="/user/order?page={{previous}}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                {{#each pages}}
+                    <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="/user/order?{{this.pageLink}}">{{this.currentPage}}</a></li>
+                {{/each}}
+                <li class="page-item">
+                    <a class="page-link"  href="/user/order?page={{next}}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="getCurPage" name = {{currentPage}}></div>
+        </div>
+
+    </div>
+</section>
+<script src="/js/orderPagination.js"></script>
+<!-- end product section -->
+
+
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
