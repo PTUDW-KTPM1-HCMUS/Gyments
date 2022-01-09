@@ -117,10 +117,9 @@ class UserController{
 
     async checkout(req,res){
         const {name,address,phone}=req.body;
-        console.log(name + address+ phone);
-        const order = await UserService.createOrder(req.user.username,name,address,phone);
+        const error = await UserService.createOrder(req.user.username,name,address,phone);
 
-        res.redirect('/');
+        res.send({error});
     }
 
     async showOrder(req,res){

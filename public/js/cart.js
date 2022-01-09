@@ -9,7 +9,7 @@ let productIDs = document.querySelectorAll('.p_cart .detail-product-id');
 
 for(let i =0;i<carts.length;i++){
         let tmp = productIDs[i].getAttribute('name');
-        console.log("TMP: "+tmp);
+        
         url = window.location.origin +`/api${tmp}`;
         fetch(url,{
             method: 'GET',
@@ -115,7 +115,11 @@ function displayCart(){
                 productContainer.innerHTML+=`
                 <tr>
                     <td style="text-align: center;"><a href ="#" ><i class = "fa fa-trash" onclick="handleRemove(event)" id =${item._id}></i></a>
-                        <div class="loader remove-loader" id="remove-cart-loader-${item._id}" style="display: none;"></div>
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status" id="remove-cart-loader-${item._id}" style="display: none;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
                     <td><img src = "${item.images[0]}" alt=""></td>
                     <td><h5>${item.name}</h5></td>
                     <td><h5>$${item.price}</h5></td>
@@ -176,7 +180,7 @@ function upApi(event){
                         })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data.error);
+                            
                              if(data.error===0){
                                 
                                 check+=1;
@@ -215,7 +219,7 @@ function handleRemove(e){
         if (e.target.id) {
             const loader = document.getElementById(`remove-cart-loader-${e.target.id}`);
             const url = window.location.origin + `/api/product/${e.target.id}`;
-    
+            
             //display loader
             e.target.style.display = 'none';
             loader.style.display = 'block';
@@ -230,7 +234,7 @@ function handleRemove(e){
                 .then(res => res.json())
                 .then(data => {
                     if (data.error === 0) {
-                        console.log(data.error);
+                        
                         e.target.parentElement.parentElement.parentElement.remove();
                     }
                 })
@@ -241,7 +245,7 @@ function handleRemove(e){
     
     } 
     else{   
-        e.target.parentElement.parentElement.parentElement.remove();
+        
         let CartItems = localStorage.getItem("productsInCart");
         let Total = localStorage.getItem("TotalCost");
         CartItems = JSON.parse(CartItems);
@@ -261,6 +265,16 @@ function handleRemove(e){
         localStorage.removeItem("productsInCart");
         localStorage.setItem("productsInCart",JSON.stringify(products));
         localStorage.setItem("cartNumbers",count);
+
+        const loader = document.getElementById(`remove-cart-loader-${e.target.id}`);
+        const url = window.location.origin + `/api/product/${e.target.id}`;
+        console.log(loader);
+        loader.style.display = 'block';
+        e.target.style.display = 'none';
+        setTimeout(()=>{
+            e.target.parentElement.parentElement.parentElement.remove();
+        },250);
+        
     }
 }
 function checkOut(e){
@@ -275,7 +289,7 @@ function checkOut(e){
         }
     }
     else{
-        //window.location.assign(window.location.origin+`/login`);
+        window.location.assign(window.location.origin+`/login`);
         localStorage.setItem("check",1);
         
         
@@ -296,11 +310,37 @@ else if(parseInt(check)===1){
     content.innerHTML+=`Please login first`;
     $('#notice').modal('show');
 }
-
-function resetCheck(){
-    localStorage.clear();
+else if(parseInt(check)===2){
+    let title = document.querySelector('.modal-title');
+    title.innerHTML ="";
+    title.innerHTML+=`Notification`;
+    let content = document.querySelector('.modal-body');
+    content.innerHTML="";
+    content.innerHTML+=`Check out successfull`;
+    $('#notice').modal('show');
 }
 
+function resetCheck(){
+    localStorage.removeItem("check");
+}
+
+function CheckOutSuccess(e){
+    e.preventDefault();
+    url = window.location.origin +`/user/checkout`;
+    fetch(url,{
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.error===1){
+            window.location.assign(window.location.origin+`/`);
+            localStorage.setItem("check",2);
+        }
+    })
+}
 
 
 
