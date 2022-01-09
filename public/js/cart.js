@@ -7,7 +7,6 @@ let userID = document.getElementById('user-id').getAttribute('name');
 
 let productIDs = document.querySelectorAll('.p_cart .detail-product-id');
 
-
 for(let i =0;i<carts.length;i++){
         let tmp = productIDs[i].getAttribute('name');
         console.log("TMP: "+tmp);
@@ -108,12 +107,10 @@ function displayCart(){
     {
         let productContainer = document.querySelector(".product-container");
         let totalContainer = document.querySelector(".cart-bottom-content");
-        console.log(totalContainer);
         
         if(CartItems &&  productContainer){
             productContainer.innerHTML="";
-            
-            
+                   
             Object.values(CartItems).map(item=>{
                 productContainer.innerHTML+=`
                 <tr>
@@ -279,5 +276,30 @@ function checkOut(e){
     }
     else{
         window.location.assign(window.location.origin+`/login`);
+        localStorage.setItem("check",1);
+        displayModal();
     }
 }
+
+
+let check = localStorage.getItem("check");
+if(parseInt(check)===0){
+    $('#notice').modal('hide');
+}
+else if(parseInt(check)===1){
+    let title = document.querySelector('.modal-title');
+    title.innerHTML ="";
+    title.innerHTML+=`Notification`;
+    let content = document.querySelector('.modal-body');
+    content.innerHTML="";
+    content.innerHTML+=`Please login first`;
+    $('#notice').modal('show');
+}
+
+function resetCheck(){
+    localStorage.clear();
+}
+
+
+
+
