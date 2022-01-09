@@ -88,7 +88,7 @@ const findHistoryOrder = async (username) => {
     return products.slice(0, 6);
 }
 
-const findOrder = async (username, page) => {
+const findOrderList = async (username, page) => {
     let orders = [];
     orders = await Order.find({customerID: username}).lean();
     let next = null;
@@ -120,4 +120,15 @@ const findOrder = async (username, page) => {
     };
 }
 
-module.exports = {getCartPage, changename, changeemail, changeaddress, changephone, changeavatar, createOrder, getCart, findHistoryOrder, findOrder};
+
+const findOrder = async (orderID) => {
+    let orders = await Order.find({_id: orderID}).lean();
+    if (!orders)
+        return null;
+    return orders[0];
+
+}
+
+
+
+module.exports = {getCartPage, changename, changeemail, changeaddress, changephone, changeavatar, createOrder, getCart, findHistoryOrder, findOrderList,findOrder};

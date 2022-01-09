@@ -10,6 +10,7 @@ router.get('/checkout',userController.checkoutPage);
 
 router.get('/cart', userController.cart);
 router.get('/order', userController.showOrder);
+router.get('/order/:orderID', userController.showOrderDetail);
 
 router.get('/account', guard.loginGuard, userController.account);
 router.get('/logout',guard.loginGuard, userController.logOut);

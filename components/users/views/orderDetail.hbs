@@ -1,0 +1,99 @@
+
+<!-- Product detail css -->
+<link rel="stylesheet" href="/css/product_detail/product_detail.css">
+<!-- Owl carousel css -->
+<link rel="stylesheet" href="/css/product_detail/owl.carousel.min.css">
+<!-- Custom css -->
+<link rel="stylesheet" href="/css/product_detail/default.css">
+<!-- Product Thumbnail Start  -->
+<div class="main-product-thumbnail p-t-100 ptb-sm-60">
+    <div class="container">
+        <div class="thumb-bg">
+            <div class="row">
+                <!-- Main Thumbnail Image Start -->
+                <div class="col-lg-5 mb-all-40">
+                    <div class="slideshow-container">
+                        <!-- Full-width images with number and caption text -->
+                        {{#each order.products}}
+                            {{#each this.images}}
+                                <div class="mySlides fade_1">
+                                    <img src="{{this}}" style="width:100%">
+                                </div>
+                            {{/each}}
+                        {{/each}}
+
+                        <!-- Next and previous buttons -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+                    <!-- The dots/circles -->
+                    <div style="text-align:center">
+                        {{#each order.products.images}}
+                            <span class="dot" onclick="currentSlide(1)"></span>
+                        {{/each}}
+                    </div>
+                </div>
+                <!-- Main Thumbnail Image End -->
+                <!-- Thumbnail Description Start -->
+                <div class="col-lg-7">
+                    <div class="thubnail-desc fix">
+                        <h3 class="product-header">{{order.receiver}}</h3>
+
+                        <div class="rating-summary fix mtb-10">
+                            <div class="rating">
+                                {{#each product.rate}}
+                                    <i class="fa fa-star"></i>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="pro-price mtb-30">
+                            <p class="d-flex align-items-center"><span class="prev-price">{{product.price}}$</span><span class="price">{{newPrice}}$</span><span class="saving-price">Save {{product.sale}}%</span></p>
+                        </div>
+                        <p class="mb-20 pro-desc-details">{{product.overview}}</p>
+                        <div class="box-quantity d-flex hot-product2">
+                            <form action="#">
+                                <input class="quantity mr-15" type="number" min="1" value="1">
+                            </form>
+                            <div class="pro-actions">
+                                <div class="actions-primary">
+                                    <a href="#" class="p_cart" title="" data-original-title="Add to Cart"> + Add To Cart
+                                        <div  class ="detail-product-id" hidden name ="/product/{{product._id}}"></div>
+                                    </a>
+                                </div>
+                                <div class="actions-secondary">
+                                    <a href="#" title="" data-original-title="WishList"><i class="fa fa-heart"></i> <span>Add to WishList</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-ref mt-20">
+                            <p><span class="in-stock"><i class="ion-checkmark-round"></i> IN STOCK: {{product.quantity}}</span></p>
+                        </div>
+                        <div class="socila-sharing mt-25">
+                            <ul class="d-flex">
+                                <li>Share</li>
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus-official" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Thumbnail Description End -->
+            </div>
+            <!-- Row End -->
+        </div>
+    </div>
+    <!-- Container End -->
+</div>
+<!-- Product Thumbnail End -->
+
+
+
+
+<!-- Related Products End Here -->
+<script src="/js/product_detail/main.js"></script>
+
+
+<script src="/js/pagination.js"></script>

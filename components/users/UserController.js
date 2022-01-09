@@ -131,7 +131,7 @@ class UserController{
         }else{
             page = parseInt(page);
         }
-        let result = await UserService.findOrder("ni",page);
+        let result = await UserService.findOrderList("ni",page);
         let orders = result.orders;
         let previous = result.previous;
         let currentPage = result.currentPage;
@@ -142,6 +142,10 @@ class UserController{
 
 
     }
-
+    async showOrderDetail(req,res){
+        const order = await UserService.findOrder(req.params.orderID);
+        console.log(order);
+        res.render('users/views/orderDetail',{order});
+    }
 }
 module.exports = new UserController;
