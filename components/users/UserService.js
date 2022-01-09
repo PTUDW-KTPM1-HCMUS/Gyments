@@ -70,9 +70,9 @@ const createOrder = async (username, name, address, phone) => {
         cart.products = [];
         cart.totalPrice = 0;
         await cart.save();
-        return 1;
+        return order;
     }
-    return 0;
+    return null;
 }
 const findHistoryOrder = async (username) => {
     const historyOrder = await Order.find({customerID: username}).lean();
@@ -89,37 +89,35 @@ const findHistoryOrder = async (username) => {
 }
 
 const findOrder = async (username, page) => {
-    let orders = await Order.find({customerID: username}).lean();
-    console.log(orders);
+    let orders = [];
+    orders = await Order.find({customerID: username}).lean();
     let next = null;
     let previous = null;
-    let totalPage = orders.size /4 + 1;
-    var result = {
-        orders : null,
-        previous: null,
-        currentPage: page,
-        next: null
-    }
-    if (totalPage == 1){
-        result.orders = orders.slice(0 + (result.currentPage-1) * 4 ,result.currentPage*4);
-        return result;
+    let totalPage = parseInt(orders.length/4)  + 1;
+    let pages = [];
+    let currentPage = page;
+    if ( page > totalPage){
+        currentPage = totalPage;
     }
 
-    if ( page >= totalPage){
-        result.currentPage = totalPage;
-        result.previous = result.currentPage -1;
-    }else{
-        if (page > 1){
-            result.next = result.currentPage + 1;
-            result.previous = result.currentPage -1;
-        }else{
-            result.next = result.currentPage + 1;
-        }
+    for (let i = currentPage - 2;i<=totalPage   ;i++){
+        if ( i > 0)
+          pages.push(i);
     }
-    result.orders = orders.slice(0 + (result.currentPage-1) * 4 ,result.currentPage*4);
-
-    return result;
-
+    if (currentPage>1){
+        previous = currentPage -1;
+    }
+    if (currentPage<totalPage){
+        next = currentPage + 1;
+    }
+    orders = orders.slice((currentPage-1)*4,currentPage*4 );
+    return {
+        orders: orders,
+        previous: previous,
+        currentPage: currentPage,
+        next: next,
+        pages: pages
+    };
 }
 
 module.exports = {getCartPage, changename, changeemail, changeaddress, changephone, changeavatar, createOrder, getCart, findHistoryOrder, findOrder};

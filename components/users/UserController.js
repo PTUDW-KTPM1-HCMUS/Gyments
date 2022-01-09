@@ -117,29 +117,27 @@ class UserController{
 
     async checkout(req,res){
         const {name,address,phone}=req.body;
-        const error = await UserService.createOrder(req.user.username,name,address,phone);
+        console.log(name + address+ phone);
+        const order = await UserService.createOrder(req.user.username,name,address,phone);
 
-        res.send({error});
+        res.redirect('/');
     }
 
     async showOrder(req,res){
-        let page = req.params.page;
+        let page = req.query.page ;
         if (!page)
         {
             page = 1;
         }else{
             page = parseInt(page);
         }
-        let result = null;
-        //orders = await UserService.findOrder(req.user.username);
-        result = await UserService.findOrder("ni",page);
-        console.log("RESULT: " + result);
-        let currentPage = result.currentPage;
-        let previous = result.previous;
-        let next = result.next;
+        let result = await UserService.findOrder("ni",page);
         let orders = result.orders;
-        console.log("RESULT: " + orders);
-        res.render('users/views/order',{orders,previous, currentPage, next});
+        let previous = result.previous;
+        let currentPage = result.currentPage;
+        let next = result.next;
+        let pages = result.pages;
+        res.render('users/views/order',{orders,previous, currentPage, next, pages});
 
 
 

@@ -34,13 +34,6 @@
                                 </ul>
                             </li>
                         </ul>
-                        <div class="head">Cost Range</div>
-                        <div class="price-range-slider">
-                            <p class="range-value">
-                                <input type="text" id="amount" readonly name="cost">
-                            </p>
-                            <div id="slider-range" class="range-bar"></div>
-                        </div>
                         <div class="filter-btn">
                             <button type="submit">Filter</button>
                         </div>
@@ -114,6 +107,10 @@
                     </li>
                 {{/if}}
 
+                {{#each pages}}
+                    <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="/user/order?page={{this}}">{{this}}</a></li>
+
+                {{/each}}
                 {{#if next}}
                     <li class="page-item">
                         <a class="page-link"  href="/user/order?page={{next}}" aria-label="Next">
