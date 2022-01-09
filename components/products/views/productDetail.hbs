@@ -36,6 +36,7 @@
                 <div class="col-lg-7">
                     <div class="thubnail-desc fix">
                         <h3 class="product-header">{{product.name}}</h3>
+
                         <div class="rating-summary fix mtb-10">
                             <div class="rating">
                                 {{#each product.rate}}
@@ -111,7 +112,8 @@
                             </div>
                             <!-- start review item -->
                             <div id="comment_list">
-                                {{#each comments}}
+
+                                {{#each commentPart.comments}}
                                     <div class="review_item">
                                         <div class="media">
                                             <div class="d-flex">
@@ -125,6 +127,36 @@
                                         <p>{{this.content}}</p>
                                     </div>
                                 {{/each}}
+                            </div>
+                            <div class="col pt-5">
+                                <ul class="pagination pagination-md justify-content-center">
+
+
+                                    {{#if commentPart.newer}}
+                                        <li class="page-item">
+                                            <a class="page-link" href="/product/{{product._id}}?commentPage={{commentPart.newer}}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Newer comments</span>
+                                            </a>
+                                        </li>
+                                    {{/if}}
+
+                                    {{#each commentPart.pages}}
+                                        <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="/product/{{product._id}}?commentPage={{this}}">{{this}}</a></li>
+                                    <p>{{product._id}}</p>
+                                    {{/each}}
+
+                                    {{#if commentPart.older}}
+                                        <li class="page-item">
+                                            <a class="page-link"  href="/product/{{product._id}}?commentPage={{commentPart.older}}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Older comments</span>
+                                            </a>
+                                        </li>
+                                    {{/if}}
+
+                                </ul>
+                                <div id="getCurPage" name = {{commentPart.currentPage}}></div>
                             </div>
                         <!-- review item end here-->
                         </div>
@@ -239,3 +271,5 @@
         <p>\{{this.content}}</p>
     </div>
 </script>
+
+<script src="/js/pagination.js"></script>

@@ -147,9 +147,38 @@ const searchByDescription = async (description, reqPage) => {
     }
     return [products, pages];
 }
-const getComment = async (productID) =>{
-    const comments = await Comment.find({productID: productID}).lean();
-    return comments;
+const getComment = async (productID,page,size) =>{
+    var comments = [];
+    comments = await Comment.find({productID: productID}).lean();
+
+    let older = null;
+    let newer = null;
+    let totalPage = parseInt(comments.length/size)  + 1;
+    let pages = [];
+    let currentPage = page;
+    if ( page > totalPage){
+        currentPage = totalPage;
+    }
+
+    for (let i = currentPage - 2;i<=totalPage   ;i++){
+        if ( i > 0)
+            pages.push(i);
+    }
+    if (currentPage>1){
+        newer = currentPage -1;
+    }
+    if (currentPage<totalPage){
+        older = currentPage + 1;
+    }
+    comments = comments.slice((currentPage-1)*size,currentPage*size );
+    return {
+        comments: comments,
+        newer: newer,
+        currentPage: currentPage,
+        older: older,
+        pages: pages
+    };
+
 }
 const postComment = async (nickname, productID, userID, content, avatar) => {
     const comment = await Comment.create({

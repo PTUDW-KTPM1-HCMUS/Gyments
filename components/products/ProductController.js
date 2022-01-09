@@ -34,8 +34,13 @@ class ProductController{
         try{
             const [product, relatedProducts] = await service.getProduct(req.params.productID);
             let newPrice = product.price - product.price * product.sale / 100;
-            const comments = await service.getComment(req.params.productID);
-            res.render('products/views/productDetail', {product, relatedProducts, newPrice, comments});
+            let commentPage = req.query.commentPage;
+            if (!commentPage)
+                commentPage = 1;
+            else
+                commentPage = parseInt(commentPage);
+            const commentPart = await service.getComment(req.params.productID,commentPage,5);
+            res.render('products/views/productDetail', {product, relatedProducts, newPrice, commentPart });
         }catch (err) {
             console.log({message: err});
         }
