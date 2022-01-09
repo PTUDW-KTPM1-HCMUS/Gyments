@@ -158,63 +158,16 @@
                             </div><!--//row-->
                         </div><!--//app-card-header-->
                         <div class="app-card-body px-4 w-100">
-
-                            <div class="item border-bottom py-3">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-auto">
-                                        <div class="item-label"><strong>Body Solid Aluminum</strong></div>
-                                        <div class="item-data">11/02/2021</div>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                            </div><!--//item-->
-                            <div class="item border-bottom py-3">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-auto">
-                                        <div class="item-label"><strong>Body Solid Aluminum Lat Bar</strong></div>
-                                        <div class="item-data">23/03/2021</div>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                            </div><!--//item-->
-                            <div class="item border-bottom py-3">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-auto">
-                                        <div class="item-label"><strong>Body Solid Tricep Rope</strong></div>
-                                        <div class="item-data">09/10/2021</div>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                            </div><!--//item-->
-                            <div class="item border-bottom py-3">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-auto">
-                                        <div class="item-label"><strong>NIGHT SHRED</strong></div>
-                                        <div class="item-data">17/11/2021</div>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                            </div><!--//item-->
-                            <div class="item border-bottom py-3">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-auto">
-                                        <div class="item-label"><strong>Bowflex SelectTech 840 Kettlebell</strong></div>
-                                        <div class="item-data">20/11/2021</div>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                            </div><!--//item-->
-                            <div class="item border-bottom py-3">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-auto">
-                                        <div class="item-label"><strong>Relieve physical fatigue Cistanche</strong></div>
-                                        <div class="item-data">27/11/2021</div>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                            </div><!--//item-->
-                            <div class="item border-bottom py-3">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-auto">
-                                        <div class="item-label"><strong>Milk Tea Flavor Protein Powder Shake</strong></div>
-                                        <div class="item-data">04/12/2021</div>
-                                    </div><!--//col-->
-                                </div><!--//row-->
-                            </div><!--//item-->
+                            {{#each products}}
+                                <div class="item border-bottom py-3">
+                                    <div class="row justify-content-between align-items-center">
+                                        <div class="col-auto">
+                                            <div class="item-label"><strong>{{this.name}}</strong></div>
+                                            <div class="item-data">{{this.time}}</div>
+                                        </div><!--//col-->
+                                    </div><!--//row-->
+                                </div><!--//item-->
+                            {{/each}}
                         </div><!--//app-card-body-->
                     </div><!--//app-card-->
                 </div><!--//col-->

@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
     date: {
-        type: "string",
-        require: true
+        type: Date
     },
     customerID: {
         type: "string",
@@ -19,6 +18,7 @@ const orderSchema = new mongoose.Schema({
     },
     status: {
         type: "string", // Delivered or not
+        default: "Delivery", // Delivery, Success, Fail
         require: true
     },
     products: { // list of products

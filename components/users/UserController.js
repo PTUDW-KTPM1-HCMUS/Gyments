@@ -5,13 +5,13 @@ const UserService =require('./UserService');
 
 
 class UserController{
-    
+
     //[GET] shopping cart
     async cart(req,res){
         if(req.user!=null)
         {
             const username = req.user.username;
-            
+
             const cart_ =await UserService.getCartPage(username);
             if(parseInt(cart_.totalPrice)!=0){
                 res.render('users/views/cart',{cart:cart_,check:true});
@@ -19,7 +19,7 @@ class UserController{
             else{
                 res.render('users/views/cart',{cart:cart_,check:null});
             }
-            
+
         }
         else{
             res.render('users/views/cart');
@@ -36,7 +36,8 @@ class UserController{
     async account(req,res){
         const phone_existed =req.query['phone_existed']!== undefined;
         const email_existed =req.query['email_existed']!== undefined;
-        res.render('users/views/account', {phone_existed, email_existed});
+        const products = await UserService.findHistoryOrder(req.user.username);
+        res.render('users/views/account', {phone_existed, email_existed, products});
     }
 
     async changepassPage(req,res){
@@ -49,7 +50,7 @@ class UserController{
     //[POST] change password
     async changepass(req,res){
         const {oldpassword, password,confirmpass} =req.body;
-        
+
         if(!AuthService.validPassword(oldpassword,req.user)){
             return res.redirect('/user/changepass?wrong-pass');
         }
@@ -118,7 +119,7 @@ class UserController{
         const {name,address,phone}=req.body;
         console.log(name + address+ phone);
         const order = await UserService.createOrder(req.user.username,name,address,phone);
-        
+
         res.redirect('/');
     }
 }

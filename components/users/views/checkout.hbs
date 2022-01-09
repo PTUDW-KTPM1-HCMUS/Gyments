@@ -9,7 +9,7 @@
     <div class="container">
     <div class="custom-title">Information form</div>
         <form action ="/user/checkout" method="POST">
-            
+
             <div class="custom-small-title">Your order information</div>
             <div class="row">
             <div class ="order col-lg-6 col-md-6 col-12 mb-4" >
@@ -17,22 +17,22 @@
                     <div class="form-group">
                         <span style="color: #cc0000;">*</span>
                         <label for="inputName">Full Name</label>
-                        <input type="text" class="form-control"  placeholder="Input your Name" name="name"required>
+                        <input type="text" class="form-control"  placeholder="Input your Name" name="name" required>
                     </div>
                     <div class="form-group">
                         <span style="color: #cc0000;">*</span>
-                        <label for="address">Address</label>  
+                        <label for="address">Address</label>
                         <input type="text" class="form-control"  placeholder="Input your Address" name="address" required>
                     </div>
                     <div class="form-group">
                         <span style="color: #cc0000;">*</span>
-                        <label for="phone">Phone</label>  
+                        <label for="phone">Phone</label>
                         <input type="number" class="form-control"  placeholder="Input your Phone number" name="phone" required>
                     </div>
-                
+
                 </div>
             </div>
-            
+
 
             <div class ="total col-lg-6 col-md-6 col-12 mb-4">
             <div style="padding-top: 20px">
@@ -48,34 +48,34 @@
                             <p>$30</p>
                         </div>
                         {{!-- <div>
-                            
+
                             <div class="d-flex justify-content-between">
                                 <p>Enter your coupon</p>
                                 <input type = "text" placeholder="Coupon Code">
-                                
-                            </div> 
+
+                            </div>
                         </div> --}}
-                        <hr class="second-hr"> 
-                        
+                        <hr class="second-hr">
+
                         <div class="d-flex justify-content-between">
                             <h6>Total</h6>
                             <p>${{total}}</p>
                         </div>
-                       
+
                         {{!-- <div>
-                            
+
                             <div class="d-flex justify-content-between">
                                 <p>Enter your coupon</p>
                                 <input type = "text" placeholder="Coupon Code">
-                                
-                            </div> 
+
+                            </div>
                         </div> --}}
-   
+
                     </div>
                 </div>
 
                     <div class="form-group">
-                        
+
                         <div class="pt-4" style="text-align: right;">
                             <a href = "/"><button type="submit" class="custom-btn btn btn-primary">CONFIRM</button></a>
                             <a href = "/user/cart"><button type="button" class="custom-btn btn btn-primary">Cancel</button></a>
