@@ -72,11 +72,14 @@
                                                 {{this.address}}
                                                 <small class="d-block"> Receiver: {{this.receiver}}</small>
                                             </td>
-                                            <td>
-                                                {{#each this.products}}
-                                                    <img src={{this.images.[0]}} alt="{{this.name}}" class="img-fluid" style="height: 30px; width: 30px; border-radius: 50%">
-                                                    {{this.name}}<br>
-                                                {{/each}}
+                                            <td style="overflow-y: scroll">
+                                                <div style="max-height: 50px">
+                                                    {{#each this.products}}
+                                                        <img src={{this.images.[0]}} alt="{{this.name}}" class="img-fluid" style="height: 30px; width: 30px; border-radius: 50%">
+                                                        {{this.name}}<br>
+                                                    {{/each}}
+                                                </div>
+
                                             </td>
                                             <td>{{this.status}}</td>
                                             <td>
@@ -101,21 +104,25 @@
         <div class="col pt-5">
             <ul class="pagination pagination-md justify-content-center">
 
-                <li class="page-item">
-                    <a class="page-link" href="/user/order?page={{previous}}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                {{#each pages}}
-                    <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="/user/order?{{this.pageLink}}">{{this.currentPage}}</a></li>
-                {{/each}}
-                <li class="page-item">
-                    <a class="page-link"  href="/user/order?page={{next}}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                    </a>
-                </li>
+
+                {{#if previous}}
+                    <li class="page-item">
+                        <a class="page-link" href="/user/order?page={{previous}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                {{/if}}
+
+                {{#if next}}
+                    <li class="page-item">
+                        <a class="page-link"  href="/user/order?page={{next}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                {{/if}}
+
             </ul>
             <div id="getCurPage" name = {{currentPage}}></div>
         </div>

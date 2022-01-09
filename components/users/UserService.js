@@ -88,8 +88,37 @@ const findHistoryOrder = async (username) => {
     return products.slice(0, 6);
 }
 
-const findOrder = async (username) => {
-    return Order.find({customerID: username}).lean();
+const findOrder = async (username, page) => {
+    let orders = await Order.find({customerID: username}).lean();
+    console.log(orders);
+    let next = null;
+    let previous = null;
+    let totalPage = orders.size /4 + 1;
+    var result = {
+        orders : null,
+        previous: null,
+        currentPage: page,
+        next: null
+    }
+    if (totalPage == 1){
+        result.orders = orders.slice(0 + (result.currentPage-1) * 4 ,result.currentPage*4);
+        return result;
+    }
+
+    if ( page >= totalPage){
+        result.currentPage = totalPage;
+        result.previous = result.currentPage -1;
+    }else{
+        if (page > 1){
+            result.next = result.currentPage + 1;
+            result.previous = result.currentPage -1;
+        }else{
+            result.next = result.currentPage + 1;
+        }
+    }
+    result.orders = orders.slice(0 + (result.currentPage-1) * 4 ,result.currentPage*4);
+
+    return result;
 
 }
 
