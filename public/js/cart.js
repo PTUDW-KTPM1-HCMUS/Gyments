@@ -275,9 +275,10 @@ function checkOut(e){
         }
     }
     else{
-        window.location.assign(window.location.origin+`/login`);
+        //window.location.assign(window.location.origin+`/login`);
         localStorage.setItem("check",1);
-        displayModal();
+        
+        
     }
 }
 

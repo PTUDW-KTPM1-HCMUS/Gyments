@@ -36,7 +36,8 @@ class AuthController {
         const wronguser = req.query['invalid'] !== undefined;
         const banneduser = req.query['banned']!== undefined;
         const adminuser =req.query['secret']!== undefined;
-        res.render('auth/views/login',{wronguser, banneduser, adminuser});
+        const verify = req.query['verify']!==undefined;
+        res.render('auth/views/login',{wronguser, banneduser, adminuser,verify});
     }
     //[GET] register Page
     registerPage(req,res){
@@ -73,7 +74,7 @@ class AuthController {
                         const user = await service.register(email,username,password,confirmpass);
                         const verify = await nodemailer.verify(req.headers.host,email);
                         
-                        res.redirect('/login');
+                        res.redirect('/login?verify');
                         
                     }
                 }

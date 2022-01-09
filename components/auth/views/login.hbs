@@ -9,7 +9,7 @@
     {{/if}}
     {{#if banneduser}}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>This account is being banned!!!</strong>
+            <strong>This account is inactive!!!</strong>
             <button type="button" class="close" onclick="this.parentElement.style.display='none'">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -18,6 +18,15 @@
     {{#if adminuser}}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <strong>This account isn't available!!!</strong>
+            <button type="button" class="close" onclick="this.parentElement.style.display='none'">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if}}
+
+    {{#if verify}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Verify your account first</strong>
             <button type="button" class="close" onclick="this.parentElement.style.display='none'">
                 <span aria-hidden="true">&times;</span>
             </button>
