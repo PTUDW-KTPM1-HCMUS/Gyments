@@ -142,7 +142,7 @@
                                     {{/if}}
 
                                     {{#each commentPart.pages}}
-                                        <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="/product/{{product._id}}?commentPage={{this}}">{{this}}</a></li>
+                                        <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="/product/{{this.productID}}?commentPage={{this}}">{{this}}</a></li>
                                     <p>{{product._id}}</p>
                                     {{/each}}
 

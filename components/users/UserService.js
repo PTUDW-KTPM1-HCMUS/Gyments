@@ -88,9 +88,14 @@ const findHistoryOrder = async (username) => {
     return products.slice(0, 6);
 }
 
-const findOrderList = async (username, page) => {
+const findOrderList = async (username, page,filter) => {
     let orders = [];
-    orders = await Order.find({customerID: username}).lean();
+    if (!filter){
+        orders = await Order.find({customerID: username}).lean();
+    }else{
+        orders = await Order.find({customerID: username, status: filter}).lean();
+    }
+
     let next = null;
     let previous = null;
     let totalPage = parseInt(orders.length/4)  + 1;
@@ -101,8 +106,12 @@ const findOrderList = async (username, page) => {
     }
 
     for (let i = currentPage - 2;i<=totalPage   ;i++){
-        if ( i > 0)
-          pages.push(i);
+        if ( i > 0){
+            pages.push({
+                number: i,
+                filter: filter
+            })
+        }
     }
     if (currentPage>1){
         previous = currentPage -1;
@@ -111,7 +120,6 @@ const findOrderList = async (username, page) => {
         next = currentPage + 1;
     }
     orders = orders.slice((currentPage-1)*4,currentPage*4 );
-    console.log(orders);
     if (orders){
         for (let i = 0; i < orders.length;i++){
             orders[i].number = (currentPage-1)*4 + i + 1;
@@ -122,7 +130,8 @@ const findOrderList = async (username, page) => {
         previous: previous,
         currentPage: currentPage,
         next: next,
-        pages: pages
+        pages: pages,
+        filter: filter
     };
 }
 

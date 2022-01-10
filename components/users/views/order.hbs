@@ -23,14 +23,14 @@
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-5">
                 <div class="sidebar-categories">
-                    <form action="#" method="get">
-                        <div class="head">Order Filter</div>
+                    <form action="/user/order" method="get">
+                        <div class="head">Status Filter</div>
                         <ul class="main-categories">
                             <li class="common-filter">
                                 <ul>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Delivery" name="Delivery"><label for="Whey">Delivery</label></li>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Success" name="Success"><label for="Dumbbells">Success</label></li>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Fail" name="Fail"><label for="Nutrients">Fail</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Status" name="Status" value="Delivery"><label for="Status">Delivery</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Status" name="Status" value="Success"><label for="Status">Success</label></li>
+                                    <li class="filter-list"><input class="pixel-radio" type="radio" id="Status" name="Status" value="Fail"><label for="Status">Fail</label></li>
                                 </ul>
                             </li>
                         </ul>
@@ -101,20 +101,19 @@
 
                 {{#if previous}}
                     <li class="page-item">
-                        <a class="page-link" href="/user/order?page={{previous}}" aria-label="Previous">
+                        <a class="page-link" href="/user/order?page={{previous}}{{#if filter}}&Status={{filter}}{{/if}}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                         </a>
                     </li>
                 {{/if}}
-
                 {{#each pages}}
-                    <li class="page-item need_color" name="{{this.currentPage}}"><a class="page-link" href="/user/order?page={{this}}">{{this}}</a></li>
+                    <li class="page-item need_color" ><a class="page-link" href="/user/order?page={{this.number}}{{#if this.filter}}&Status={{this.filter}}{{/if}}">{{this.number}}</a></li>
 
                 {{/each}}
                 {{#if next}}
                     <li class="page-item">
-                        <a class="page-link"  href="/user/order?page={{next}}" aria-label="Next">
+                        <a class="page-link"  href="/user/order?page={{next}}{{#if filter}}&Status={{filter}}{{/if}}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                         </a>

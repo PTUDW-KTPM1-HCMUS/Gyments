@@ -124,19 +124,23 @@ class UserController{
 
     async showOrder(req,res){
         let page = req.query.page ;
+        let filter = req.query.Status;
         if (!page)
         {
             page = 1;
         }else{
             page = parseInt(page);
         }
-        let result = await UserService.findOrderList(req.user.username,page);
-        let orders = result.orders;
-        let previous = result.previous;
-        let currentPage = result.currentPage;
-        let next = result.next;
-        let pages = result.pages;
-        res.render('users/views/order',{orders,previous, currentPage, next, pages});
+        let result = await UserService.findOrderList("ni",page,filter);
+
+        res.render('users/views/order',{
+            orders: result.orders,
+            previous: result.previous,
+            currentPage : result.currentPage,
+            next: result.next,
+            pages: result.pages,
+            filter: result.filter
+        });
 
     }
     async showOrderDetail(req,res){
