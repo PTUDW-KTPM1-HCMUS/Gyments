@@ -1,17 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Gyments</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="/css/style2.css">
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet" />
+
+    <!-- font awesome style -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="/css/responsive.css" rel="stylesheet" />
+    <!-- util css   -->
+    <link rel="stylesheet" href="/css/util.css">
+</head>
+
+<body>
+
+<div class="hero_area" id="header_">
+    <!-- header section starts -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="">
+                    <span>
+              Gyments
+            </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""> </span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+                        <ul class="navbar-nav  ">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about"> About</a>
+                            </li>
+                            <li class="nav-item" id="product-id">
+                                <a class="nav-link" href="/product?category=all&price=all&page=1">Products <i class = "fa fa-caret-down"></i></a>
+                                <ul class="sub-nav">
+                                    {{#each categories}}
+                                        <li class="sub-item"><a class="sub-link" href="/product?category={{this._id}}&price=all&page=1">{{this.name}}</a></li>
+                                    {{/each}}
+                                </ul>
+                            </li>
+                            <li class="nav-item" id="why-id">
+                                <a class="nav-link" href="/whyUs">Why Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/testimonial">Testimonial</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="quote_btn-container">
+                        {{#if user}}
+                            <div id="user-id" hidden name={{user.username}}></div>
+                            <ul class="navbar-nav">
+                                <li class="nav-item" id="account-menu">
+                                    <a class="nav-link" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> {{user.name}} <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                    <ul class="sub-nav">
+                                        <li class="sub-item"><a class="sub-link" href="/user/account"><i class="fa fa-id-card"></i> Profile</a></li>
+                                        <li class="sub-item"><a class="sub-link" href="/user/changepass"><i class="fa fa-unlock"></i> Change password</a></li>
+                                        <li class="sub-item"><a class="sub-link" href="/user/order"><i class="fa fa-cart-plus"></i> My order</a></li>
+                                        <li class="sub-item"><a class="sub-link" href="/logout"><i class="fa fa-sign-out"></i> Log out</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        {{else}}
+                            <div id="user-id" hidden name="null"></div>
+                            <a href="/login">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Login/Register
+                            </a>
+                        {{/if}}
+
+                        <a onclick="return upApi(event); "  href="#">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                            Cart
+                        </a>
+                        <!-- Search model Begin -->
+                        <a href="#" class="search-switch"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        <div class="search-model">
+                            <div class="h-100 d-flex align-items-center justify-content-center">
+                                <div class="search-close-switch"><i class="fa fa-close" aria-hidden="true"></i></div>
+                                <form class="search-model-form" action="/product/searchPage" method="GET">
+                                    <input type="text" name="description" id="search-input" placeholder="Search here....." />
+                                    <button type="submit" class="site-btn">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+</div>
 
 
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/fonts/icomoon/style.css">
 
-<link rel="stylesheet" href="/css/owl.carousel.min.css">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-
-<!-- Style -->
-<link rel="stylesheet" href="/css/style2.css">
 <!-- products section -->
 <section class="product_section layout_padding">
     <div class="container-fluid">
@@ -135,6 +258,147 @@
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
+
+
+
+
+
+<!-- info section -->
+<section class="info_section ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 mx-auto">
+
+                <div class="info_form">
+                    <h4>
+                        Subscribe To Our Newsletter
+                    </h4>
+                    <form action="">
+                        <input type="mail" placeholder="Enter your email...">
+                        <button type="submit">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+
+                <h4>
+                    Contact Us
+                </h4>
+                <div class="contact_items">
+                    <a href="#">
+                        <div class="img-box">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </div>
+                        <h6>
+                            Location
+                        </h6>
+                    </a>
+                    <a href="#">
+                        <div class="img-box">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <h6>
+                            demo@gmail.com
+                        </h6>
+                    </a>
+                    <a href="#">
+                        <div class="img-box">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <h6>
+                            (+12 1234456789)
+                        </h6>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="info_social">
+                <div>
+                    <a href="#">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end info section -->
+<!-- footer section start -->
+<footer class="footer_section">
+    <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+    </p>
+</footer>
+<!-- footer section end-->
+<div class="scroll-up-btn">
+    <a href="#header_" style="color: black"><i class = "fa fa-angle-up"> </i></a>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="notice" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="resetCheck(event)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="resetCheck(event)">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- bootstrap js -->
+<script src="/js/bootstrap.js"></script>
+<!-- custom js -->
+<script src="/js/custom.js"></script>
+
+<!--Product detail js-->
+<!-- Owl carousel -->
+<script src="/js/product_detail/owl.carousel.min.js"></script>
+<!-- Main activation js -->
+<script src="/js/product_detail/relatedProduct.js"></script>
+
+
+</body>
+
+</html>
+<script src="/js/cart.js"></script>
+
+
+
+
 
 
 

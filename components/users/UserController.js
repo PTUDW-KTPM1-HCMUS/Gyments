@@ -131,7 +131,7 @@ class UserController{
         }else{
             page = parseInt(page);
         }
-        let result = await UserService.findOrderList("ni",page,filter);
+        let result = await UserService.findOrderList(req.user.username,page,filter);
 
         res.render('users/views/order',{
             orders: result.orders,
@@ -139,7 +139,8 @@ class UserController{
             currentPage : result.currentPage,
             next: result.next,
             pages: result.pages,
-            filter: result.filter
+            filter: result.filter,
+            layout: false
         });
 
     }
