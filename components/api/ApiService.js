@@ -97,10 +97,10 @@ const fixQuantity = async(username,productID,quantity)=>{
                 cart.products[i].totalPrice = parseInt(Math.ceil(cart.products[i].price*quantity));
                 value = cart.products[i].totalPrice;
                 products.push(cart.products[i]);
-                console.log(cart.products[i].totalPrice);
+                
             }
             cost +=cart.products[i].totalPrice;
-            console.log(cart.products[i].totalPrice);
+            
         }
         cart.totalPrice = cost;
         await cart.save();
