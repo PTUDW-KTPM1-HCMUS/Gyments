@@ -44,7 +44,7 @@ for(let i =0;i<carts.length;i++){
 }
 //dem don hang 
 function cartNumbers(product){
-    console.log(product);
+    
     let productsNumber = localStorage.getItem('cartNumbers');
     productsNumber = parseInt(productsNumber);
 
@@ -170,7 +170,7 @@ function upApi(event){
                     let check =0;
                     Object.values(CartItems).map(item=>{
                         url = window.location.origin +`/api/product/${item._id}?quantity=${item.inCart}`;
-                        console.log(url);
+                        
                         fetch(url,{
                             method: 'POST',
                             body: JSON.stringify({userID}),
@@ -223,7 +223,7 @@ function handleRemove(e){
             //display loader
             e.target.style.display = 'none';
             loader.style.display = 'block';
-            console.log(url);
+            
             fetch(url, {
                 method: 'DELETE',
                 body: JSON.stringify({ userID }),
@@ -268,7 +268,7 @@ function handleRemove(e){
 
         const loader = document.getElementById(`remove-cart-loader-${e.target.id}`);
         const url = window.location.origin + `/api/product/${e.target.id}`;
-        console.log(loader);
+        
         loader.style.display = 'block';
         e.target.style.display = 'none';
         setTimeout(()=>{
@@ -283,7 +283,7 @@ function checkOut(e){
         
         let temp=document.querySelector('.product-item');
         //temp = JSON.stringify(temp);
-        console.log(temp);
+        
         if(temp){
             window.location.assign(window.location.origin+`/user/checkout`);
         }
@@ -327,19 +327,17 @@ function resetCheck(){
 function CheckOutSuccess(e){
     e.preventDefault();
     let address = document.querySelector("#address-control");
-    console.log(address);
+    
     
     let add_value = address.value;
-    console.log(add_value);
+    
     let name = document.querySelector("#name-control");
     let name_value = name.value;
     
     let phone = document.querySelector("#phone-control");
     let phone_value = phone.value;
     url = window.location.origin +`/user/checkout`;
-    console.log(name_value);
-    console.log(add_value);
-    console.log(phone_value);
+    
     fetch(url,{
         method: 'POST',
         headers: {
@@ -366,9 +364,7 @@ function load_quantity(){
 
         let click_quantity = document.querySelector(`#input-${tmp}`);
         click_quantity.addEventListener('change',()=>{
-            console.log(tmp);
-            console.log(click_quantity.value);
-            console.log(window.location.origin +`/api/products/${tmp}?quantity=${click_quantity.value}`);
+            
             if(userID!="null"){
                 url = window.location.origin +`/api/products/${tmp}?quantity=${click_quantity.value}`
                 fetch(url,{
@@ -381,7 +377,7 @@ function load_quantity(){
                 .then(data=>{
                     if(data.error!==0){
                         let total = document.querySelector(`#total-${tmp}`);
-                        console.log(total);
+                        
                         total.innerHTML="";
                         total.innerHTML+=`${data.error}`;
                     }
