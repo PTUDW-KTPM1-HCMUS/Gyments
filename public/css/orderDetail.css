@@ -1,0 +1,117 @@
+.order-wrapper {
+    background: #f1f6f7;
+    padding: 25px;
+}
+.order-wrapper .list-row {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+.order-wrapper .list-row h6 {
+    text-transform: uppercase;
+}
+.order-wrapper .list-row .total {
+    font-weight: 500;
+    color: #222222;
+}
+.order-wrapper .bold-lable {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #222222;
+}
+.order-wrapper .payment-info {
+    margin-top: 20px;
+    background: #f5f5f5;
+    border-top: 1px solid #eee;
+    padding: 15px;
+}
+.order-wrapper .terms-link {
+    color: #43b253;
+}
+.order-wrapper .pixel-checkbox {
+    margin-top: 5px;
+}
+
+.billing-title {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.3em;
+    margin-bottom: 15px;
+    border-color: #DDDDDD;
+}
+
+.billing-alert {
+    font-size: 18px;
+    color: #384aeb;
+    margin-bottom: 30px;
+}
+
+.confirmation-card {
+    padding: 38px;
+    background: #f1f6f7;
+}
+.confirmation-card tr td:last-child {
+    color: #222222;
+    padding-left: 25px;
+}
+
+.order_details_table {
+    background: #f1f6f7;
+    padding: 30px;
+    margin-top: 75px;
+}
+@media (min-width: 767px) {
+    .order_details_table {
+        margin-top: 45px;
+    }
+}
+.order_details_table h2 {
+    color: #222222;
+    font-size: 18px;
+    padding-bottom: 15px;
+}
+.order_details_table .table {
+    margin-bottom: 0px;
+}
+.order_details_table .table thead tr th {
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    font-family: "Oswald", sans-serif;
+    font-weight: normal;
+    color: #222222;
+}
+@media (max-width: 1000px) {
+    .order_details_table .table tbody tr:last-child {
+        height: 50px;
+    }
+}
+.order_details_table .table tbody tr td {
+    border: 0;
+    color: #777777;
+}
+.order_details_table .table tbody tr td p {
+    margin-bottom: 0px;
+}
+.order_details_table .table tbody tr td h5 {
+    font-family: "Roboto", sans-serif;
+    color: #222222;
+    margin-bottom: 0px;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.order_details_table .table tbody tr td h4 {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    color: #222222;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.order_details_table .table tbody tr:last-child td {
+    border-top: 1px solid #ddd;
+    padding-bottom: 0;
+}
+.order_details_table .table tbody tr:last-child td p {
+    color: #222222;
+}

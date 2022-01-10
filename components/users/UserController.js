@@ -131,7 +131,7 @@ class UserController{
         }else{
             page = parseInt(page);
         }
-        let result = await UserService.findOrderList("ni",page);
+        let result = await UserService.findOrderList(req.user.username,page);
         let orders = result.orders;
         let previous = result.previous;
         let currentPage = result.currentPage;
@@ -144,8 +144,14 @@ class UserController{
     }
     async showOrderDetail(req,res){
         const order = await UserService.findOrder(req.params.orderID);
+        let subtotal = 0;
+        if (order){
+            for (let i = 0; i < order.products.length;i++) {
+                subtotal += parseInt(order.products[i].totalPrice);
+            }
+        }
         console.log(order);
-        res.render('users/views/orderDetail',{order});
+        res.render('users/views/orderDetail',{order,subtotal});
     }
 }
 module.exports = new UserController;

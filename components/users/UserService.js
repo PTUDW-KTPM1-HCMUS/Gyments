@@ -111,6 +111,12 @@ const findOrderList = async (username, page) => {
         next = currentPage + 1;
     }
     orders = orders.slice((currentPage-1)*4,currentPage*4 );
+    console.log(orders);
+    if (orders){
+        for (let i = 0; i < orders.length;i++){
+            orders[i].number = (currentPage-1)*4 + i + 1;
+        }
+    }
     return {
         orders: orders,
         previous: previous,
@@ -125,6 +131,7 @@ const findOrder = async (orderID) => {
     let orders = await Order.find({_id: orderID}).lean();
     if (!orders)
         return null;
+    console.log(orders);
     return orders[0];
 
 }

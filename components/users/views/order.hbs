@@ -50,7 +50,7 @@
                                 <table class="table custom-table">
                                     <thead>
                                     <tr>
-                                        <th scope="col">Address</th>
+                                        <th scope="col">No.</th>
                                         <th scope="col">Products</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Cost</th>
@@ -61,8 +61,7 @@
                                     {{#each orders}}
                                         <tr>
                                             <td>
-                                                {{this.address}}
-                                                <small class="d-block"> Receiver: {{this.receiver}}</small>
+                                                {{this.number}}
                                             </td>
                                             <td style="overflow-y: scroll">
                                                 <div style="max-height: 50px">
