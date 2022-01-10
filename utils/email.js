@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 exports.sendPass=async (newpass,email)=>{
 
     const transport =nodemailer.createTransport({
-        
+
         host: 'smtp.gmail.com',
         port:465,
         secure: true,
@@ -20,18 +20,21 @@ exports.sendPass=async (newpass,email)=>{
         to: email,
         subject: 'Test Nodemailer',
         text: newpass,
+        html:   `<div style="background-color: #ea562dda; padding: 2em 2em;">
+                    <h4 style="text-align: center;">Hello your new password is ${newpass}. Please return to the login screen to continue!</h4>
+                </div>`
     }
     transport.sendMail(mainOptions,(error)=>{
         if(error){
             return console.log(error);
         }
     });
-    
+
 }
 
 exports.verify=async (host,email)=>{
     const transport =nodemailer.createTransport({
-        
+
         host: 'smtp.gmail.com',
         port:465,
         secure: true,
