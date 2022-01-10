@@ -48,6 +48,15 @@ class ApiController{
         const error= await apiservice.deleteFromCart(username,productID);
         res.send({error});
     }
+    async updateQuantity(req,res){
+        const quantity = req.query.quantity;
+        console.log(quantity);
+        const username = req.user.username;
+        const productID = req.params.productID;
+        const error = await apiservice.fixQuantity(username,productID,quantity);
+        console.log(error);
+        res.send({error});
+    }
 }
 
 module.exports = new ApiController;

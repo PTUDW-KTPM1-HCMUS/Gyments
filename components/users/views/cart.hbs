@@ -32,8 +32,8 @@
                         <td><img src = {{this.images.[0]}} alt=""></td>
                         <td><h5>{{this.name}}</h5></td>
                         <td><h5>${{this.price}}</h5></td>
-                        <td><input type="number" class = "w-25 p1-1" value = "{{this.inCart}}"></td>
-                        <td><h5>${{this.totalPrice}}</h5></td>
+                        <td><input type="number" class = "w-25 p1-1" value = "{{this.inCart}}" id="input-{{this._id}}" min="1"></td>
+                        <td><h5 id="total-{{this._id}}">${{this.totalPrice}}</h5></td>
                     </tr>
                     {{/each}}
 

@@ -123,8 +123,8 @@ function displayCart(){
                     <td><img src = "${item.images[0]}" alt=""></td>
                     <td><h5>${item.name}</h5></td>
                     <td><h5>$${item.price}</h5></td>
-                    <td><input type="number" class = "w-25 p1-1" value = "${item.inCart}"></td>
-                    <td><h5>$${item.total}</h5></td>
+                    <td><input type="number" class = "w-25 p1-1" value = "${item.inCart}" id="input-${item._id}" min="1"></td>
+                    <td><h5 class ="total-${item._id}">$${item.total}</h5></td>
                 </tr>
                 `
             });
@@ -170,7 +170,7 @@ function upApi(event){
                     let check =0;
                     Object.values(CartItems).map(item=>{
                         url = window.location.origin +`/api/product/${item._id}?quantity=${item.inCart}`;
-                        
+                        console.log(url);
                         fetch(url,{
                             method: 'POST',
                             body: JSON.stringify({userID}),
@@ -326,12 +326,30 @@ function resetCheck(){
 
 function CheckOutSuccess(e){
     e.preventDefault();
+    let address = document.querySelector("#address-control");
+    console.log(address);
+    
+    let add_value = address.value;
+    console.log(add_value);
+    let name = document.querySelector("#name-control");
+    let name_value = name.value;
+    
+    let phone = document.querySelector("#phone-control");
+    let phone_value = phone.value;
     url = window.location.origin +`/user/checkout`;
+    console.log(name_value);
+    console.log(add_value);
+    console.log(phone_value);
     fetch(url,{
         method: 'POST',
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
-        }
+        },
+        body:JSON.stringify({
+            name: name_value,
+            address: add_value,
+            phone: phone_value,
+        })
     })
     .then(res=>res.json())
     .then(data=>{
@@ -341,6 +359,41 @@ function CheckOutSuccess(e){
         }
     })
 }
+function load_quantity(){
+    let ids = document.querySelectorAll(".fa-trash");
+    for(let i = 0;i<ids.length;i++){
+        let tmp = ids[i].getAttribute("id");
 
+        let click_quantity = document.querySelector(`#input-${tmp}`);
+        click_quantity.addEventListener('change',()=>{
+            console.log(tmp);
+            console.log(click_quantity.value);
+            console.log(window.location.origin +`/api/products/${tmp}?quantity=${click_quantity.value}`);
+            if(userID!="null"){
+                url = window.location.origin +`/api/products/${tmp}?quantity=${click_quantity.value}`
+                fetch(url,{
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    }
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    if(data.error!==0){
+                        let total = document.querySelector(`#total-${tmp}`);
+                        console.log(total);
+                        total.innerHTML="";
+                        total.innerHTML+=`${data.error}`;
+                    }
+                });
+            }
+            else{
+                
+            }
 
+        });
+    }
+}
+
+load_quantity();
 

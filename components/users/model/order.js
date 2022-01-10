@@ -31,6 +31,9 @@ const orderSchema = new mongoose.Schema({
     },
     receiver:{
         type:"string",
+    },
+    phone:{
+        type:"string",
     }
 });
 
