@@ -70,9 +70,9 @@ const createOrder = async (username, name, address, phone) => {
         cart.products = [];
         cart.totalPrice = 0;
         await cart.save();
-        return order;
+        return 1;
     }
-    return null;
+    return 0;
 }
 const findHistoryOrder = async (username) => {
     const historyOrder = await Order.find({customerID: username}).lean();

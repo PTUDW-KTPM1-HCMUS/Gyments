@@ -116,16 +116,10 @@ class UserController{
     }
 
     async checkout(req,res){
-<<<<<<< Updated upstream
         const {name,address,phone}=req.body;
-        console.log(name + address+ phone);
-        const order = await UserService.createOrder(req.user.username,name,address,phone);
-=======
-        let {name,address,phone}=req.body;
         const error = await UserService.createOrder(req.user.username,name,address,phone);
->>>>>>> Stashed changes
 
-        res.redirect('/');
+        res.send({error});
     }
 
     async showOrder(req,res){
@@ -143,8 +137,6 @@ class UserController{
         let next = result.next;
         let pages = result.pages;
         res.render('users/views/order',{orders,previous, currentPage, next, pages});
-
-
 
     }
     async showOrderDetail(req,res){
