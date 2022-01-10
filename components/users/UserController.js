@@ -116,9 +116,14 @@ class UserController{
     }
 
     async checkout(req,res){
+<<<<<<< Updated upstream
         const {name,address,phone}=req.body;
         console.log(name + address+ phone);
         const order = await UserService.createOrder(req.user.username,name,address,phone);
+=======
+        let {name,address,phone}=req.body;
+        const error = await UserService.createOrder(req.user.username,name,address,phone);
+>>>>>>> Stashed changes
 
         res.redirect('/');
     }

@@ -82,4 +82,29 @@ const deleteFromCart = async ( username,productID)=>{
         return 1;
     }
 }
-module.exports = {uploadCart, postComment,deleteFromCart};
+
+const fixQuantity = async(username,productID,quantity)=>{
+    try{
+        
+        let cart = await Cart.findOne({customer:username});
+        const key = Object.keys(cart.products);
+        let value =0;
+        let cost =0;
+        key.forEach((key,index)=>{
+            console.log(cart.products[key]._id);
+            if(String(cart.products[key]._id)==String(productID)){
+                cart.products[key].inCart = quantity;
+                cart.products[key].totalPrice = Math.ceil(cart.products[key].price*quantity);
+                value = cart.products[key].totalPrice;
+            }
+            cost +=cart.products[key].totalPrice;
+        });
+        cart.totalPrice = cost;
+        await cart.save();
+        return value;
+    }catch(error){
+        console.log(error);
+        return 0;
+    }
+}
+module.exports = {uploadCart, postComment,deleteFromCart,fixQuantity};
