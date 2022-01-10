@@ -161,8 +161,12 @@ const getComment = async (productID,page,size) =>{
     }
 
     for (let i = currentPage - 2;i<=totalPage   ;i++){
-        if ( i > 0)
-            pages.push(i);
+        if ( i > 0){
+            pages.push({
+                number: i,
+                productID: productID
+            })
+        }
     }
     if (currentPage>1){
         newer = currentPage -1;
