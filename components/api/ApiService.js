@@ -87,20 +87,24 @@ const fixQuantity = async(username,productID,quantity)=>{
     try{
         
         let cart = await Cart.findOne({customer:username});
-        const key = Object.keys(cart.products);
+        const products =[]
         let value =0;
         let cost =0;
-        key.forEach((key,index)=>{
-            console.log(cart.products[key]._id);
-            if(String(cart.products[key]._id)==String(productID)){
-                cart.products[key].inCart = quantity;
-                cart.products[key].totalPrice = Math.ceil(cart.products[key].price*quantity);
-                value = cart.products[key].totalPrice;
+        for(let i = 0 ;i<cart.products.length;i++){
+            
+            if(String(cart.products[i]._id)==String(productID)){
+                cart.products[i].inCart = parseInt(quantity);
+                cart.products[i].totalPrice = parseInt(Math.ceil(cart.products[i].price*quantity));
+                value = cart.products[i].totalPrice;
+                products.push(cart.products[i]);
+                console.log(cart.products[i].totalPrice);
             }
-            cost +=cart.products[key].totalPrice;
-        });
+            cost +=cart.products[i].totalPrice;
+            console.log(cart.products[i].totalPrice);
+        }
         cart.totalPrice = cost;
         await cart.save();
+        await Cart.findOneAndUpdate({customer:username},{products:cart.products});
         return value;
     }catch(error){
         console.log(error);
