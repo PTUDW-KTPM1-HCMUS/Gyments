@@ -124,7 +124,7 @@ function displayCart(){
                     <td><h5>${item.name}</h5></td>
                     <td><h5>$${item.price}</h5></td>
                     <td><input type="number" class = "w-25 p1-1" value = "${item.inCart}" id="input-${item._id}" min="1"></td>
-                    <td><h5 class ="total-${item._id}">$${item.total}</h5></td>
+                    <td><h5 id ="total-${item._id}">$${item.total}</h5></td>
                 </tr>
                 `
             });
@@ -388,7 +388,34 @@ function load_quantity(){
                 });
             }
             else{
+                let CartItems = localStorage.getItem("productsInCart");
+                let Total = 0;
+                CartItems = JSON.parse(CartItems);
+                let count=0;
+                let products =[];
+                let total_change =0;
+                Object.values(CartItems).map(item=>{
+                    
+                    if(String(item._id)==String(tmp)){
+                        item.inCart = parseInt(click_quantity.value);
+                        item.total = Math.ceil(item.inCart*item.price);
+                        count+=click_quantity.value;
+                        total_change=item.total
+                    }
+                    else{
+                        count+=item.inCart;
+                    }
+                    Total +=item.total;
+                    products.push(item);
+                });
+                localStorage.removeItem("productsInCart");
+                localStorage.setItem("productsInCart",JSON.stringify(products));
+                localStorage.setItem("cartNumbers",count);
+                localStorage.setItem("TotalCost",Total);
+                let total_ui = document.querySelector(`#total-${tmp}`);
                 
+                total_ui.innerHTML="";
+                total_ui.innerHTML+=`${total_change}`;
             }
 
         });
